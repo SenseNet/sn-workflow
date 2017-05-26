@@ -1,0 +1,22 @@
+<Package type='Install'>
+  <Id>SenseNet.Workflow</Id>
+  <Description>sensenet ECM Workflow 7.0 (beta)</Description>
+  <ReleaseDate>2017-04-05</ReleaseDate>
+  <Version>7.0.0</Version>
+  <Dependencies>
+    <Dependency id='SenseNet.Services' minVersion='7.0.0' />
+  </Dependencies>
+  <Parameters>
+    <Parameter name="@userName" description="Username to access the server while installing."></Parameter>
+    <Parameter name="@password" description="Password to access the server while installing."></Parameter>
+  </Parameters>
+  <Steps>
+    <Phase>
+      <ExecuteDatabaseScript UserName="@userName" Password="@password" Query="scripts\SqlWorkflowInstanceStoreSchema.sql" />
+      <ExecuteDatabaseScript UserName="@userName" Password="@password" Query="scripts\SqlWorkflowInstanceStoreLogic.sql" />
+
+      <StartRepository startWorkflowEngine="false" />
+      <Import target="/Root" LogLevel="Verbose" source="import" />
+    </Phase>
+  </Steps>
+</Package>

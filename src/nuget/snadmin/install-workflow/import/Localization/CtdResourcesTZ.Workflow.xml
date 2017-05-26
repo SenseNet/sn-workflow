@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="view.xslt"?>
+<Resources>
+  <ResourceClass name="Ctd-Workflow">
+    <Languages>
+      <Language cultureName="en">
+        <data name="DisplayName" xml:space="preserve">
+          <value>Workflow</value>
+        </data>
+        <data name="Description" xml:space="preserve">
+          <value>A Content representation of a Workflow instance.</value>
+        </data>
+        <data name="Description-DisplayName" xml:space="preserve">
+          <value>Description</value>
+        </data>
+        <data name="Description-Description" xml:space="preserve">
+          <value>Description of the workflow.</value>
+        </data>
+        <data name="WorkflowDefinitionVersion-DisplayName" xml:space="preserve">
+          <value>Workflow definition version</value>
+        </data>
+        <data name="WorkflowDefinitionVersion-Description" xml:space="preserve">
+          <value>Stores the version for a running workflow instance.</value>
+        </data>
+        <data name="WorkflowInstanceGuid-DisplayName" xml:space="preserve">
+          <value>Workflow instance GUID</value>
+        </data>
+        <data name="WorkflowInstanceGuid-Description" xml:space="preserve">
+          <value>Stores the instance GUID for a running workflow instance.</value>
+        </data>
+        <data name="WorkflowTypeName-DisplayName" xml:space="preserve">
+          <value>Workflow type name</value>
+        </data>
+        <data name="WorkflowTypeName-Description" xml:space="preserve">
+          <value>Name of the workflow definition this is an instance of.</value>
+        </data>
+        <data name="WorkflowHostType-DisplayName" xml:space="preserve">
+          <value>Workflow host type string</value>
+        </data>
+        <data name="WorkflowHostType-Description" xml:space="preserve">
+          <value>The host type identifier string for resuming this workflow instance.</value>
+        </data>
+        <data name="WorkflowStarted-DisplayName" xml:space="preserve">
+          <value>Workflow started</value>
+        </data>
+        <data name="WorkflowStarted-Description" xml:space="preserve">
+          <value>False for pre-run and template workflow instances.</value>
+        </data>
+        <data name="WorkflowStatus-DisplayName" xml:space="preserve">
+          <value>Workflow status</value>
+        </data>
+        <data name="WorkflowStatus-Description" xml:space="preserve">
+          <value>The status of the .NET workflow represented by this content.</value>
+        </data>
+        <data name="AllowManualStart-DisplayName" xml:space="preserve">
+          <value>Allow manual start</value>
+        </data>
+        <data name="AllowManualStart-Description" xml:space="preserve">
+          <value>Check to allow this workflow to be started manually.</value>
+        </data>
+        <data name="AutostartOnPublished-DisplayName" xml:space="preserve">
+          <value>Autostart on Published</value>
+        </data>
+        <data name="AutostartOnPublished-Description" xml:space="preserve">
+          <value>Check to allow this workflow to start automatically when a content is published in the list.</value>
+        </data>
+        <data name="AutostartOnCreated-DisplayName" xml:space="preserve">
+          <value>Autostart on Created</value>
+        </data>
+        <data name="AutostartOnCreated-Description" xml:space="preserve">
+          <value>Check to allow this workflow to start automatically when a content is created in the list.</value>
+        </data>
+        <data name="AutostartOnChanged-DisplayName" xml:space="preserve">
+          <value>Autostart on Changed</value>
+        </data>
+        <data name="AutostartOnChanged-Description" xml:space="preserve">
+          <value>Check to allow this workflow to start automatically when a content is changed in the list.</value>
+        </data>
+        <data name="ContentWorkflow-DisplayName" xml:space="preserve">
+          <value>Content workflow</value>
+        </data>
+        <data name="ContentWorkflow-Description" xml:space="preserve">
+          <value>True for workflow types that are related to one content (e.g. approval or printing). Related content must be an existing content.</value>
+        </data>
+        <data name="AbortOnRelatedContentChange-DisplayName" xml:space="preserve">
+          <value>Abort on related content change</value>
+        </data>
+        <data name="AbortOnRelatedContentChange-Description" xml:space="preserve">
+          <value>If set to true workflow will be automatically aborted whenever the Related Content changes.</value>
+        </data>
+        <data name="RelatedContent-DisplayName" xml:space="preserve">
+          <value>Related content</value>
+        </data>
+        <data name="RelatedContent-Description" xml:space="preserve">
+          <value>The content that is related to the workflow. Only used in content workflows.</value>
+        </data>
+        <data name="SystemMessages-DisplayName" xml:space="preserve">
+          <value>System messages</value>
+        </data>
+        <data name="SystemMessages-Description" xml:space="preserve">
+          <value>Messages from the workflow system. E.g. aborting / terminating reason.</value>
+        </data>
+        <data name="OwnerSiteUrl-DisplayName" xml:space="preserve">
+          <value>Owner site url</value>
+        </data>
+        <data name="OwnerSiteUrl-Description" xml:space="preserve">
+          <value>The url of site where the workflow was created on.</value>
+        </data>
+      </Language>
+      <Language cultureName="hu">
+        <data name="DisplayName" xml:space="preserve">
+          <value>Munkafolyamat</value>
+        </data>
+        <data name="Description" xml:space="preserve">
+          <value>Tartalom, amely egy munkafolyamatot (workflow) reprezentál.</value>
+        </data>
+        <data name="Description-DisplayName" xml:space="preserve">
+          <value>Leírás</value>
+        </data>
+        <data name="Description-Description" xml:space="preserve">
+          <value>A munkafolyamat leírása.</value>
+        </data>
+        <data name="WorkflowDefinitionVersion-DisplayName" xml:space="preserve">
+          <value>Munkafolyamat verzió</value>
+        </data>
+        <data name="WorkflowDefinitionVersion-Description" xml:space="preserve">
+          <value>Egy már futó munkafolyamat példány típusának pontos tartalom verzióját tárolja.</value>
+        </data>
+        <data name="WorkflowInstanceGuid-DisplayName" xml:space="preserve">
+          <value>Munkafolyamat azonosító (GUID)</value>
+        </data>
+        <data name="WorkflowInstanceGuid-Description" xml:space="preserve">
+          <value>A futó munkafolyamat azonosítója (GUID).</value>
+        </data>
+        <data name="WorkflowTypeName-DisplayName" xml:space="preserve">
+          <value>Munkafolyamat típusnév</value>
+        </data>
+        <data name="WorkflowTypeName-Description" xml:space="preserve">
+          <value>Annak a munkafolyamat típusnak a neve, amelynek ez egy példánya.</value>
+        </data>
+        <data name="WorkflowHostType-DisplayName" xml:space="preserve">
+          <value>Munkafolyamat típus azonosító</value>
+        </data>
+        <data name="WorkflowHostType-Description" xml:space="preserve">
+          <value>Pontos típus azonosító, melynek segítségével fel tudjuk éleszteni ezt a munkafolyamatot.</value>
+        </data>
+        <data name="WorkflowStarted-DisplayName" xml:space="preserve">
+          <value>Munkafolyamat elindítva</value>
+        </data>
+        <data name="WorkflowStarted-Description" xml:space="preserve">
+          <value>Értéke <i>nem</i> (false) a még el nem indult folyamatok és a folyamat sablonok esetében.</value>
+        </data>
+        <data name="WorkflowStatus-DisplayName" xml:space="preserve">
+          <value>Munkafolyamat állapot</value>
+        </data>
+        <data name="WorkflowStatus-Description" xml:space="preserve">
+          <value>A háttérben futó folyamat státusza.</value>
+        </data>
+        <data name="AllowManualStart-DisplayName" xml:space="preserve">
+          <value>Kézi indítás</value>
+        </data>
+        <data name="AllowManualStart-Description" xml:space="preserve">
+          <value>Jelölje be, ha a munkafolyamatot el lehet kézzel indítani.</value>
+        </data>
+        <data name="AutostartOnPublished-DisplayName" xml:space="preserve">
+          <value>Automatikus indulás publikáláskor</value>
+        </data>
+        <data name="AutostartOnPublished-Description" xml:space="preserve">
+          <value>Jelölje be, ha a listában történt tartalom publikálás esetén induljon automatikusan egy munkafolyamat.</value>
+        </data>
+        <data name="AutostartOnCreated-DisplayName" xml:space="preserve">
+          <value>Automatikus indulás létrehozáskor</value>
+        </data>
+        <data name="AutostartOnCreated-Description" xml:space="preserve">
+          <value>Jelölje be, ha tartalom létrehozása esetén induljon automatikusan egy munkafolyamat.</value>
+        </data>
+        <data name="AutostartOnChanged-DisplayName" xml:space="preserve">
+          <value>Automatikus indulás tartalommentéskor</value>
+        </data>
+        <data name="AutostartOnChanged-Description" xml:space="preserve">
+          <value>Jelölje be, ha a listában történt tartalom mentés esetén induljon automatikusan egy munkafolyamat, amennyiben a tartalom megváltozott.</value>
+        </data>
+        <data name="ContentWorkflow-DisplayName" xml:space="preserve">
+          <value>A folyamathoz tartalom tartozik</value>
+        </data>
+        <data name="ContentWorkflow-Description" xml:space="preserve">
+          <value>Értéke <i>igaz</i> (true), ha a munkafolyamathoz tartozik egy tartalom (pl: jóváhagyás, nyomtatás). A vonatkozó tartalomnak léteznie kell.</value>
+        </data>
+        <data name="AbortOnRelatedContentChange-DisplayName" xml:space="preserve">
+          <value>Megszakítás változáskor</value>
+        </data>
+        <data name="AbortOnRelatedContentChange-Description" xml:space="preserve">
+          <value>Pipálja be, ha azt szeretné, hogy a folyamat megszakadjon, amennyiben a hozzátartozó tartalom megváltozik.</value>
+        </data>
+        <data name="RelatedContent-DisplayName" xml:space="preserve">
+          <value>A folyamathoz tartozó tartalom</value>
+        </data>
+        <data name="RelatedContent-Description" xml:space="preserve">
+          <value></value>
+        </data>
+        <data name="SystemMessages-DisplayName" xml:space="preserve">
+          <value>Rendszer üzenetek</value>
+        </data>
+        <data name="SystemMessages-Description" xml:space="preserve">
+          <value>A rendszerüzenetek tárolója, amelyben a futásidejű üzenetek kerülnek. Pl: megszakítás oka.</value>
+        </data>
+        <data name="OwnerSiteUrl-DisplayName" xml:space="preserve">
+          <value>Szájt URL</value>
+        </data>
+        <data name="OwnerSiteUrl-Description" xml:space="preserve">
+          <value>Azon szájt URL-je, ahol a munkafolyamatot létrehozták.</value>
+        </data>
+      </Language>
+    </Languages>
+  </ResourceClass>
+  <ResourceClass name="Ctd-WorkflowDefinition">
+    <Languages>
+      <Language cultureName="en">
+        <data name="DisplayName" xml:space="preserve">
+          <value>Workflow definition</value>
+        </data>
+        <data name="Description" xml:space="preserve">
+          <value>A type for storing XAML workflow definitions.</value>
+        </data>
+        <data name="Description-DisplayName" xml:space="preserve">
+          <value>Description</value>
+        </data>
+        <data name="Description-Description" xml:space="preserve">
+          <value>Description of the workflow.</value>
+        </data>
+        <data name="Binary-DisplayName" xml:space="preserve">
+          <value>Binary</value>
+        </data>
+        <data name="Binary-Description" xml:space="preserve">
+          <value>The binary content of the document.</value>
+        </data>
+        <data name="ContentWorkflow-DisplayName" xml:space="preserve">
+          <value>Content workflow</value>
+        </data>
+        <data name="ContentWorkflow-Description" xml:space="preserve">
+          <value>True for workflow types that are related to one content (e.g. approval or printing). Related content must be an existing content.</value>
+        </data>
+        <data name="AssignableToContentList-DisplayName" xml:space="preserve">
+          <value>Assignable to content list</value>
+        </data>
+        <data name="AssignableToContentList-Description" xml:space="preserve">
+          <value>Set this for workflow types that users should be able to assign to content lists (e.g. a Document Library).</value>
+        </data>
+        <data name="AbortOnRelatedContentChange-DisplayName" xml:space="preserve">
+          <value>Abort on related content change</value>
+        </data>
+        <data name="AbortOnRelatedContentChange-Description" xml:space="preserve">
+          <value>If set to true workflow will be automatically aborted whenever the Related Content changes.</value>
+        </data>
+        <data name="DeleteInstanceAfterFinished-DisplayName" xml:space="preserve">
+          <value>Automatic deletion</value>
+        </data>
+        <data name="DeleteInstanceAfterFinished-Description" xml:space="preserve">
+          <value>Automatic deletion of the workflow instance when it is finished. Choose the deletion method.</value>
+        </data>
+      </Language>
+      <Language cultureName="hu">
+        <data name="DisplayName" xml:space="preserve">
+          <value>Munkafolyamat definíció</value>
+        </data>
+        <data name="Description" xml:space="preserve">
+          <value>Munkafolyamat definícióját (XAML) tartalmazó tároló.</value>
+        </data>
+        <data name="Description-DisplayName" xml:space="preserve">
+          <value>Leírás</value>
+        </data>
+        <data name="Description-Description" xml:space="preserve">
+          <value>A munkafolyamat részletes leírása.</value>
+        </data>
+        <data name="Binary-DisplayName" xml:space="preserve">
+          <value>Bináris</value>
+        </data>
+        <data name="Binary-Description" xml:space="preserve">
+          <value>Munkafolyamat definícióját (XAML) tárolja bináris formában.</value>
+        </data>
+        <data name="ContentWorkflow-DisplayName" xml:space="preserve">
+          <value>A folyamathoz tartalom tartozik</value>
+        </data>
+        <data name="ContentWorkflow-Description" xml:space="preserve">
+          <value>Értéke <i>igaz</i> (true), ha a munkafolyamathoz tartozik egy tartalom (pl: jóváhagyás, nyomtatás). A vonatkozó tartalomnak léteznie kell.</value>
+        </data>
+        <data name="AssignableToContentList-DisplayName" xml:space="preserve">
+          <value>A folyamat listához rendelhető</value>
+        </data>
+        <data name="AssignableToContentList-Description" xml:space="preserve">
+          <value>Állítsa be ezt azokon a folyamat típusokon, amiket hozzá lehet rendelni listákhoz.</value>
+        </data>
+        <data name="AbortOnRelatedContentChange-DisplayName" xml:space="preserve">
+          <value>Megszakítás változáskor</value>
+        </data>
+        <data name="AbortOnRelatedContentChange-Description" xml:space="preserve">
+          <value>Pipálja be, ha azt szeretné, hogy a folyamat megszakadjon, amennyiben a hozzátartozó tartalom megváltozik.</value>
+        </data>
+        <data name="DeleteInstanceAfterFinished-DisplayName" xml:space="preserve">
+          <value>Automatikus törlés</value>
+        </data>
+        <data name="DeleteInstanceAfterFinished-Description" xml:space="preserve">
+          <value>A munkafolyamat példányának automatikus törlése annak befejeződésekor. Válassza ki a kívánt eljárást.</value>
+        </data>
+      </Language>
+    </Languages>
+  </ResourceClass>
+</Resources>
