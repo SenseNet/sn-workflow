@@ -190,7 +190,13 @@ namespace SenseNet.Workflow
                 wfApp.Aborted =              d => { SnTrace.Workflow.Write("WF: Aborted. WfAppId:{0}",              wfApp.Id); OnWorkflowAborted(d); DestroyInstanceOwner(wfApp, ownerHandle); };
                 wfApp.OnUnhandledException = e => { SnTrace.Workflow.Write("WF: OnUnhandledException. WfAppId:{0}", wfApp.Id); return HandleError(e); };
 
-                wfApp.Extensions.Add(new ContentWorkflowExtension() { WorkflowInstancePath = workflowMasterInstance.Path });
+                wfApp.Extensions.Add(new ContentWorkflowExtension
+                {
+                    WorkflowApp = wfApp,
+                    WorkflowInstancePath = purpose == WorkflowApplicationCreationPurpose.Poll
+                        ? null
+                        : workflowMasterInstance.Path
+                });
                 return wfApp;
             }
             catch (Exception e)
@@ -415,14 +421,26 @@ namespace SenseNet.Workflow
                 var wfInstance = Node.Load<WorkflowHandlerBase>(notification.WorkflowNodePath);
                 var wfApp = CreateWorkflowApplication(wfInstance, WorkflowApplicationCreationPurpose.Resume, null);
                 wfApp.Load(notification.WorkflowInstanceId);
+
+                var nodeId = notification.NodeId;
+                var instanceId = notification.WorkflowInstanceId;
+                var bookmarkName = notification.BookmarkName;
                 if (ValidWakedUpWorkflow(wfApp))
                 {
-                    SnTrace.Workflow.Write("WF: FireNotification: ResumeBookmark:{0}|{1}", notification.NodeId, notification.WorkflowInstanceId);
-                    wfApp.ResumeBookmark(notification.BookmarkName, eventArgs);
+                    if (wfApp.GetBookmarks().Any(x => x.BookmarkName == bookmarkName))
+                    {
+                        SnTrace.Workflow.Write("WF: FireNotification: Resume bookmark: NodeId: {0}, instance: {1}, bookmark: {2}", nodeId, instanceId, bookmarkName);
+                        wfApp.ResumeBookmark(bookmarkName, eventArgs);
+                    }
+                    else
+                    {
+                        SnTrace.Workflow.Write("WF: FireNotification: Skip bookmark: NodeId: {0}, instance: {1}, bookmark: {2}", nodeId, instanceId, bookmarkName);
+                        wfApp.Unload();
+                    }
                 }
                 else
                 {
-                    SnTrace.Workflow.Write("WF: FireNotification: Cancel:{0}|{1}", notification.NodeId, notification.WorkflowInstanceId);
+                    SnTrace.Workflow.Write("WF: FireNotification: Cancel: NodeId: {0}, instance: {1}", nodeId, instanceId);
                     wfApp.Cancel();
                 }
             }
@@ -517,7 +535,7 @@ namespace SenseNet.Workflow
         {
             try
             {
-                SnTrace.Workflow.Write("RegisterWait: {0}", notificationId);
+                SnTrace.Workflow.Write("ReleaseWait: {0}", notificationId);
                 using (var dbContext = GetDataContext())
                 {
                     var ent = dbContext.WorkflowNotifications.SingleOrDefault(wn => wn.NotificationId == notificationId);
@@ -905,7 +923,7 @@ namespace SenseNet.Workflow
                 throw;
             }
         }
-        private static WorkflowHandlerBase GetStateContent(Guid instanceId)
+        internal static WorkflowHandlerBase GetStateContent(Guid instanceId)
         {
             try
             {
