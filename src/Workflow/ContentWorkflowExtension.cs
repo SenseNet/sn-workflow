@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Activities;
 using System.Collections.Generic;
 using System.Activities.Hosting;
 using System.Linq;
+using SenseNet.Diagnostics;
 
 namespace SenseNet.Workflow
 {
@@ -9,8 +11,26 @@ namespace SenseNet.Workflow
     {
         public WorkflowInstanceProxy _instance;
 
-        public string WorkflowInstancePath { get; set; }
+        private bool _workflowInstancePathResolved;
+        private string _workflowInstancePath;
+
+        public string WorkflowInstancePath
+        {
+            get
+            {
+                if (_workflowInstancePath == null && WorkflowApp != null && !_workflowInstancePathResolved)
+                {
+                    _workflowInstancePath = InstanceManager.GetStateContent(WorkflowApp.Id)?.Path;
+                    SnTrace.Workflow.Write("WorkflowInstance Path resolved: {0}: {1}", WorkflowApp.Id, _workflowInstancePath);
+                    _workflowInstancePathResolved = true;
+                }
+                return _workflowInstancePath;
+            }
+            set { _workflowInstancePath = value; }
+        }
+
         public string ContentPath { get; set; }
+        public WorkflowApplication WorkflowApp { get; set; }
 
         private string _uid;
 
