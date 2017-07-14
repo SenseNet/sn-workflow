@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentType name="RegistrationWorkflow" parentType="Workflow" handler="SenseNet.Workflow.RegistrationWorkflow" xmlns="http://schemas.sensenet.com/SenseNet/ContentRepository/ContentTypeDefinition">
+  <DisplayName>$Ctd-RegistrationWorkflow,DisplayName</DisplayName>
+  <Description>$Ctd-RegistrationWorkflow,Description</Description>
+  <Icon>workflow</Icon>
+  <AllowIncrementalNaming>true</AllowIncrementalNaming>
+  <Fields>
+    <Field name="FullName" type="ShortText">
+      <DisplayName>$Ctd-RegistrationWorkflow,FullName-DisplayName</DisplayName>
+      <Description>$Ctd-RegistrationWorkflow,FullName-Description</Description>
+      <Configuration>
+        <VisibleBrowse>Show</VisibleBrowse>
+        <VisibleEdit>Show</VisibleEdit>
+        <VisibleNew>Show</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="UserName" type="ShortText">
+      <DisplayName>$Ctd-RegistrationWorkflow,UserName-DisplayName</DisplayName>
+      <Description>$Ctd-RegistrationWorkflow,UserName-Description</Description>
+      <Configuration>
+        <Compulsory>true</Compulsory>
+        <VisibleBrowse>Show</VisibleBrowse>
+        <VisibleEdit>Show</VisibleEdit>
+        <VisibleNew>Show</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="Email" type="ShortText">
+      <DisplayName>$Ctd-RegistrationWorkflow,Email-DisplayName</DisplayName>
+      <Description>$Ctd-RegistrationWorkflow,Email-Description</Description>
+      <Configuration>
+        <Compulsory>true</Compulsory>
+        <Regex>^[a-zA-Z0-9._%+-]+@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,4}$</Regex>
+        <VisibleBrowse>Show</VisibleBrowse>
+        <VisibleEdit>Show</VisibleEdit>
+        <VisibleNew>Show</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="InitialPassword" type="ShortText">
+      <DisplayName>$Ctd-RegistrationWorkflow,InitialPassword-DisplayName</DisplayName>
+      <Description>$Ctd-RegistrationWorkflow,InitialPassword-Description</Description>
+      <Configuration>
+        <Compulsory>true</Compulsory>
+        <VisibleBrowse>Show</VisibleBrowse>
+        <VisibleEdit>Show</VisibleEdit>
+        <VisibleNew>Show</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="RegistrationType" type="Choice">
+      <DisplayName>$Ctd-RegistrationWorkflow,RegistrationType-DisplayName</DisplayName>
+      <Description>$Ctd-RegistrationWorkflow,RegistrationType-Description</Description>
+      <Configuration>
+        <Options>
+          <Option value="client">$Ctd-RegistrationWorkflow,RegistrationType-client</Option>
+          <Option value="media">$Ctd-RegistrationWorkflow,RegistrationType-media</Option>
+          <Option value="community">$Ctd-RegistrationWorkflow,RegistrationType-community</Option>
+          <Option value="public">$Ctd-RegistrationWorkflow,RegistrationType-public</Option>
+        </Options>
+      </Configuration>
+    </Field>
+  </Fields>
+</ContentType>

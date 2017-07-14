@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentMetaData>
+  <ContentType>Portlet</ContentType>
+  <ContentName>ApprovePortlet</ContentName>
+  <Fields>
+    <Description><![CDATA[$ApprovePortlet:PortletDescription]]></Description>
+    <TypeName><![CDATA[SenseNet.Workflow.UI.ApprovePortlet, SenseNet.CorePortlets]]></TypeName>
+    <ImageData attachment="ApprovePortlet.ImageData" />
+    <DisplayName><![CDATA[$ApprovePortlet:PortletDisplayName]]></DisplayName>
+  </Fields>
+  <Permissions>
+    <Clear />
+  </Permissions>
+</ContentMetaData>

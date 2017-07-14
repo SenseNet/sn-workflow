@@ -17,6 +17,58 @@
 
       <StartRepository startWorkflowEngine="false" />
       <Import target="/Root" LogLevel="Verbose" source="import" />
+
+      <IfComponentExists>
+        <Components>
+          <Component id="SenseNet.Workspaces" minVersion="7.0.0" />
+        </Components>
+        <Then>
+          <Trace>Importing workspace-related workflows...</Trace>
+          <Import target="/Root" LogLevel="Verbose" source="import-workspaces" />
+
+          <!-- TODO: set mailprocessor workflow on content lists!!!!!! -->
+
+        </Then>
+        <Else>
+          <Trace>Workspaces component not found, workspace-related workflows are not imported.</Trace>
+        </Else>
+      </IfComponentExists>
+      
+      <IfComponentExists>
+        <Components>
+          <Component id="SenseNet.WebPages" minVersion="7.0.0" />
+        </Components>
+        <Then>
+          <Trace>WebPages component found, importing views and pages...</Trace>
+          <Import target="/Root" LogLevel="Verbose" source="import-pages" />
+
+          <IfContentExists path="/Root/Sites/Default_Site">
+            <Then>
+              <EditAllowedChildTypes path="/Root/Sites/Default_Site">Article</EditAllowedChildTypes>
+              <Trace>Importing views and pages under default site...</Trace>
+              <Import target="/Root" LogLevel="Verbose" source="import-pages-site" />
+            </Then>
+          </IfContentExists>
+
+          <IfComponentExists>
+            <Components>
+              <Component id="SenseNet.Workspaces" minVersion="7.0.0" />
+            </Components>
+            <Then>
+              <Trace>Importing workspace-related pages and views...</Trace>
+              <Import target="/Root" LogLevel="Verbose" source="import-workspaces-pages" />
+            </Then>
+            <Else>
+              <Trace>Workspaces component not found, workspace-related views and pages are not imported.</Trace>
+            </Else>
+          </IfComponentExists>
+
+        </Then>
+        <Else>
+          <Trace>WebPages component not found, views and pages are not imported.</Trace>
+        </Else>
+      </IfComponentExists>
+      
     </Phase>
   </Steps>
 </Package>

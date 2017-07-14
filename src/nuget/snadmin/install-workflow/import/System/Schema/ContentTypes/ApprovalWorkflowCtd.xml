@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentType name="ApprovalWorkflow" parentType="Workflow" handler="SenseNet.Workflow.ApprovalWorkflow" xmlns="http://schemas.sensenet.com/SenseNet/ContentRepository/ContentTypeDefinition">
+  <DisplayName>$Ctd-ApprovalWorkflow,DisplayName</DisplayName>
+	<Description>$Ctd-ApprovalWorkflow,Description</Description>
+	<Icon>workflow</Icon>
+  <AllowIncrementalNaming>true</AllowIncrementalNaming>
+  <Fields>
+    <Field name="RelatedContent" type="Reference">
+      <DisplayName>$Ctd-ApprovalWorkflow,RelatedContent-DisplayName</DisplayName>
+      <Description>$Ctd-ApprovalWorkflow,RelatedContent-Description</Description>
+      <Configuration>
+        <VisibleBrowse>Show</VisibleBrowse>
+        <VisibleEdit>Show</VisibleEdit>
+        <VisibleNew>Show</VisibleNew>
+        <AllowMultiple>false</AllowMultiple>
+        <AllowedTypes>
+          <Type>GenericContent</Type>
+        </AllowedTypes>
+      </Configuration>
+    </Field>
+    <Field name="FirstLevelApprover" type="Reference">
+      <DisplayName>$Ctd-ApprovalWorkflow,FirstLevelApprover-DisplayName</DisplayName>
+      <Description>$Ctd-ApprovalWorkflow,FirstLevelApprover-Description</Description>
+      <Configuration>
+        <Compulsory>true</Compulsory>
+        <AllowMultiple>false</AllowMultiple>
+        <VisibleBrowse>Show</VisibleBrowse>
+        <VisibleEdit>Show</VisibleEdit>
+        <VisibleNew>Show</VisibleNew>
+        <AllowedTypes>
+          <Type>User</Type>
+        </AllowedTypes>
+        <SelectionRoot>
+          <Path>/Root/IMS</Path>
+        </SelectionRoot>
+      </Configuration>
+    </Field>
+    <Field name="FirstLevelTimeFrame" type="ShortText">
+      <DisplayName>$Ctd-ApprovalWorkflow,FirstLevelTimeFrame-DisplayName</DisplayName>
+      <Description>$Ctd-ApprovalWorkflow,FirstLevelTimeFrame-Description</Description>
+      <Configuration>
+        <Compulsory>true</Compulsory>
+        <DefaultValue>3</DefaultValue>
+        <VisibleBrowse>Show</VisibleBrowse>
+        <VisibleEdit>Advanced</VisibleEdit>
+        <VisibleNew>Show</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="SecondLevelApprover" type="Reference">
+      <DisplayName>$Ctd-ApprovalWorkflow,SecondLevelApprover-DisplayName</DisplayName>
+      <Description>$Ctd-ApprovalWorkflow,SecondLevelApprover-Description</Description>
+      <Configuration>
+        <VisibleBrowse>Show</VisibleBrowse>
+        <VisibleEdit>Show</VisibleEdit>
+        <VisibleNew>Show</VisibleNew>
+        <AllowMultiple>true</AllowMultiple>
+        <AllowedTypes>
+          <Type>User</Type>          
+        </AllowedTypes>
+        <SelectionRoot>
+          <Path>/Root/IMS</Path>
+        </SelectionRoot>
+      </Configuration>
+    </Field>
+    <Field name="SecondLevelTimeFrame" type="ShortText">
+      <DisplayName>$Ctd-ApprovalWorkflow,SecondLevelTimeFrame-DisplayName</DisplayName>
+      <Description>$Ctd-ApprovalWorkflow,SecondLevelTimeFrame-Description</Description>
+      <Configuration>
+        <DefaultValue>5</DefaultValue>
+        <VisibleBrowse>Show</VisibleBrowse>
+        <VisibleEdit>Advanced</VisibleEdit>
+        <VisibleNew>Show</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="WaitForAll" type="Boolean">
+      <DisplayName>$Ctd-ApprovalWorkflow,WaitForAll-DisplayName</DisplayName>
+      <Description>$Ctd-ApprovalWorkflow,WaitForAll-Description</Description>
+      <Configuration>
+        <DefaultValue>1</DefaultValue>
+        <VisibleBrowse>Show</VisibleBrowse>
+        <VisibleEdit>Advanced</VisibleEdit>
+        <VisibleNew>Show</VisibleNew>
+      </Configuration>
+    </Field>
+  </Fields>
+</ContentType>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentMetaData>
+  <ContentType>WorkflowDefinition</ContentType>
+  <ContentName>ApprovalWorkflow.xaml</ContentName>
+  <Fields>
+    <DisplayName>Approval workflow</DisplayName>
+    <Description><![CDATA[<p>Approval workflow can be used to launch an approval process on a list item. If you assign this workflow to a content list, users will be able to start the approval process on the Start workflow page of list items. During the assign process you will have to set the approver users and approve time frame for that content list.</p>]]></Description>
+    <Binary attachment="ApprovalWorkflow.xaml" />
+    <ContentWorkflow>true</ContentWorkflow>
+    <AssignableToContentList>true</AssignableToContentList>
+    <AbortOnRelatedContentChange>true</AbortOnRelatedContentChange>
+  </Fields>
+  <Permissions>
+    <Clear />
+  </Permissions>
+</ContentMetaData>

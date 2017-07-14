@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentMetaData>
+  <ContentType>Portlet</ContentType>
+  <ContentName>StartWorkflowPortlet</ContentName>
+  <Fields>
+    <Description><![CDATA[$StartWorkflowPortlet:PortletDescription]]></Description>
+    <TypeName><![CDATA[SenseNet.Portal.Portlets.StartWorkflowPortlet, SenseNet.CorePortlets]]></TypeName>
+    <ImageData attachment="StartWorkflowPortlet.ImageData" />
+    <DisplayName><![CDATA[$StartWorkflowPortlet:PortletDisplayName]]></DisplayName>
+  </Fields>
+  <Permissions>
+    <Clear />
+  </Permissions>
+</ContentMetaData>

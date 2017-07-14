@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="view.xslt"?>
+<Resources>
+  <ResourceClass name="AbortWorkflowPortlet">
+    <Languages>
+      <Language cultureName="en">
+        <data name="PortletDisplayName" xml:space="preserve">
+          <value>Abort workflow</value>
+        </data>
+        <data name="PortletDescription" xml:space="preserve">
+          <value>This portlet allows a workflow to be aborted (context bound)</value>
+        </data>
+      </Language>
+      <Language cultureName="hu">
+        <data name="PortletDisplayName" xml:space="preserve">
+          <value>Munkafolyamat megszakítás</value>
+        </data>
+        <data name="PortletDescription" xml:space="preserve">
+          <value>Lehetővé teszi futó munkafolyamat megszakítását.</value>
+        </data>
+      </Language>
+    </Languages>
+  </ResourceClass>
+  <ResourceClass name="ApprovePortlet">
+    <Languages>
+      <Language cultureName="en">
+        <data name="PortletDisplayName" xml:space="preserve">
+          <value>Workflow based approval portlet</value>
+        </data>
+        <data name="PortletDescription" xml:space="preserve">
+          <value>Use this Portlet with workflow approval tasks</value>
+        </data>
+      </Language>
+      <Language cultureName="hu">
+        <data name="PortletDisplayName" xml:space="preserve">
+          <value>Jóváhagyás (munkafolyamat során)</value>
+        </data>
+        <data name="PortletDescription" xml:space="preserve">
+          <value>Jóváhagyási feladatok kezelésére szolgáló portlet.</value>
+        </data>
+      </Language>
+    </Languages>
+  </ResourceClass>
+  <ResourceClass name="AssignWorkflowPortlet">
+    <Languages>
+      <Language cultureName="en">
+        <data name="PortletDisplayName" xml:space="preserve">
+          <value>Workflow assign</value>
+        </data>
+        <data name="PortletDescription" xml:space="preserve">
+          <value>This portlet assignes a workflow to a content list (context bound)</value>
+        </data>
+      </Language>
+      <Language cultureName="hu">
+        <data name="PortletDisplayName" xml:space="preserve">
+          <value>Munkafolyamat hozzárendelés</value>
+        </data>
+        <data name="PortletDescription" xml:space="preserve">
+          <value>Ennek a portletnek a segítségével listához rendelhet egy munkafolyamatot.</value>
+        </data>
+      </Language>
+    </Languages>
+  </ResourceClass>
+  <ResourceClass name="ConfirmPortlet">
+    <Languages>
+      <Language cultureName="en">
+        <data name="PortletDisplayName" xml:space="preserve">
+          <value>Workflow based confirmation portlet</value>
+        </data>
+        <data name="PortletDescription" xml:space="preserve">
+          <value>Use this Portlet for e-mail confirmations and similar tasks</value>
+        </data>
+      </Language>
+      <Language cultureName="hu">
+        <data name="PortletDisplayName" xml:space="preserve">
+          <value>Munkafolyamat alapú jóváhagyás</value>
+        </data>
+        <data name="PortletDescription" xml:space="preserve">
+          <value>E-mail jóváhagyásra és hasonló feladatokra használható portlet.</value>
+        </data>
+      </Language>
+    </Languages>
+  </ResourceClass>
+  <ResourceClass name="StartWorkflowPortlet">
+    <Languages>
+      <Language cultureName="en">
+        <data name="PortletDisplayName" xml:space="preserve">
+          <value>Workflow start</value>
+        </data>
+        <data name="PortletDescription" xml:space="preserve">
+          <value>This portlet starts a workflow</value>
+        </data>
+        <data name="Prop_WorkflowType_DisplayName" xml:space="preserve">
+          <value>Workflow type</value>
+        </data>
+        <data name="Prop_ConfirmContentPath_DisplayName" xml:space="preserve">
+          <value>Confirmation content path</value>
+        </data>
+        <data name="Prop_StartOnCurrentContent_DisplayName" xml:space="preserve">
+          <value>Start the workflow on the current content</value>
+        </data>
+        <data name="Prop_WorkflowContainerPath_DisplayName" xml:space="preserve">
+          <value>Workflow container path</value>
+        </data>
+        <data name="Prop_WorkflowTemplatePath_DisplayName" xml:space="preserve">
+          <value>Workflow template path</value>
+        </data>
+        <data name="Prop_WorkflowType_Description" xml:space="preserve">
+          <value>Please choose from the available workflow types. If you leave this entry empty, the portlet will behave like a simple add content portlet.</value>
+        </data>
+        <data name="Prop_ConfirmContentPath_Description" xml:space="preserve">
+          <value>Define a content that will be displayed to the user after the workflow is started.</value>
+        </data>
+        <data name="Prop_StartOnCurrentContent_Description" xml:space="preserve">
+          <value>If set the workflow will start on the current content. Use this option when you are building a smart application page.</value>
+        </data>
+        <data name="Prop_WorkflowContainerPath_Description" xml:space="preserve">
+          <value>Container folder for the started workflow instances. If you leave this entry empty, the system will place the workflow content under the current content.</value>
+        </data>
+        <data name="Prop_WorkflowTemplatePath_Description" xml:space="preserve">
+          <value>Template workflow content that contains all the initial data. If the workflow does not need any initial data you can leave this entry empty.</value>
+        </data>
+      </Language>
+      <Language cultureName="hu">
+        <data name="PortletDisplayName" xml:space="preserve">
+          <value>Munkafolyamat indítás</value>
+        </data>
+        <data name="PortletDescription" xml:space="preserve">
+          <value>Általános munkafolyamat indító portlet.</value>
+        </data>
+        <data name="Prop_WorkflowType_DisplayName" xml:space="preserve">
+          <value>Munkafolyamat típus</value>
+        </data>
+        <data name="Prop_ConfirmContentPath_DisplayName" xml:space="preserve">
+          <value>Indításkor megjelenő tartalom</value>
+        </data>
+        <data name="Prop_StartOnCurrentContent_DisplayName" xml:space="preserve">
+          <value>Munkafolyamat indítása az aktuális tartalmon</value>
+        </data>
+        <data name="Prop_WorkflowContainerPath_DisplayName" xml:space="preserve">
+          <value>Munkafolyamat tároló útvonala</value>
+        </data>
+        <data name="Prop_WorkflowTemplatePath_DisplayName" xml:space="preserve">
+          <value>Munkafolyamat sablon útvonal</value>
+        </data>
+        <data name="Prop_WorkflowType_Description" xml:space="preserve">
+          <value>Kérjük válasszon a lehetséges munkafolyamat típusokból! Ha üresen hagyja, akkor a portlet úgy fog viselkedni, mint egy egszerű tartalom létrehozó portlet.</value>
+        </data>
+        <data name="Prop_ConfirmContentPath_Description" xml:space="preserve">
+          <value>Adja meg azt a tartalmat, ami a munkafolyamat elindítása után a felhasználónak meg fog jelenni.</value>
+        </data>
+        <data name="Prop_StartOnCurrentContent_Description" xml:space="preserve">
+          <value>Ha ki van pipálva, akkor a munkafolyamat az aktuális tartalmon fog elindulni. Akkor használja ezt a funkciót, ha okos alkalmazás oldalt épít.</value>
+        </data>
+        <data name="Prop_WorkflowContainerPath_Description" xml:space="preserve">
+          <value>Az elindított munkafolyamatokat tároló mappa. Ha üresen hagyja, akkor az elindított munkafolyamatok az aktuális tartalm alá kerülnek.</value>
+        </data>
+        <data name="Prop_WorkflowTemplatePath_Description" xml:space="preserve">
+          <value>Munkafolyamat sablon, ami az összes alapadatot tartalmazza. Ha a munkafolyamat nem igényel ilyet, akkor maradjon üresen.</value>
+        </data>
+      </Language>
+    </Languages>
+  </ResourceClass>
+</Resources>

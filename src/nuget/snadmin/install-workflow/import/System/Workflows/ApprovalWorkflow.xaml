@@ -1,0 +1,529 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="SenseNet.Workflow.Definitions.ApprovalWorkflow"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sw="clr-namespace:SenseNet.Workflow;assembly=SenseNet.Workflow"
+ xmlns:swa="clr-namespace:SenseNet.Workflow.Activities;assembly=SenseNet.Workflow"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="StateContent" Type="InArgument(sw:WfContent)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>SenseNet.Workflow.Definitions.ApprovalWorkflow_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities.Debugger</x:String>
+      <x:String>SenseNet.ContentRepository</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>SenseNet.ContentRepository.Storage</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>SenseNet.Search.Indexing</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>SenseNet.Workflow</x:String>
+      <x:String>SenseNet.Workflow.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>SenseNet.Security</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>SenseNet.Storage</AssemblyReference>
+      <AssemblyReference>SenseNet.ContentRepository</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>SenseNet.Workflow</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>SenseNet.Security</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="MainSequence" sap2010:WorkflowViewState.IdRef="Sequence_8">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sw:WfContent" Name="LeaderTask" />
+      <Variable x:TypeArguments="sw:WfContent" Name="ContentToApprove" />
+      <Variable x:TypeArguments="x:Boolean" Name="AssistantTasksResult" />
+      <Variable x:TypeArguments="scg:List(sw:WfContent)" Name="AssistantTasks" />
+      <Variable x:TypeArguments="x:String" Name="TasksPath" />
+      <Variable x:TypeArguments="x:Boolean" Name="Result" />
+      <Variable x:TypeArguments="x:String" Default="[String.Empty]" Name="RejectReason" />
+    </Sequence.Variables>
+    <swa:DebugWrite sap2010:WorkflowViewState.IdRef="DebugWrite_1" Message="##WF&gt; ## Start" />
+    <Assign sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="sw:WfContent">[ContentToApprove]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="sw:WfContent">[StateContent.Reference("RelatedContent")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[TasksPath]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[CType(StateContent("Workspace"), SenseNet.ContentRepository.GenericContent).Path &amp; "/Tasks"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Sequence DisplayName="Creating task for Leader" sap2010:WorkflowViewState.IdRef="Sequence_1">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="s:DateTime" Name="LeaderDueDate" />
+      </Sequence.Variables>
+      <swa:CreateContent FieldValues="{x:Null}" Name="{x:Null}" ContentDisplayName="[&quot;Approve &quot; + CStr(ContentToApprove(&quot;Name&quot;))]" ContentTypeName="[&quot;ApprovalWorkflowTask&quot;]" DisplayName="CreateContent" sap2010:WorkflowViewState.IdRef="CreateContent_1" ParentPath="[TasksPath]" Result="[LeaderTask]" />
+      <swa:DebugWrite sap2010:WorkflowViewState.IdRef="DebugWrite_2" Message="##WF&gt; ## Leader task created" />
+      <Assign DisplayName="Assign ContentToApprove" sap2010:WorkflowViewState.IdRef="Assign_3">
+        <Assign.To>
+          <OutArgument x:TypeArguments="sw:WfContent">[LeaderTask.Reference("ContentToApprove")]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="sw:WfContent">[ContentToApprove]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign AssignedTo" sap2010:WorkflowViewState.IdRef="Assign_4">
+        <Assign.To>
+          <OutArgument x:TypeArguments="sw:WfContent">[LeaderTask.Reference("AssignedTo")]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="sw:WfContent">[StateContent.Reference("FirstLevelApprover")]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign sap2010:WorkflowViewState.IdRef="Assign_5">
+        <Assign.To>
+          <OutArgument x:TypeArguments="s:DateTime">[LeaderDueDate]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="s:DateTime">[DateTime.UtcNow.Add(TimeSpan.Parse(CStr(StateContent("FirstLevelTimeFrame"))))]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign DueDate" sap2010:WorkflowViewState.IdRef="Assign_6">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Object">[LeaderTask("DueDate")]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Object">[LeaderDueDate]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign ValidTill" sap2010:WorkflowViewState.IdRef="Assign_7">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Object">[LeaderTask("ValidTill")]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Object">[LeaderDueDate]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign EnableLifespan" sap2010:WorkflowViewState.IdRef="Assign_8">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Object">[LeaderTask("EnableLifespan")]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Object">[True]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign Task init status" sap2010:WorkflowViewState.IdRef="Assign_9">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Object">[LeaderTask("Status")]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">["active"]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign priority" sap2010:WorkflowViewState.IdRef="Assign_10">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Object">[LeaderTask("Priority")]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">["2"]</InArgument>
+        </Assign.Value>
+      </Assign>
+    </Sequence>
+    <swa:DebugWrite sap2010:WorkflowViewState.IdRef="DebugWrite_3" Message="##WF&gt; ## Initialized" />
+    <Pick DisplayName="Wait or timeout and set Result" sap2010:WorkflowViewState.IdRef="Pick_2">
+      <PickBranch DisplayName="Leader" sap2010:WorkflowViewState.IdRef="PickBranch_1">
+        <PickBranch.Trigger>
+          <swa:WaitForContentChanged ContentPath="[LeaderTask.Path]" sap2010:WorkflowViewState.IdRef="WaitForContentChanged_1" />
+        </PickBranch.Trigger>
+        <Sequence DisplayName="Sequence: retrieve result" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Assign DisplayName="Assign Result" sap2010:WorkflowViewState.IdRef="Assign_11">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Boolean">[Result]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Boolean">[CStr(LeaderTask("Result")) = "yes"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Assign Reject reason" sap2010:WorkflowViewState.IdRef="Assign_12">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[RejectReason]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[CStr(LeaderTask("RejectReason"))]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </PickBranch>
+      <PickBranch DisplayName="Assistants" sap2010:WorkflowViewState.IdRef="PickBranch_4">
+        <PickBranch.Trigger>
+          <Delay DisplayName="Delay1" Duration="[TimeSpan.Parse(CStr(StateContent(&quot;FirstLevelTimeFrame&quot;)))]" sap2010:WorkflowViewState.IdRef="Delay_1" />
+        </PickBranch.Trigger>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <swa:DebugWrite sap2010:WorkflowViewState.IdRef="DebugWrite_4" Message="##WF&gt; ## After delay1" />
+          <Sequence DisplayName="Create tasks for Assistants" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sw:WfContent" Name="Task" />
+              <Variable x:TypeArguments="s:DateTime" Name="AssistantDueDate" />
+            </Sequence.Variables>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_13">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:List(sw:WfContent)">[AssistantTasks]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:List(sw:WfContent)">[New List(Of WfContent)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_14">
+              <Assign.To>
+                <OutArgument x:TypeArguments="s:DateTime">[AssistantDueDate]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="s:DateTime">[DateTime.UtcNow.Add(TimeSpan.Parse(CStr(StateContent("SecondLevelTimeFrame"))))]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ForEach x:TypeArguments="sw:WfContent" DisplayName="ForEach&lt;WfContent&gt;" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[StateContent.References(&quot;SecondLevelApprover&quot;)]">
+              <ActivityAction x:TypeArguments="sw:WfContent">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="sw:WfContent" Name="assistant" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Create task" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <swa:CreateContent FieldValues="{x:Null}" Name="{x:Null}" ContentDisplayName="[&quot;Approve &quot; + CStr(ContentToApprove(&quot;Name&quot;))]" ContentTypeName="[&quot;ApprovalWorkflowTask&quot;]" sap2010:WorkflowViewState.IdRef="CreateContent_2" ParentPath="[TasksPath]" Result="[Task]" />
+                  <Assign DisplayName="Assign ContentToApprove" sap2010:WorkflowViewState.IdRef="Assign_15">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="sw:WfContent">[Task.Reference("ContentToApprove")]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="sw:WfContent">[ContentToApprove]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign DisplayName="Assign AssignedTo" sap2010:WorkflowViewState.IdRef="Assign_16">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="sw:WfContent">[Task.Reference("AssignedTo")]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="sw:WfContent">[assistant]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign DisplayName="Assign DueDate" sap2010:WorkflowViewState.IdRef="Assign_17">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Object">[Task("DueDate")]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Object">[AssistantDueDate]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign DisplayName="Assign ValidTill" sap2010:WorkflowViewState.IdRef="Assign_18">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Object">[Task("ValidTill")]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Object">[AssistantDueDate]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign DisplayName="Assign EnableLifespan" sap2010:WorkflowViewState.IdRef="Assign_19">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Object">[Task("EnableLifespan")]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Object">[True]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign DisplayName="Assign Status" sap2010:WorkflowViewState.IdRef="Assign_20">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Object">[Task("Status")]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Object">["active"]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign DisplayName="Assign Priority" sap2010:WorkflowViewState.IdRef="Assign_21">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Object">[Task("Priority")]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Object">["2"]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <AddToCollection x:TypeArguments="sw:WfContent" Collection="[AssistantTasks]" DisplayName="Add Task to AssistantTasks" sap2010:WorkflowViewState.IdRef="AddToCollection`1_1" Item="[Task]" />
+                </Sequence>
+              </ActivityAction>
+            </ForEach>
+          </Sequence>
+          <swa:DebugWrite sap2010:WorkflowViewState.IdRef="DebugWrite_5" Message="##WF&gt; ## Assistant task are created" />
+          <Pick DisplayName="Wait for assistants" sap2010:WorkflowViewState.IdRef="Pick_1">
+            <PickBranch DisplayName="Wait and set Result" sap2010:WorkflowViewState.IdRef="PickBranch_2">
+              <PickBranch.Trigger>
+                <swa:WaitForMultipleTasksCompleted ContentPaths="[(From t In AssistantTasks Select t.Path).ToArray()]" sap2010:WorkflowViewState.IdRef="WaitForMultipleTasksCompleted_1" Result="[Result]" WaitForAllTrue="[CBool(StateContent(&quot;WaitForAll&quot;))]" />
+              </PickBranch.Trigger>
+              <Sequence DisplayName="Sequence: retrieve reasons" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <swa:DebugWrite sap2010:WorkflowViewState.IdRef="DebugWrite_6" Message="[&quot;##WF&gt; ## After WaitForMultiple. Result: &quot; &amp; Result]" />
+                <If Condition="[Result]" DisplayName="If Rejected: set reason" sap2010:WorkflowViewState.IdRef="If_1">
+                  <If.Else>
+                    <Assign DisplayName="Assign RejectReason" sap2010:WorkflowViewState.IdRef="Assign_22">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[RejectReason]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[[String].Join("; ", (From t In AssistantTasks Select t("RejectReason")).ToArray())]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </If.Else>
+                </If>
+              </Sequence>
+            </PickBranch>
+            <PickBranch DisplayName="Timeout set Result" sap2010:WorkflowViewState.IdRef="PickBranch_3">
+              <PickBranch.Trigger>
+                <Delay DisplayName="Delay2" Duration="[TimeSpan.Parse(CStr(StateContent(&quot;SecondLevelTimeFrame&quot;)))]" sap2010:WorkflowViewState.IdRef="Delay_2" />
+              </PickBranch.Trigger>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <swa:DebugWrite sap2010:WorkflowViewState.IdRef="DebugWrite_7" Message="##WF&gt; ## After Delay2" />
+                <Assign DisplayName="Assign Result" sap2010:WorkflowViewState.IdRef="Assign_23">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Boolean">[Result]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign Reason" sap2010:WorkflowViewState.IdRef="Assign_24">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[RejectReason]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">["Time elapsed for approving"]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </PickBranch>
+          </Pick>
+        </Sequence>
+      </PickBranch>
+    </Pick>
+    <swa:DebugWrite sap2010:WorkflowViewState.IdRef="DebugWrite_8" Message="[&quot;##WF&gt; ## Result: &quot; &amp; Result]" />
+    <If Condition="[Result]" DisplayName="Approve or Reject" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Then>
+        <swa:ApproveContent ContentPath="[ContentToApprove.Path]" sap2010:WorkflowViewState.IdRef="ApproveContent_1" />
+      </If.Then>
+      <If.Else>
+        <swa:RejectContent ContentPath="[ContentToApprove.Path]" sap2010:WorkflowViewState.IdRef="RejectContent_1" Reason="[RejectReason]" />
+      </If.Else>
+    </If>
+    <swa:DebugWrite sap2010:WorkflowViewState.IdRef="DebugWrite_9" Message="##WF&gt; ## Finish" />
+    <sads:DebugSymbol.Symbol>d1hEOlxEZXYxMFxTZW5zZU5ldFxEZXZlbG9wbWVudFxGZWF0dXJlc1xzZWN1cml0eVxTb3VyY2VcU2Vuc2VOZXRcV0ZcQXBwcm92YWxXb3JrZmxvdy54YW1siwFAA9cCDgIBAUg0SEQCAQJKBUpiAwGrAUsFUg4DAaYBUwVaDgMBogFbBaEBEAIBeaIBBaIBaAIBd6MBBcsCDAIBEcwCBcwCgAECAQ7NAgXUAgoCAQXVAgXVAmMCAQNKTEpfAwGsAVA0UF4DAakBTTVNRwMBpwFYMFiRAQMBpQFVMVU8AwGjAV8HX8wCAwGbAWAHYHIDAZkBYQdoEAMBlAFpB3AQAwGPAXEHeBADAYsBeQeAARADAYcBgQEHiAEQAwGDAYkBB5ABEAMBgAGRAQeYARACAX2ZAQegARACAXqiAUyiAWUCAXikAQe6ARQCAWu7AQfKAhQCARLMAkzMAn0CAQ/NAhPNAh0CAQbPAgnPAngCAQzSAgnSAo4BAgEI1QJM1QJgAgEEX6YCX7MCAwGgAV9UX5cBAwGfAV+7Al/JAgMBnQFfqAFfzAEDAZwBYE5gbwMBmgFmNmZIAwGXAWM3Y2EDAZUBbjZuZAMBkgFrN2tbAwGQAXY0doQBAwGOAXM1c0QDAYwBfjJ+QQMBiQF7M3tKAwGIAYYBMoYBQQMBhQGDATODAUwDAYQBjgEyjgE4AwGCAYsBM4sBUQMBgQGWATKWATwCAX+TATOTAUkCAX6eATKeATcCAXybATObAUsCAXumAQumAYIBAgF1qAEJuQEUAgFsvQELvQGkAQIBab8BCckCFAIBE88CKc8CQgIBDdICe9ICiwECAQrSAijSAkECAQmmATKmAUUCAXapAQuwARQCAXGxAQu4ARQCAW29ATC9AXcCAWrAAQvAAW8CAWfBAQuZAhYCATaaAguaAn0CATSbAgvIAhICARSuATeuAVsCAXSrATirAUACAXK2ATa2AVgCAXCzATezAUUCAW7AAVLAAWwCAWjGAQ3NARYCAWTOAQ3VARYCAWDWAQ2YAhcCATeaAlKaAnoCATWcAg2vAhoCASOwAg3HAhoCARXLAUbLAV4CAWbIAUfIAVcCAWXTATrTAYsBAgFj0AE70AFNAgFh1gGRAdYBzQECAV/bARGWAhwCATieAhGeAo0CAgEvoAIPrgIaAgEksgIRsgKrAQIBIbQCD8YCGgIBFtwBE9wBtgICAVjdARPkARwCAVPlARPsARwCAU7tARP0ARwCAUr1ARP8ARwCAUb9AROEAhwCAUOFAhOMAhwCAUCNAhOUAhwCAT2VAhOVAtABAgE5ngJBngJ3AgEzngLbAZ4CigICATKeAsEBngLLAQIBMKECEaECowECASyiAhGtAhYCASWyAjayAn4CASK1AhG1AnUCAR+2AhG9AhoCARu+AhHFAhoCARfcAZYC3AGjAgIBXdwBYNwBowECAVzcAasC3AGzAgIBWtwBtAHcAdgBAgFZ4gFC4gFUAgFW3wFD3wFnAgFU6gFC6gFNAgFR5wFD5wFhAgFP8gE+8gFQAgFM7wE/7wFQAgFL+gE++gFQAgFI9wE/9wFSAgFHggI+ggJEAgFF/wE//wFXAgFEigI+igJIAgFChwI/hwJPAgFBkgI+kgJDAgE/jwI/jwJRAgE+lQJOlQJgAgE8lQLFAZUCzQECATqhAlihAqABAgEtogIfogIpAgEmpAIVqwIeAgEotQJYtQJyAgEguwI9uwJCAgEeuAI+uAJGAgEcwwI8wwJaAgEawAI9wAJLAgEYqQJAqQKUAQIBK6YCQaYCTwIBKQ==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="DebugWrite_1" sap:VirtualizedContainerService.HintSize="242,22" />
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="CreateContent_1" sap:VirtualizedContainerService.HintSize="357,191">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="DebugWrite_2" sap:VirtualizedContainerService.HintSize="357,22" />
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="357,58" />
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="357,58" />
+      <sap2010:ViewStateData Id="Assign_5" sap:VirtualizedContainerService.HintSize="357,58" />
+      <sap2010:ViewStateData Id="Assign_6" sap:VirtualizedContainerService.HintSize="357,58" />
+      <sap2010:ViewStateData Id="Assign_7" sap:VirtualizedContainerService.HintSize="357,58" />
+      <sap2010:ViewStateData Id="Assign_8" sap:VirtualizedContainerService.HintSize="357,58" />
+      <sap2010:ViewStateData Id="Assign_9" sap:VirtualizedContainerService.HintSize="357,58" />
+      <sap2010:ViewStateData Id="Assign_10" sap:VirtualizedContainerService.HintSize="357,58" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="242,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="DebugWrite_3" sap:VirtualizedContainerService.HintSize="242,22" />
+      <sap2010:ViewStateData Id="WaitForContentChanged_1" sap:VirtualizedContainerService.HintSize="200,100" />
+      <sap2010:ViewStateData Id="Assign_11" sap:VirtualizedContainerService.HintSize="242,58" />
+      <sap2010:ViewStateData Id="Assign_12" sap:VirtualizedContainerService.HintSize="242,58" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="200,100">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="PickBranch_1" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Delay_1" sap:VirtualizedContainerService.HintSize="222,100" />
+      <sap2010:ViewStateData Id="DebugWrite_4" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Assign_13" sap:VirtualizedContainerService.HintSize="242,58" />
+      <sap2010:ViewStateData Id="Assign_14" sap:VirtualizedContainerService.HintSize="242,58" />
+      <sap2010:ViewStateData Id="CreateContent_2" sap:VirtualizedContainerService.HintSize="357,191" />
+      <sap2010:ViewStateData Id="Assign_15" sap:VirtualizedContainerService.HintSize="357,58" />
+      <sap2010:ViewStateData Id="Assign_16" sap:VirtualizedContainerService.HintSize="357,58" />
+      <sap2010:ViewStateData Id="Assign_17" sap:VirtualizedContainerService.HintSize="357,58" />
+      <sap2010:ViewStateData Id="Assign_18" sap:VirtualizedContainerService.HintSize="357,58" />
+      <sap2010:ViewStateData Id="Assign_19" sap:VirtualizedContainerService.HintSize="357,58" />
+      <sap2010:ViewStateData Id="Assign_20" sap:VirtualizedContainerService.HintSize="357,58" />
+      <sap2010:ViewStateData Id="Assign_21" sap:VirtualizedContainerService.HintSize="357,58" />
+      <sap2010:ViewStateData Id="AddToCollection`1_1" sap:VirtualizedContainerService.HintSize="357,22" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="379,1063">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_1" sap:VirtualizedContainerService.HintSize="287,206">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="DebugWrite_5" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="WaitForMultipleTasksCompleted_1" sap:VirtualizedContainerService.HintSize="200,100" />
+      <sap2010:ViewStateData Id="DebugWrite_6" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Assign_22" sap:VirtualizedContainerService.HintSize="290,100" />
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="200,51" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="200,100">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="PickBranch_2" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Delay_2" sap:VirtualizedContainerService.HintSize="264,100" />
+      <sap2010:ViewStateData Id="DebugWrite_7" sap:VirtualizedContainerService.HintSize="242,22" />
+      <sap2010:ViewStateData Id="Assign_23" sap:VirtualizedContainerService.HintSize="242,58" />
+      <sap2010:ViewStateData Id="Assign_24" sap:VirtualizedContainerService.HintSize="242,58" />
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="264,342">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="PickBranch_3" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Pick_1" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="222,390">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="PickBranch_4" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Pick_2" sap:VirtualizedContainerService.HintSize="242,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="DebugWrite_8" sap:VirtualizedContainerService.HintSize="242,22" />
+      <sap2010:ViewStateData Id="ApproveContent_1" sap:VirtualizedContainerService.HintSize="219,130" />
+      <sap2010:ViewStateData Id="RejectContent_1" sap:VirtualizedContainerService.HintSize="220,130" />
+      <sap2010:ViewStateData Id="If_2" sap:VirtualizedContainerService.HintSize="242,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="DebugWrite_9" sap:VirtualizedContainerService.HintSize="242,22" />
+      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="264,805">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SenseNet.Workflow.Definitions.ApprovalWorkflow_1" sap:VirtualizedContainerService.HintSize="304,885">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources>
+  <ResourceClass name="Workflow">
+    <Languages>
+      <Language cultureName="en">
+        <data name="RemoveFromList" xml:space="preserve">
+          <value> Remove from list</value>
+        </data>
+        <data name="NoWorkflows" xml:space="preserve">
+          <value>There are no workflows assigned to this content list. Please select one from the available workflow definitions.</value>
+        </data>
+        <data name="AssignToList" xml:space="preserve">
+          <value>Assign to list</value>
+        </data>
+        <data name="Cancel" xml:space="preserve">
+          <value>Cancel</value>
+        </data>
+        <data name="StartOptions" xml:space="preserve">
+          <value>Start options</value>
+        </data>
+        <data name="Specify" xml:space="preserve">
+          <value>Specify whether you want to start this workflow manually, or automatically when a specific event occurs.</value>
+        </data>
+        <data name="ManualStart" xml:space="preserve">
+          <value>Allow this workflow to be manually started by an authenticated user with modify permissions</value>
+        </data>
+        <data name="MajorVersion" xml:space="preserve">
+          <value>Start this workflow to approve publishing a major version of a content</value>
+        </data>
+        <data name="NewContent" xml:space="preserve">
+          <value>Start this workflow when a new content is created</value>
+        </data>
+        <data name="ContentChange" xml:space="preserve">
+          <value>Start this workflow when a content is changed</value>
+        </data>
+        <data name="NoRunningWorkflows" xml:space="preserve">
+          <value>There are no running workflows.</value>
+        </data>
+        <data name="FilterWorkflows" xml:space="preserve">
+          <value>Filter workflows:</value>
+        </data>
+        <data name="All" xml:space="preserve">
+          <value>All</value>
+        </data>
+        <data name="Workflow" xml:space="preserve">
+          <value>workflow</value>
+        </data>
+        <data name="Content" xml:space="preserve">
+          <value>Content: </value>
+        </data>
+        <data name="Status" xml:space="preserve">
+          <value>Status: </value>
+        </data>
+        <data name="AvailableWorkflowTypes" xml:space="preserve">
+          <value>Available workflow types</value>
+        </data>
+        <data name="WorkflowTypesAssignedToTheList" xml:space="preserve">
+          <value>Workflow types assigned to the list</value>
+        </data>
+        <data name="CurrentWorkflows" xml:space="preserve">
+          <value>Current workflows</value>
+        </data>
+        <data name="Start" xml:space="preserve">
+          <value>Start</value>
+        </data>
+        <data name="On" xml:space="preserve">
+          <value>on</value>
+        </data>
+        <data name="N" xml:space="preserve">
+          <value></value>
+        </data>
+        <data name="FirstLevelApprover" xml:space="preserve">
+          <value>First level approver:</value>
+        </data>
+        <data name="FirstLevelTimeFrame" xml:space="preserve">
+          <value>First level time frame:</value>
+        </data>
+        <data name="SecondLevelApprover" xml:space="preserve">
+          <value>Second level approver(s):</value>
+        </data>
+        <data name="SecondLevelTimeFrame" xml:space="preserve">
+          <value>Second level time frame:</value>
+        </data>
+        <data name="In" xml:space="preserve">
+          <value>in</value>
+        </data>
+        <data name="InH" xml:space="preserve">
+          <value></value>
+        </data>
+        <data name="RejectReason" xml:space="preserve">
+          <value>Reject reason</value>
+        </data>
+        <data name="CannotBeApproved" xml:space="preserve">
+          <value><span>The content cannot be approved either because it is not in pending state or you do not have enough permissions.</span></value>
+        </data>
+        <data name="TaskAlredyCompleted" xml:space="preserve">
+          <value>Task already completed with answer:</value>
+        </data>
+        <data name="Approve" xml:space="preserve">
+          <value>Approve</value>
+        </data>
+        <data name="ContentMustBePending" xml:space="preserve">
+          <value>The content must be in <strong>Pending</strong> state to start the approval process.</value>
+        </data>
+        <data name="ApproveTimeFrame" xml:space="preserve">
+          <value>{0} hours</value>
+        </data>
+      </Language>
+      <Language cultureName="hu">
+        <data name="RemoveFromList" xml:space="preserve">
+          <value> Eltávolítás a listából</value>
+        </data>
+        <data name="NoWorkflows" xml:space="preserve">
+          <value>Ehhez a listához nincs munkafolyamat rendelve. Kérjük, válasszon egyet a már létező workflow-k közül.</value>
+        </data>
+        <data name="AssignToList" xml:space="preserve">
+          <value>Hozzárendelés a listához</value>
+        </data>
+        <data name="Cancel" xml:space="preserve">
+          <value>Mégsem</value>
+        </data>
+        <data name="StartOptions" xml:space="preserve">
+          <value>Indítási beállítások</value>
+        </data>
+        <data name="Specify" xml:space="preserve">
+          <value>Határozza meg, hogy a munkafolyamat manuálisan szeretné-e elindítani, vagy azt szeretné, hogy magától induljon el, a megfelelő esemény után.</value>
+        </data>
+        <data name="ManualStart" xml:space="preserve">
+          <value>Munkafolyamat manuális indításának engedélyezése belépett, szerkesztő joggal rendelkező felhasználó számára.</value>
+        </data>
+        <data name="MajorVersion" xml:space="preserve">
+          <value>Munkafolyamat indítása a tartalom publikált fő verziójának jóváhagyására.</value>
+        </data>
+        <data name="NewContent" xml:space="preserve">
+          <value>Munkafolyamat indítása tartalom létrejöttekor.</value>
+        </data>
+        <data name="ContentChange" xml:space="preserve">
+          <value>Munkafolyamat indítása tartalom változásakor.</value>
+        </data>
+        <data name="NoRunningWorkflows" xml:space="preserve">
+          <value>Nincs futó munkafolyamat.</value>
+        </data>
+        <data name="FilterWorkflows" xml:space="preserve">
+          <value>Munkafolyamat-k szűrése:</value>
+        </data>
+        <data name="All" xml:space="preserve">
+          <value>Mind</value>
+        </data>
+        <data name="Workflow" xml:space="preserve">
+          <value>munkafolyamat</value>
+        </data>
+        <data name="Content" xml:space="preserve">
+          <value>Tartalom: </value>
+        </data>
+        <data name="Status" xml:space="preserve">
+          <value>Státusz: </value>
+        </data>
+        <data name="AvailableWorkflowTypes" xml:space="preserve">
+          <value>Használható munkafolyamat típusok</value>
+        </data>
+        <data name="WorkflowTypesAssignedToTheList" xml:space="preserve">
+          <value>Listához rendelt munkafolyamatok</value>
+        </data>
+        <data name="CurrentWorkflows" xml:space="preserve">
+          <value>Aktuális munkafolyamatok</value>
+        </data>
+        <data name="Start" xml:space="preserve">
+          <value>Indítsa</value>
+        </data>
+        <data name="On" xml:space="preserve">
+          <value>-t</value>
+        </data>
+        <data name="N" xml:space="preserve">
+          <value>-n</value>
+        </data>
+        <data name="FirstLevelApprover" xml:space="preserve">
+          <value>Elsődleges jóváhagyó:</value>
+        </data>
+        <data name="FirstLevelTimeFrame" xml:space="preserve">
+          <value>Elsődleges jóváhagyó időkorlátja:</value>
+        </data>
+        <data name="SecondLevelApprover" xml:space="preserve">
+          <value>Másodlagos jóváhagyó(k):</value>
+        </data>
+        <data name="SecondLevelTimeFrame" xml:space="preserve">
+          <value>Másodlagos jóváhagyó(k) időkorlátja:</value>
+        </data>
+        <data name="In" xml:space="preserve">
+          <value></value>
+        </data>
+        <data name="InH" xml:space="preserve">
+          <value>-ban</value>
+        </data>
+        <data name="RejectReason" xml:space="preserve">
+          <value>Visszautasítás oka</value>
+        </data>
+        <data name="CannotBeApproved" xml:space="preserve">
+          <value><span>A tartalmat nem tudja jóváhagyni, mert a tartalom nincs abban státuszban vagy Önnek nincs meg a megfelelő jogosultsága.</span></value>
+        </data>
+        <data name="TaskAlredyCompleted" xml:space="preserve">
+          <value>A feladat már befejeződött:</value>
+        </data>
+        <data name="Approve" xml:space="preserve">
+          <value>Jóváhagyás</value>
+        </data>
+        <data name="ContentMustBePending" xml:space="preserve">
+          <value>A munkafolyamat elindításához a tartalomnak <strong>"Jóváhagyásra vár"</strong> állapotban kell lennie.</value>
+        </data>
+        <data name="ApproveTimeFrame" xml:space="preserve">
+          <value>{0} óra</value>
+        </data>
+      </Language>
+    </Languages>
+  </ResourceClass>
+  <ResourceClass name="ForgottenWorkflow">
+    <Languages>
+      <Language cultureName="en">
+        <data name="StartTitle" xml:space="preserve">
+          <value>Forgotten password</value>
+        </data>
+        <data name="ResetTitle" xml:space="preserve">
+          <value>New password</value>
+        </data>
+        <data name="NewPasswordTitle" xml:space="preserve">
+          <value>New password</value>
+        </data>
+        <data name="NewPasswordDescription" xml:space="preserve">
+          <value>Please provide and re-enter the new password.</value>
+        </data>
+        <data name="ItemHasExpired" xml:space="preserve">
+          <value>Your password change token has expired. Please <a href="/login/ForgottenPassword" title="Forgotten password">request a new one here</a>.</value>
+        </data>
+        <data name="EmailIsNotValid" xml:space="preserve">
+          <value>No user found with this email address.</value>
+        </data>
+        <data name="PasswordIsNotValid" xml:space="preserve">
+          <value>Password is not valid. Please make sure that the two passwords are the same.</value>
+        </data>
+        <data name="WelcomeUser" xml:space="preserve">
+          <value>Welcome!</value>
+        </data>
+        <data name="UserToChange" xml:space="preserve">
+          <value>You may change the password for a user on this page.</value>
+        </data>
+      </Language>
+      <Language cultureName="hu">
+        <data name="StartTitle" xml:space="preserve">
+          <value>Elfelejtett jelszó</value>
+        </data>
+        <data name="ResetTitle" xml:space="preserve">
+          <value>Új jelszó</value>
+        </data>
+        <data name="NewPasswordTitle" xml:space="preserve">
+          <value>Új jelszó</value>
+        </data>
+        <data name="NewPasswordDescription" xml:space="preserve">
+          <value>Kérem adja meg és erősítse meg az új jelszót.</value>
+        </data>
+        <data name="ItemHasExpired" xml:space="preserve">
+          <value>Ez a jelszó-módosító jegy lejárt, kérjük <a href="/login/ForgottenPassword" title="Elfelejtett jelszó">igényeljen újat</a>.</value>
+        </data>
+        <data name="EmailIsNotValid" xml:space="preserve">
+          <value>Nem találtunk felhasználót ezzel az email címmel.</value>
+        </data>
+        <data name="PasswordIsNotValid" xml:space="preserve">
+          <value>Érvénytelen jelszó. Kérem győződjön meg róla, hogy a két megadott jelszó megegyezik.</value>
+        </data>
+        <data name="WelcomeUser" xml:space="preserve">
+          <value>Üdvözöljük!</value>
+        </data>
+        <data name="UserToChange" xml:space="preserve">
+          <value>Itt megváltoztathatja a felhasználó jelszavát.</value>
+        </data>
+      </Language>
+    </Languages>
+  </ResourceClass>
+</Resources>
