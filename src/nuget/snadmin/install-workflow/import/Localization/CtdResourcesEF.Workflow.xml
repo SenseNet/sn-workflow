@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="view.xslt"?>
+<Resources>
+  <ResourceClass name="Ctd-ForgottenPasswordWorkflow">
+    <Languages>
+      <Language cultureName="en">
+        <data name="DisplayName" xml:space="preserve">
+          <value>Forgotten password workflow</value>
+        </data>
+        <data name="Description" xml:space="preserve">
+          <value>A workflow designed to start when a user forgot his/her password and wants to provide a new one.</value>
+        </data>
+        <data name="Email-DisplayName" xml:space="preserve">
+          <value>Email address</value>
+        </data>
+        <data name="Email-Description" xml:space="preserve">
+          <value>Please provide your email address here. If a user exists with that address, we will send you a confimation email with a link for resetting your password.</value>
+        </data>
+      </Language>
+      <Language cultureName="hu">
+        <data name="DisplayName" xml:space="preserve">
+          <value>Elfelejtett jelszó folyamat</value>
+        </data>
+        <data name="Description" xml:space="preserve">
+          <value>Ez a workflow akkor indul el, amikor a felhasználó elfelejtette jelszavát, és szeretne újat megadni.</value>
+        </data>
+        <data name="Email-DisplayName" xml:space="preserve">
+          <value>Email cím</value>
+        </data>
+        <data name="Email-Description" xml:space="preserve">
+          <value>Kérem adja meg email címét. Ha ezzel a címmel létezik felhasználó, akkor küldünk önnek egy levelet egy linkkel, amellyel megváltoztathatja jelszavát.</value>
+        </data>
+      </Language>
+    </Languages>
+  </ResourceClass>
+</Resources>

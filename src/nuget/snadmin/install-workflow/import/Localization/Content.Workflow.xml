@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="view.xslt"?>
+<Resources>
+  <ResourceClass name="Content">
+    <Languages>
+      <Language cultureName="en">
+        <data name="Ok" xml:space="preserve">
+          <value>Ok</value>
+        </data>
+        <data name="RegistrationStartedMessage" xml:space="preserve">
+          <value>Thank you, we sent you a confirmation email. <br />Please check your mailbox and click on the confirmation link in the email to continue the process.</value>
+        </data>
+      </Language>
+      <Language cultureName="hu">
+        <data name="Ok" xml:space="preserve">
+          <value>Ok</value>
+        </data>
+        <data name="RegistrationStartedMessage" xml:space="preserve">
+          <value>Köszönjük, kiküldtük Önnek a megerősítő e-mailt. <br />Kérjük, ellenőrizze postafiókját, kattintson a kapott e-mail aktivációs linkjére a folytatáshoz!</value>
+        </data>
+      </Language>
+    </Languages>
+  </ResourceClass>
+</Resources>
