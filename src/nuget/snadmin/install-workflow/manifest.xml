@@ -9,6 +9,7 @@
   <Parameters>
     <Parameter name="@userName" description="Username to access the server while installing."></Parameter>
     <Parameter name="@password" description="Password to access the server while installing."></Parameter>
+    <Parameter name="@overwriteemailworkflow" description="Overwrite existing Incoming email workflow values.">true</Parameter>
   </Parameters>
   <Steps>
     <Phase>
@@ -26,7 +27,16 @@
           <Trace>Importing workspace-related workflows...</Trace>
           <Import target="/Root" LogLevel="Verbose" source="import-workspaces" />
 
-          <!-- TODO: set mailprocessor workflow on content lists!!!!!! -->
+          <!-- set mailprocessor workflow on content lists -->
+          <ForEach item="@content" ContentQuery="+InTree:(/Root/ContentTemplates /Root/Sites) +TypeIs:ContentList .AUTOFILTERS:OFF">
+            <Block>
+              <SetField name="IncomingEmailWorkflow" content="@content.Path" overwrite="@overwriteemailworkflow">
+                <Value>
+                  <Path>/Root/System/Schema/ContentTypes/GenericContent/Workflow/MailProcessorWorkflow</Path>
+                </Value>
+              </SetField>
+            </Block>
+          </ForEach>
 
         </Then>
         <Else>

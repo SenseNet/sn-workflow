@@ -60,6 +60,9 @@ To complete the install process, please execute the *install-workflow* SnAdmin c
 .\snadmin install-workflow
 ```
 
+##### Optional parameters:
+- *overwriteemailworkflow*: if you execute the package with a 'false' value for this parameter, it will set the default mail processor workflow on content lists only if the 'Incoming email workflow' field is empty and will not overwrite existing references. Default is *true*.
+
 If there were no errors, you are good to go! Hit F5 in Visual Studio and start experimenting with sensenet ECM Workflow!
 
 ## Troubleshooting
