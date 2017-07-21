@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentMetaData>
+  <ContentType>Article</ContentType>
+  <ContentName>emailsent</ContentName>
+  <Fields>
+    <Lead><![CDATA[<p>Thank you, you will receive a confirmation email soon that will help you change your password.</p>]]></Lead>
+  </Fields>
+  <Permissions>
+    <Clear />
+  </Permissions>
+</ContentMetaData>

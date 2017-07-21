@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="view.xslt"?>
+<Resources>
+  <ResourceClass name="Ctd">
+    <Languages>
+      <Language cultureName="en">
+        <data name="Enum-Workflow-WorkflowStatus-Created" xml:space="preserve">
+          <value>Created</value>
+        </data>
+        <data name="Enum-Workflow-WorkflowStatus-Running" xml:space="preserve">
+          <value>Running</value>
+        </data>
+        <data name="Enum-Workflow-WorkflowStatus-Aborted" xml:space="preserve">
+          <value>Aborted</value>
+        </data>
+        <data name="Enum-Workflow-WorkflowStatus-Completed" xml:space="preserve">
+          <value>Completed</value>
+        </data>
+        <data name="Enum-WorkflowDefinition-DeleteInstanceAfterFinished-DeleteWhenCompleted" xml:space="preserve">
+          <value>Delete when completed</value>
+        </data>
+        <data name="Enum-WorkflowDefinition-DeleteInstanceAfterFinished-DeleteWhenCompletedOrAborted" xml:space="preserve">
+          <value>Delete when completed or aborted</value>
+        </data>
+        <data name="Enum-WorkflowDefinition-DeleteInstanceAfterFinished-AlwaysKeep" xml:space="preserve">
+          <value>Always keep</value>
+        </data>
+      </Language>
+      <Language cultureName="hu">
+        <data name="Enum-Workflow-WorkflowStatus-Created" xml:space="preserve">
+          <value>Létrejött</value>
+        </data>
+        <data name="Enum-Workflow-WorkflowStatus-Running" xml:space="preserve">
+          <value>Fut</value>
+        </data>
+        <data name="Enum-Workflow-WorkflowStatus-Aborted" xml:space="preserve">
+          <value>Megszakadt</value>
+        </data>
+        <data name="Enum-Workflow-WorkflowStatus-Completed" xml:space="preserve">
+          <value>Befejeződött</value>
+        </data>
+        <data name="Enum-WorkflowDefinition-DeleteInstanceAfterFinished-DeleteWhenCompleted" xml:space="preserve">
+          <value>Törlés, ha befejeződött</value>
+        </data>
+        <data name="Enum-WorkflowDefinition-DeleteInstanceAfterFinished-DeleteWhenCompletedOrAborted" xml:space="preserve">
+          <value>Törlés, ha befejeződött vagy megszakadt</value>
+        </data>
+        <data name="Enum-WorkflowDefinition-DeleteInstanceAfterFinished-AlwaysKeep" xml:space="preserve">
+          <value>Nincs törlés</value>
+        </data>
+      </Language>
+    </Languages>
+  </ResourceClass>
+  <ResourceClass name="Ctd-ApprovalWorkflow">
+    <Languages>
+      <Language cultureName="en">
+        <data name="DisplayName" xml:space="preserve">
+          <value>Approval Workflow</value>
+        </data>
+        <data name="Description" xml:space="preserve">
+          <value>Approval workflow can be used to launch an approval process on a list item. If you assign this workflow to a content list, users will be able to start the approval process on the Start workflow page of list items. During the assign process you will have to set the approver users and approve time frame for that content list.</value>
+        </data>
+        <data name="RelatedContent-DisplayName" xml:space="preserve">
+          <value>Content to approve</value>
+        </data>
+        <data name="RelatedContent-Description" xml:space="preserve">
+          <value>The content that the approvers have to approve.</value>
+        </data>
+        <data name="FirstLevelApprover-DisplayName" xml:space="preserve">
+          <value>First level approver</value>
+        </data>
+        <data name="FirstLevelApprover-Description" xml:space="preserve">
+          <value>The user who need to approve the selected content.</value>
+        </data>
+        <data name="FirstLevelTimeFrame-DisplayName" xml:space="preserve">
+          <value>First level approve time frame</value>
+        </data>
+        <data name="FirstLevelTimeFrame-Description" xml:space="preserve">
+          <value>Time frame that first level approver has for approving the content (timespan format: '[d.]hh:mm:ss', or a single number - e.g. '3' - for days).</value>
+        </data>
+        <data name="SecondLevelApprover-DisplayName" xml:space="preserve">
+          <value>Second level approvers</value>
+        </data>
+        <data name="SecondLevelApprover-Description" xml:space="preserve">
+          <value>Users who can approve the selected content if first level approvers did not approve it in the given time frame.</value>
+        </data>
+        <data name="SecondLevelTimeFrame-DisplayName" xml:space="preserve">
+          <value>Second level approve time frame</value>
+        </data>
+        <data name="SecondLevelTimeFrame-Description" xml:space="preserve">
+          <value>Time frame that second level approvers have for approving the content (timespan format: '[d.]hh:mm:ss', or a single number - e.g. '3' - for days).</value>
+        </data>
+        <data name="WaitForAll-DisplayName" xml:space="preserve">
+          <value>Wait for all</value>
+        </data>
+        <data name="WaitForAll-Description" xml:space="preserve">
+          <value>If this option is set to true, all second level approvers should approve the content. If false, one approver is enough.</value>
+        </data>
+      </Language>
+      <Language cultureName="hu">
+        <data name="DisplayName" xml:space="preserve">
+          <value>Jóváhagyás munkafolyamat</value>
+        </data>
+        <data name="Description" xml:space="preserve">
+          <value>Jóváhagyás folyamat elindítására használható egy listában. Ha hozzárendeli egy listához, a folyamat elindulhat automatikusan, vagy a felhasználók el tudják indítani kézzel a lista elemekhez tartozó <i>Folyamat indítása</i> oldalon. Listához rendeléskor meg kell adnia a jóváhagyó személyeket, és a jóváhagyásra rendelkezésre álló időkeretet.</value>
+        </data>
+        <data name="RelatedContent-DisplayName" xml:space="preserve">
+          <value>Jóváhagyandó tartalom</value>
+        </data>
+        <data name="RelatedContent-Description" xml:space="preserve">
+          <value>Ezt a tartalmat kell a szereplőknek jóváhagyniuk.</value>
+        </data>
+        <data name="FirstLevelApprover-DisplayName" xml:space="preserve">
+          <value>Első szintű jóváhagyó</value>
+        </data>
+        <data name="FirstLevelApprover-Description" xml:space="preserve">
+          <value>A felhasználó akinek jóvá kell hagynia a kiválasztott tartalmat.</value>
+        </data>
+        <data name="FirstLevelTimeFrame-DisplayName" xml:space="preserve">
+          <value>Első szintű időkeret</value>
+        </data>
+        <data name="FirstLevelTimeFrame-Description" xml:space="preserve">
+          <value>A munkafolyamat ennyi ideig várakozik az első szintű jóváhagyóra (időtartam formátum: '[d.]hh:mm:ss', vagy csak egy szám - pl. '3' - a napok számára).</value>
+        </data>
+        <data name="SecondLevelApprover-DisplayName" xml:space="preserve">
+          <value>Második szintű jóváhagyók</value>
+        </data>
+        <data name="SecondLevelApprover-Description" xml:space="preserve">
+          <value>Az első szintű jóváhagyó helyettesei, akik akkor tudják jóváhagyni a kiválasztott tartalmat, amikor az első szintű jóváhagyó túllépte az időkeretet.</value>
+        </data>
+        <data name="SecondLevelTimeFrame-DisplayName" xml:space="preserve">
+          <value>Második szintű időkeret</value>
+        </data>
+        <data name="SecondLevelTimeFrame-Description" xml:space="preserve">
+          <value>A munkafolyamat ennyi ideig várakozik a második szintű jóváhagyókra (időtartam formátum: '[d.]hh:mm:ss', vagy csak egy szám - pl. '3' - a napok számára).</value>
+        </data>
+        <data name="WaitForAll-DisplayName" xml:space="preserve">
+          <value>Mindenki jóváhagy</value>
+        </data>
+        <data name="WaitForAll-Description" xml:space="preserve">
+          <value>Ha be van kapcsolva, akkor a második szinten mindenkinek jóvá kell hagynia a kiválaztott tartalmat, egyébként egy jóváhagyás elegendő.</value>
+        </data>
+      </Language>
+    </Languages>
+  </ResourceClass>
+  <ResourceClass name="Ctd-ApprovalWorkflowTask">
+    <Languages>
+      <Language cultureName="en">
+        <data name="DisplayName" xml:space="preserve">
+          <value>Approval Workflow Task</value>
+        </data>
+        <data name="Description" xml:space="preserve">
+          <value>A content representation for a delayed user interaction in a Workflow.</value>
+        </data>
+        <data name="Comment-DisplayName" xml:space="preserve">
+          <value>Comment</value>
+        </data>
+        <data name="Comment-Description" xml:space="preserve">
+          <value>Type the reason for your decision here.</value>
+        </data>
+        <data name="Result-DisplayName" xml:space="preserve">
+          <value>Answer</value>
+        </data>
+        <data name="Result-Description" xml:space="preserve">
+          <value>Select your answer here.</value>
+        </data>
+        <data name="Result-Approved" xml:space="preserve">
+          <value>Approved</value>
+        </data>
+        <data name="Result-Rejected" xml:space="preserve">
+          <value>Rejected</value>
+        </data>
+        <data name="ContentToApprove-DisplayName" xml:space="preserve">
+          <value>Content to approve</value>
+        </data>
+        <data name="ContentToApprove-Description" xml:space="preserve">
+          <value>The content that will be approved or rejected.</value>
+        </data>
+      </Language>
+      <Language cultureName="hu">
+        <data name="DisplayName" xml:space="preserve">
+          <value>Jóváhagyás munkafolyamat feladat</value>
+        </data>
+        <data name="Description" xml:space="preserve">
+          <value>Felhasználói feladatot reprezentál a jóváhagyási munkafolyamatban.</value>
+        </data>
+        <data name="Comment-DisplayName" xml:space="preserve">
+          <value>Megjegyzés</value>
+        </data>
+        <data name="Comment-Description" xml:space="preserve">
+          <value>A felhasználó itt tud magyarázatot adni a döntésével kapcsolatban.</value>
+        </data>
+        <data name="Result-DisplayName" xml:space="preserve">
+          <value>Válasz</value>
+        </data>
+        <data name="Result-Description" xml:space="preserve">
+          <value>Válasszon egyet!</value>
+        </data>
+        <data name="Result-Approved" xml:space="preserve">
+          <value>Jóváhagyva</value>
+        </data>
+        <data name="Result-Rejected" xml:space="preserve">
+          <value>Visszautasítva</value>
+        </data>
+        <data name="ContentToApprove-DisplayName" xml:space="preserve">
+          <value>Jóváhagyandó tartalom</value>
+        </data>
+        <data name="ContentToApprove-Description" xml:space="preserve">
+          <value>A tartalom, amely jóvá lesz hagyva, vagy vissza lesz utasítva.</value>
+        </data>
+      </Language>
+    </Languages>
+  </ResourceClass>
+</Resources>

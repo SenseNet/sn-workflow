@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="view.xslt"?>
+<Resources>
+  <ResourceClass name="Ctd-RegistrationWorkflow">
+    <Languages>
+      <Language cultureName="en">
+        <data name="DisplayName" xml:space="preserve">
+          <value>Registration Workflow</value>
+        </data>
+        <data name="Description" xml:space="preserve">
+          <value>A Content representation of a Registration Workflow instance.</value>
+        </data>
+        <data name="FullName-DisplayName" xml:space="preserve">
+          <value>Full name</value>
+        </data>
+        <data name="FullName-Description" xml:space="preserve">
+          <value>Please enter your full name here.</value>
+        </data>
+        <data name="UserName-DisplayName" xml:space="preserve">
+          <value>User name</value>
+        </data>
+        <data name="UserName-Description" xml:space="preserve">
+          <value>Please enter the username you would like.</value>
+        </data>
+        <data name="Email-DisplayName" xml:space="preserve">
+          <value>E-mail</value>
+        </data>
+        <data name="Email-Description" xml:space="preserve">
+          <value>Type your e-mail address here.</value>
+        </data>
+        <data name="InitialPassword-DisplayName" xml:space="preserve">
+          <value>Initial password</value>
+        </data>
+        <data name="InitialPassword-Description" xml:space="preserve">
+          <value>Please enter the password you would like.</value>
+        </data>
+        <data name="RegistrationType-DisplayName" xml:space="preserve">
+          <value>Registration type</value>
+        </data>
+        <data name="RegistrationType-Description" xml:space="preserve">
+          <value>Please select which one of the following describes you best.</value>
+        </data>
+        <data name="RegistrationType-client" xml:space="preserve">
+          <value>Prospective enterprise client</value>
+        </data>
+        <data name="RegistrationType-media" xml:space="preserve">
+          <value>Technical journalist or media worker</value>
+        </data>
+        <data name="RegistrationType-community" xml:space="preserve">
+          <value>Open source developer or advocate</value>
+        </data>
+        <data name="RegistrationType-public" xml:space="preserve">
+          <value>None of the above</value>
+        </data>
+      </Language>
+      <Language cultureName="hu">
+        <data name="DisplayName" xml:space="preserve">
+          <value>Regisztrációs folyamat</value>
+        </data>
+        <data name="Description" xml:space="preserve">
+          <value>Egy regisztrációs munkafolyamat (workflow) tárolására szolgáló típus.</value>
+        </data>
+        <data name="FullName-DisplayName" xml:space="preserve">
+          <value>Teljes név</value>
+        </data>
+        <data name="FullName-Description" xml:space="preserve">
+          <value>Kérjük, adja meg teljes nevét.</value>
+        </data>
+        <data name="UserName-DisplayName" xml:space="preserve">
+          <value>Felhasználónév</value>
+        </data>
+        <data name="UserName-Description" xml:space="preserve">
+          <value>Kérjük, adja meg a kívánt felhasználónevet.</value>
+        </data>
+        <data name="Email-DisplayName" xml:space="preserve">
+          <value>E-mail cím</value>
+        </data>
+        <data name="Email-Description" xml:space="preserve">
+          <value>Kérjük, adja meg e-mail címét.</value>
+        </data>
+        <data name="InitialPassword-DisplayName" xml:space="preserve">
+          <value>Jelszó</value>
+        </data>
+        <data name="InitialPassword-Description" xml:space="preserve">
+          <value>Kérjük, adja meg választott jelszavát.</value>
+        </data>
+        <data name="RegistrationType-DisplayName" xml:space="preserve">
+          <value>Regisztráció típusa</value>
+        </data>
+        <data name="RegistrationType-Description" xml:space="preserve">
+          <value>Kérjük, válassza ki, melyik illik legjobban Önre.</value>
+        </data>
+        <data name="RegistrationType-client" xml:space="preserve">
+          <value>Leendő vállalati ügyfél</value>
+        </data>
+        <data name="RegistrationType-media" xml:space="preserve">
+          <value>Technikai újságíró vagy médiában dolgozó</value>
+        </data>
+        <data name="RegistrationType-community" xml:space="preserve">
+          <value>Nyílt forráskódú szoftver fejlesztő</value>
+        </data>
+        <data name="RegistrationType-public" xml:space="preserve">
+          <value>Egyik sem</value>
+        </data>
+      </Language>
+    </Languages>
+  </ResourceClass>
+</Resources>

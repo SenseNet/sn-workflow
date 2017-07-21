@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>SenseNet.Workflow.Portlets</id>
+    <version>7.0.0-beta0</version>
+    <title>sensenet ECM Workflow Portlets</title>
+    <authors>kavics,aniko,laci,borsi,lajos,tusmester</authors>
+    <owners>Sense/Net</owners>
+    <licenseUrl>https://github.com/SenseNet/sn-workflow/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/SenseNet/sn-workflow</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/SenseNet/sn-resources/master/images/sn-icon/sensenet-icon-64.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>sensenet ECM Workflow Portlets contains UI elements built on ASP.NET and the sensenet ECM WebPages component.</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright © Sense/Net Inc.</copyright>
+    <tags>sensenet ecm ecms</tags>
+    <dependencies>
+      <dependency id="SenseNet.Workflow" version="7.0.0-beta0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\SenseNet.Workflow.Portlets.*" target="lib\net451" />
+  </files>
+</package>

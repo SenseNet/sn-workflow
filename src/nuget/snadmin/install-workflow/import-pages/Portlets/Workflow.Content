@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentMetaData>
+  <ContentType>PortletCategory</ContentType>
+  <ContentName>Workflow</ContentName>
+  <Fields>
+    <DisplayName><![CDATA[$PortletFramework:Category_Workflow]]></DisplayName>
+    <Description><![CDATA[$PortletFramework:Category_Workflow_Description]]></Description>
+  </Fields>
+  <Permissions>
+    <Clear />
+  </Permissions>
+</ContentMetaData>

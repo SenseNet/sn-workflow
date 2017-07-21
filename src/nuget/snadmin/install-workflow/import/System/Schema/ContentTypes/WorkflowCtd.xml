@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentType name="Workflow" parentType="GenericContent" handler="SenseNet.Workflow.WorkflowHandlerBase" xmlns="http://schemas.sensenet.com/SenseNet/ContentRepository/ContentTypeDefinition">
+  <DisplayName>$Ctd-Workflow,DisplayName</DisplayName>
+  <Description>$Ctd-Workflow,Description</Description>
+  <Icon>workflow</Icon>
+  <AllowIncrementalNaming>true</AllowIncrementalNaming>
+  <Fields>
+    <Field name="Description" type="LongText">
+      <DisplayName>$Ctd-Workflow,Description-DisplayName</DisplayName>
+      <Description>$Ctd-Workflow,Description-Description</Description>
+      <Configuration>
+        <VisibleBrowse>Show</VisibleBrowse>
+        <VisibleEdit>Show</VisibleEdit>
+        <VisibleNew>Show</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="WorkflowDefinitionVersion" type="ShortText">
+      <DisplayName>$Ctd-Workflow,WorkflowDefinitionVersion-DisplayName</DisplayName>
+      <Description>$Ctd-Workflow,WorkflowDefinitionVersion-Description</Description>
+      <Configuration>
+        <VisibleBrowse>Hide</VisibleBrowse>
+        <VisibleEdit>Hide</VisibleEdit>
+        <VisibleNew>Hide</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="WorkflowInstanceGuid" type="ShortText">
+      <DisplayName>$Ctd-Workflow,WorkflowInstanceGuid-DisplayName</DisplayName>
+      <Description>$Ctd-Workflow,WorkflowInstanceGuid-Description</Description>
+      <Configuration>
+        <VisibleBrowse>Hide</VisibleBrowse>
+        <VisibleEdit>Hide</VisibleEdit>
+        <VisibleNew>Hide</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="WorkflowTypeName" type="ShortText">
+      <DisplayName>$Ctd-Workflow,WorkflowTypeName-DisplayName</DisplayName>
+      <Description>$Ctd-Workflow,WorkflowTypeName-Description</Description>
+      <Configuration>
+        <ReadOnly>true</ReadOnly>
+        <VisibleBrowse>Hide</VisibleBrowse>
+        <VisibleEdit>Hide</VisibleEdit>
+        <VisibleNew>Hide</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="WorkflowHostType" type="ShortText">
+      <DisplayName>$Ctd-Workflow,WorkflowHostType-DisplayName</DisplayName>
+      <Description>$Ctd-Workflow,WorkflowHostType-Description</Description>
+      <Configuration>
+        <ReadOnly>true</ReadOnly>
+        <VisibleBrowse>Hide</VisibleBrowse>
+        <VisibleEdit>Hide</VisibleEdit>
+        <VisibleNew>Hide</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="WorkflowStarted" type="Boolean">
+      <DisplayName>$Ctd-Workflow,WorkflowStarted-DisplayName</DisplayName>
+      <Description>$Ctd-Workflow,WorkflowStarted-Description</Description>
+      <Configuration>
+        <ReadOnly>true</ReadOnly>
+        <VisibleBrowse>Advanced</VisibleBrowse>
+        <VisibleEdit>Advanced</VisibleEdit>
+        <VisibleNew>Hide</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="WorkflowStatus" type="Choice">
+      <DisplayName>$Ctd-Workflow,WorkflowStatus-DisplayName</DisplayName>
+      <Description>$Ctd-Workflow,WorkflowStatus-Description</Description>
+      <Configuration>
+        <VisibleBrowse>Show</VisibleBrowse>
+        <VisibleEdit>Hide</VisibleEdit>
+        <VisibleNew>Hide</VisibleNew>
+        <AllowMultiple>false</AllowMultiple>
+        <AllowExtraValue>false</AllowExtraValue>
+        <Options>
+          <Enum type="SenseNet.Workflow.WorkflowStatusEnum" />
+        </Options>
+      </Configuration>
+    </Field>
+    <Field name="AllowManualStart" type="Boolean">
+      <DisplayName>$Ctd-Workflow,AllowManualStart-DisplayName</DisplayName>
+      <Description>$Ctd-Workflow,AllowManualStart-Description</Description>
+      <Configuration>
+        <VisibleBrowse>Show</VisibleBrowse>
+        <VisibleEdit>Show</VisibleEdit>
+        <VisibleNew>Show</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="AutostartOnPublished" type="Boolean">
+      <DisplayName>$Ctd-Workflow,AutostartOnPublished-DisplayName</DisplayName>
+      <Description>$Ctd-Workflow,AutostartOnPublished-Description</Description>
+      <Configuration>
+        <VisibleBrowse>Show</VisibleBrowse>
+        <VisibleEdit>Show</VisibleEdit>
+        <VisibleNew>Show</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="AutostartOnCreated" type="Boolean">
+      <DisplayName>$Ctd-Workflow,AutostartOnCreated-DisplayName</DisplayName>
+      <Description>$Ctd-Workflow,AutostartOnCreated-Description</Description>
+      <Configuration>
+        <VisibleBrowse>Show</VisibleBrowse>
+        <VisibleEdit>Show</VisibleEdit>
+        <VisibleNew>Show</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="AutostartOnChanged" type="Boolean">
+      <DisplayName>$Ctd-Workflow,AutostartOnChanged-DisplayName</DisplayName>
+      <Description>$Ctd-Workflow,AutostartOnChanged-Description</Description>
+      <Configuration>
+        <VisibleBrowse>Show</VisibleBrowse>
+        <VisibleEdit>Show</VisibleEdit>
+        <VisibleNew>Show</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="ContentWorkflow" type="Boolean">
+      <DisplayName>$Ctd-Workflow,ContentWorkflow-DisplayName</DisplayName>
+      <Description>$Ctd-Workflow,ContentWorkflow-Description</Description>
+      <Configuration>
+        <VisibleBrowse>Advanced</VisibleBrowse>
+        <VisibleEdit>Advanced</VisibleEdit>
+        <VisibleNew>Hide</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="AbortOnRelatedContentChange" type="Boolean">
+      <DisplayName>$Ctd-Workflow,AbortOnRelatedContentChange-DisplayName</DisplayName>
+      <Description>$Ctd-Workflow,AbortOnRelatedContentChange-Description</Description>
+      <Configuration>
+        <VisibleBrowse>Advanced</VisibleBrowse>
+        <VisibleEdit>Advanced</VisibleEdit>
+        <VisibleNew>Hide</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="RelatedContent" type="Reference">
+      <DisplayName>$Ctd-Workflow,RelatedContent-DisplayName</DisplayName>
+      <Description>$Ctd-Workflow,RelatedContent-Description</Description>
+      <Configuration>
+        <VisibleBrowse>Show</VisibleBrowse>
+        <VisibleEdit>Show</VisibleEdit>
+        <VisibleNew>Show</VisibleNew>
+        <AllowMultiple>false</AllowMultiple>
+        <AllowedTypes>
+          <Type>GenericContent</Type>
+        </AllowedTypes>
+      </Configuration>
+    </Field>
+    <Field name="SystemMessages" type="LongText">
+      <DisplayName>$Ctd-Workflow,SystemMessages-DisplayName</DisplayName>
+      <Description>$Ctd-Workflow,SystemMessages-Description</Description>
+      <Configuration>
+        <ReadOnly>true</ReadOnly>
+        <VisibleBrowse>Advanced</VisibleBrowse>
+        <VisibleEdit>Advanced</VisibleEdit>
+        <VisibleNew>Hide</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="OwnerSiteUrl" type="ShortText">
+      <DisplayName>$Ctd-Workflow,OwnerSiteUrl-DisplayName</DisplayName>
+      <Description>$Ctd-Workflow,OwnerSiteUrl-Description</Description>
+      <Configuration>
+        <VisibleBrowse>Advanced</VisibleBrowse>
+        <VisibleEdit>Hide</VisibleEdit>
+        <VisibleNew>Hide</VisibleNew>
+      </Configuration>
+    </Field>
+  </Fields>
+</ContentType>

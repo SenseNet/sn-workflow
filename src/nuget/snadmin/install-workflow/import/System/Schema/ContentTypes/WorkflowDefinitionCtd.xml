@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentType name="WorkflowDefinition" parentType="File" handler="SenseNet.Workflow.WorkflowDefinitionHandler" xmlns="http://schemas.sensenet.com/SenseNet/ContentRepository/ContentTypeDefinition">
+  <DisplayName>$Ctd-WorkflowDefinition,DisplayName</DisplayName>
+  <Description>$Ctd-WorkflowDefinition,Description</Description>
+  <Icon>workflowdef</Icon>
+  <Fields>
+    <Field name="DisplayName" type="ShortText">
+      <Configuration>
+        <VisibleBrowse>Show</VisibleBrowse>
+        <VisibleEdit>Show</VisibleEdit>
+        <VisibleNew>Show</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="Description" type="LongText">
+      <DisplayName>$Ctd-WorkflowDefinition,Description-DisplayName</DisplayName>
+      <Description>$Ctd-WorkflowDefinition,Description-Description</Description>
+      <Configuration>
+        <VisibleBrowse>Show</VisibleBrowse>
+        <VisibleEdit>Show</VisibleEdit>
+        <VisibleNew>Show</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="Binary" type="Binary">
+      <DisplayName>$Ctd-WorkflowDefinition,Binary-DisplayName</DisplayName>
+      <Description>$Ctd-WorkflowDefinition,Binary-Description</Description>
+      <Indexing>
+        <Analyzer>Lucene.Net.Analysis.Standard.StandardAnalyzer</Analyzer>
+      </Indexing>
+      <Configuration>
+        <VisibleBrowse>Show</VisibleBrowse>
+        <VisibleEdit>Show</VisibleEdit>
+        <VisibleNew>Show</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="Watermark" type="ShortText">
+      <Configuration>
+        <VisibleBrowse>Hide</VisibleBrowse>
+        <VisibleEdit>Hide</VisibleEdit>
+        <VisibleNew>Hide</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="ContentWorkflow" type="Boolean">
+      <DisplayName>$Ctd-WorkflowDefinition,ContentWorkflow-DisplayName</DisplayName>
+      <Description>$Ctd-WorkflowDefinition,ContentWorkflow-Description</Description>
+      <Configuration>
+        <VisibleBrowse>Show</VisibleBrowse>
+        <VisibleEdit>Show</VisibleEdit>
+        <VisibleNew>Show</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="AssignableToContentList" type="Boolean">
+      <DisplayName>$Ctd-WorkflowDefinition,AssignableToContentList-DisplayName</DisplayName>
+      <Description>$Ctd-WorkflowDefinition,AssignableToContentList-Description</Description>
+      <Configuration>
+        <VisibleBrowse>Show</VisibleBrowse>
+        <VisibleEdit>Show</VisibleEdit>
+        <VisibleNew>Show</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="AbortOnRelatedContentChange" type="Boolean">
+      <DisplayName>$Ctd-WorkflowDefinition,AbortOnRelatedContentChange-DisplayName</DisplayName>
+      <Description>$Ctd-WorkflowDefinition,AbortOnRelatedContentChange-Description</Description>
+      <Configuration>
+        <VisibleBrowse>Show</VisibleBrowse>
+        <VisibleEdit>Show</VisibleEdit>
+        <VisibleNew>Show</VisibleNew>
+      </Configuration>
+    </Field>
+    <Field name="DeleteInstanceAfterFinished" type="Choice">
+      <DisplayName>$Ctd-WorkflowDefinition,DeleteInstanceAfterFinished-DisplayName</DisplayName>
+      <Description>$Ctd-WorkflowDefinition,DeleteInstanceAfterFinished-Description</Description>
+      <Configuration>
+        <VisibleBrowse>Show</VisibleBrowse>
+        <VisibleEdit>Show</VisibleEdit>
+        <VisibleNew>Show</VisibleNew>
+        <AllowMultiple>false</AllowMultiple>
+        <AllowExtraValue>false</AllowExtraValue>
+        <Options>
+          <Enum type="SenseNet.Workflow.WorkflowDeletionStrategy" />
+        </Options>
+      </Configuration>
+    </Field>
+  </Fields>
+</ContentType>

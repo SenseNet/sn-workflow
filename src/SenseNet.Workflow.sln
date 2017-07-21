@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenseNet.Workflow", "Workflow\SenseNet.Workflow.csproj", "{DCCA8F3A-C617-4609-AE2E-39795177ED10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenseNet.WFD", "WFD\SenseNet.WFD.csproj", "{BE138F10-83FD-4E9E-B77F-037CCA23D5B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2EEE5054-C638-443E-A43A-2662D57E96C8}"
+	ProjectSection(SolutionItems) = preProject
+		nuget\snadmin\install-workflow\manifest.xml = nuget\snadmin\install-workflow\manifest.xml
+		nuget\readme.txt = nuget\readme.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenseNet.Workflow.Portlets", "Workflow.Portlets\SenseNet.Workflow.Portlets.csproj", "{E9C1CC12-DC16-46A9-9066-91783426F09C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCCA8F3A-C617-4609-AE2E-39795177ED10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCCA8F3A-C617-4609-AE2E-39795177ED10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCCA8F3A-C617-4609-AE2E-39795177ED10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCCA8F3A-C617-4609-AE2E-39795177ED10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE138F10-83FD-4E9E-B77F-037CCA23D5B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE138F10-83FD-4E9E-B77F-037CCA23D5B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE138F10-83FD-4E9E-B77F-037CCA23D5B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE138F10-83FD-4E9E-B77F-037CCA23D5B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9C1CC12-DC16-46A9-9066-91783426F09C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9C1CC12-DC16-46A9-9066-91783426F09C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9C1CC12-DC16-46A9-9066-91783426F09C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9C1CC12-DC16-46A9-9066-91783426F09C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

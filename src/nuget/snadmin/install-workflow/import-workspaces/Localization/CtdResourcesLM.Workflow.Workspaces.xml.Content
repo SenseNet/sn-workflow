@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentMetaData>
+  <ContentType>Resource</ContentType>
+  <ContentName>CtdResourcesLM.Workflow.Workspaces.xml</ContentName>
+  <Fields>
+    <Binary attachment="CtdResourcesLM.Workflow.Workspaces.xml" />
+  </Fields>
+  <Permissions>
+    <Clear />
+  </Permissions>
+</ContentMetaData>

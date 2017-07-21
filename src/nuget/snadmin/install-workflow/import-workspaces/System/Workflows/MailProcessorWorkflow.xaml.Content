@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentMetaData>
+  <ContentType>WorkflowDefinition</ContentType>
+  <ContentName>MailProcessorWorkflow.xaml</ContentName>
+  <Fields>
+    <DisplayName>MailProcessorWorkflow.xaml</DisplayName>
+    <Binary attachment="MailProcessorWorkflow.xaml" />
+    <ContentWorkflow>true</ContentWorkflow>
+    <AssignableToContentList>true</AssignableToContentList>
+    <AbortOnRelatedContentChange>false</AbortOnRelatedContentChange>
+  </Fields>
+  <Permissions>
+    <Clear />
+  </Permissions>
+</ContentMetaData>

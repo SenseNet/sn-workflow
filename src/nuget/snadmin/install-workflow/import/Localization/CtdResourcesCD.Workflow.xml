@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="view.xslt"?>
+<Resources>
+  <ResourceClass name="Ctd-ConfirmationItem">
+    <Languages>
+      <Language cultureName="en">
+        <data name="DisplayName" xml:space="preserve">
+          <value>Confirmation item</value>
+        </data>
+        <data name="Description" xml:space="preserve">
+          <value>A content placeholder for delayed confirmation of a workflow operation.</value>
+        </data>
+        <data name="Confirmed-DisplayName" xml:space="preserve">
+          <value>Confirmed</value>
+        </data>
+        <data name="Confirmed-Description" xml:space="preserve">
+          <value>Set to true to confirm the operation.</value>
+        </data>
+      </Language>
+      <Language cultureName="hu">
+        <data name="DisplayName" xml:space="preserve">
+          <value>Jóváhagyás elem</value>
+        </data>
+        <data name="Description" xml:space="preserve">
+          <value>Tartalom, amely egy munkafolyamatban egy felhasználói megerősítést tartalmaz (pl. "elolvastam").</value>
+        </data>
+        <data name="Confirmed-DisplayName" xml:space="preserve">
+          <value>Rendben</value>
+        </data>
+        <data name="Confirmed-Description" xml:space="preserve">
+          <value>Bekapcsolt állapota a megerősítést jelenti.</value>
+        </data>
+      </Language>
+    </Languages>
+  </ResourceClass>
+</Resources>

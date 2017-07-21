@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentMetaData>
+  <ContentType>Page</ContentType>
+  <ContentName>ManageWorkflows</ContentName>
+  <Fields>
+    <PageTemplateNode>
+      <Path>/Root/Global/pagetemplates/sn-layout-dialog.html</Path>
+    </PageTemplateNode>
+    <Index>11500</Index>
+    <PersonalizationSettings attachment="ManageWorkflows.PersonalizationSettings" />
+    <DisplayName><![CDATA[$Action,ManageWorkflows]]></DisplayName>
+    <Scenario><![CDATA[Settings]]></Scenario>
+    <Icon><![CDATA[workflow]]></Icon>
+    <RequiredPermissions>OpenMinor;Save</RequiredPermissions>
+    <VersioningMode>1</VersioningMode>
+    <InheritableVersioningMode>1</InheritableVersioningMode>
+    <ApprovingMode>1</ApprovingMode>
+    <InheritableApprovingMode>1</InheritableApprovingMode>
+  </Fields>
+  <Permissions>
+    <Clear />
+  </Permissions>
+</ContentMetaData>

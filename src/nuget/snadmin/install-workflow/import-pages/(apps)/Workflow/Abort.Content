@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentMetaData>
+  <ContentType>Page</ContentType>
+  <ContentName>Abort</ContentName>
+  <Fields>
+    <PageTemplateNode>
+      <Path>/Root/Global/pagetemplates/sn-layout-dialog.html</Path>
+    </PageTemplateNode>
+    <PersonalizationSettings attachment="Abort.PersonalizationSettings" />
+    <DisplayName><![CDATA[$Action,Abort]]></DisplayName>
+    <Scenario><![CDATA[ListItem]]></Scenario>
+    <ActionTypeName><![CDATA[AbortWorkflowAction]]></ActionTypeName>
+    <Icon><![CDATA[abort]]></Icon>
+    <RequiredPermissions>OpenMinor;Save</RequiredPermissions>
+  </Fields>
+  <Permissions>
+    <Clear />
+  </Permissions>
+</ContentMetaData>

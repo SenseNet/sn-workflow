@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentMetaData>
+  <ContentType>Portlet</ContentType>
+  <ContentName>ConfirmPortlet</ContentName>
+  <Fields>
+    <Description><![CDATA[$ConfirmPortlet:PortletDescription]]></Description>
+    <TypeName><![CDATA[SenseNet.Workflow.UI.ConfirmPortlet, SenseNet.CorePortlets]]></TypeName>
+    <ImageData attachment="ConfirmPortlet.ImageData" />
+    <DisplayName><![CDATA[$ConfirmPortlet:PortletDisplayName]]></DisplayName>
+  </Fields>
+  <Permissions>
+    <Clear />
+  </Permissions>
+</ContentMetaData>

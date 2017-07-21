@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources>
+  <ResourceClass name="Action">
+    <Languages>
+      <Language cultureName="en">
+        <data name="AssignWorkflow" xml:space="preserve">
+          <value>Assign workflow</value>
+        </data>
+        <data name="IncomingEmailSettings" xml:space="preserve">
+          <value>Incoming email settings</value>
+        </data>
+        <data name="ManageWorkflows" xml:space="preserve">
+          <value>Manage workflows</value>
+        </data>
+        <data name="StartWorkflow" xml:space="preserve">
+          <value>Start workflow</value>
+        </data>
+        <data name="Workflows" xml:space="preserve">
+          <value>Workflows</value>
+        </data>
+      </Language>
+      <Language cultureName="hu">
+        <data name="AssignWorkflow" xml:space="preserve">
+          <value>Munkafolyamat hozzárendelése</value>
+        </data>
+        <data name="IncomingEmailSettings" xml:space="preserve">
+          <value>Beérkező email beállítások</value>
+        </data>
+        <data name="ManageWorkflows" xml:space="preserve">
+          <value>Munkafolyamatok adminisztrálása</value>
+        </data>
+        <data name="StartWorkflow" xml:space="preserve">
+          <value>Munkafolyamat indítása</value>
+        </data>
+        <data name="Workflows" xml:space="preserve">
+          <value>Munkafolyamatok</value>
+        </data>
+      </Language>
+    </Languages>
+  </ResourceClass>
+</Resources>
