@@ -24,8 +24,8 @@ If you have the [WebPages](https://github.com/SenseNet/sn-webpages) layer, you w
 If you also have the [Workspaces](https://github.com/SenseNet/sn-workspaces) component installed, you will be able to assign workflows to your content lists and use the [Mail processor workflow](/docs/inbox-workflow.md) that lets your users send emails (with extracted attachments) directly into your document libraries.
 
 ## Installing the NuGet packages in Visual Studio
-### Main workspaces package
-To get started, **stop your web site** and install the workspaces 'install' package the usual way:
+### Main Workflow package
+To get started, **stop your web site** and install the workflow 'install' package the usual way:
 
 1. Open your **web application** that already contains the *Services* component installed in *Visual Studio*.
 2. Install the following NuGet package (either in the Package Manager console or the Manage NuGet Packages window)
