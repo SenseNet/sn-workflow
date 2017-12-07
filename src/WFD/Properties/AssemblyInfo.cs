@@ -19,7 +19,7 @@ using System.Windows;
 [assembly: AssemblyCulture("")]
 [assembly: AssemblyVersion("7.0.0.0")]
 [assembly: AssemblyFileVersion("7.0.0.0")]
-[assembly: AssemblyInformationalVersion("7.0.0-beta0")]
+[assembly: AssemblyInformationalVersion("7.0.0")]
 
 [assembly: ComVisible(false)]
 [assembly: Guid("c8295924-ec1c-4a3d-afb1-dcd2b18289dc")]

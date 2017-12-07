@@ -1,7 +1,7 @@
 <Package type='Install'>
   <Id>SenseNet.Workflow</Id>
-  <Description>sensenet ECM Workflow 7.0 (beta)</Description>
-  <ReleaseDate>2017-04-05</ReleaseDate>
+  <Description>sensenet ECM Workflow 7.0</Description>
+  <ReleaseDate>2017-12-06</ReleaseDate>
   <Version>7.0.0</Version>
   <Dependencies>
     <Dependency id='SenseNet.Services' minVersion='7.0.0' />
