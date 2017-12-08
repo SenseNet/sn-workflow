@@ -1,13 +1,24 @@
-﻿New-Item ..\..\src\nuget\snadmin\install-workflow\scripts -ItemType directory -Force
+﻿$srcPath = [System.IO.Path]::GetFullPath(($PSScriptRoot + '\..\..\src'))
+$installPackageFolder = "$srcPath\nuget\content\Admin\tools"
+$installPackagePath = "$installPackageFolder\install-workflow.zip"
+$scriptsSourcePath = "$srcPath\Workflow\Data\Scripts"
+$scriptsTargetPath = "$srcPath\nuget\snadmin\install-workflow\scripts"
 
-Copy-Item ..\..\src\Workflow\Data\Scripts\SqlWorkflowInstanceStoreSchema.sql ..\..\src\nuget\snadmin\install-workflow\scripts -Force
-Copy-Item ..\..\src\Workflow\Data\Scripts\SqlWorkflowInstanceStoreLogic.sql ..\..\src\nuget\snadmin\install-workflow\scripts -Force
+# delete existing packages
+Remove-Item $PSScriptRoot\*.nupkg
 
-Compress-Archive -Path "..\..\src\nuget\snadmin\install-workflow\*" -Force -CompressionLevel Optimal -DestinationPath "..\..\src\nuget\content\Admin\tools\install-workflow.zip"
-nuget pack ..\..\src\Workflow\Workflow.nuspec -properties Configuration=Release
-nuget pack ..\..\src\Workflow\Workflow.Install.nuspec -properties Configuration=Release
-nuget pack ..\..\src\Workflow.Portlets\Workflow.Portlets.nuspec -properties Configuration=Release
+if (!(Test-Path $installPackageFolder))
+{
+	New-Item $installPackageFolder -Force -ItemType Directory
+}
 
-# nuget.exe push -Source "SenseNet" -ApiKey VSTS .\SenseNet.Workflow.7.0.0-beta0.nupkg
-# nuget.exe push -Source "SenseNet" -ApiKey VSTS .\SenseNet.Workflow.Install.7.0.0-beta0.nupkg
-# nuget.exe push -Source "SenseNet" -ApiKey VSTS .\SenseNet.Workflow.Portlets.7.0.0-beta0.nupkg
+New-Item $scriptsTargetPath -ItemType directory -Force
+
+Copy-Item $scriptsSourcePath\SqlWorkflowInstanceStoreSchema.sql $scriptsTargetPath -Force
+Copy-Item $scriptsSourcePath\SqlWorkflowInstanceStoreLogic.sql $scriptsTargetPath -Force
+
+Compress-Archive -Path "$srcPath\nuget\snadmin\install-workflow\*" -Force -CompressionLevel Optimal -DestinationPath $installPackagePath
+
+nuget pack $srcPath\Workflow\Workflow.nuspec -properties Configuration=Release -OutputDirectory $PSScriptRoot
+nuget pack $srcPath\Workflow\Workflow.Install.nuspec -properties Configuration=Release -OutputDirectory $PSScriptRoot
+nuget pack $srcPath\Workflow.Portlets\Workflow.Portlets.nuspec -properties Configuration=Release -OutputDirectory $PSScriptRoot
