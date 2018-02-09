@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>SenseNet.Workflow.Install</id>
-    <version>7.0.0</version>
+    <version>7.1.0</version>
     <title>sensenet ECM Workflow installer</title>
     <authors>kavics,aniko,laci,borsi,lajos,tusmester</authors>
     <owners>Sense/Net</owners>
@@ -15,9 +15,9 @@
     <copyright>Copyright © Sense/Net Inc.</copyright>
     <tags>sensenet ecm ecms workflow</tags>
     <dependencies>
-      <dependency id="SenseNet.Services.Install" version="7.0.0" />
-      <dependency id="SenseNet.Workflow" version="7.0.0" />
-      <dependency id="SenseNet.SnAdmin" version="1.4.3" />
+      <dependency id="SenseNet.Services.Install" version="7.1.0" />
+      <dependency id="SenseNet.Workflow" version="7.1.0" />
+      <dependency id="SenseNet.SnAdmin" version="1.4.4" />
     </dependencies>
   </metadata>
   <files>
