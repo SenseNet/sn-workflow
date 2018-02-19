@@ -2,7 +2,7 @@
 
 namespace SenseNet.Workflow
 {
-    internal class WorkflowComponent : SnComponent
+    public class WorkflowComponent : SnComponent
     {
         public override string ComponentId => "SenseNet.Workflow";
     }
