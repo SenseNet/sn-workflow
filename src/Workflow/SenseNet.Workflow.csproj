@@ -209,6 +209,7 @@
     <Compile Include="WfContentCollection.cs" />
     <Compile Include="WfReference.cs" />
     <Compile Include="Configuration.cs" />
+    <Compile Include="WorkflowComponent.cs" />
     <Compile Include="WorkflowDataClasses.cs">
       <DependentUpon>WorkflowDataClasses.dbml</DependentUpon>
     </Compile>
