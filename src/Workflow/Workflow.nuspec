@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>SenseNet.Workflow</id>
-    <version>7.0.0</version>
+    <version>7.1.0</version>
     <title>sensenet ECM Workflow component, based on Workflow Foundation 4.5</title>
     <authors>kavics,aniko,laci,borsi,lajos,tusmester</authors>
     <owners>Sense/Net</owners>
@@ -15,7 +15,7 @@
     <copyright>Copyright © Sense/Net Inc.</copyright>
     <tags>sensenet ecm ecms workflow</tags>
     <dependencies>
-      <dependency id="SenseNet.Services" version="7.0.0" />
+      <dependency id="SenseNet.Services" version="7.1.0" />
     </dependencies>
   </metadata>
   <files>

@@ -24,7 +24,7 @@
       <DisplayName>$Ctd-WorkflowDefinition,Binary-DisplayName</DisplayName>
       <Description>$Ctd-WorkflowDefinition,Binary-Description</Description>
       <Indexing>
-        <Analyzer>Lucene.Net.Analysis.Standard.StandardAnalyzer</Analyzer>
+        <Analyzer>Standard</Analyzer>
       </Indexing>
       <Configuration>
         <VisibleBrowse>Show</VisibleBrowse>

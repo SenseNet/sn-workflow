@@ -1,10 +1,10 @@
 <Package type='Install'>
   <Id>SenseNet.Workflow</Id>
-  <Description>sensenet ECM Workflow 7.0</Description>
-  <ReleaseDate>2017-12-06</ReleaseDate>
-  <Version>7.0.0</Version>
+  <Description>sensenet ECM Workflow</Description>
+  <ReleaseDate>2018-02-08</ReleaseDate>
+  <Version>7.1.0</Version>
   <Dependencies>
-    <Dependency id='SenseNet.Services' minVersion='7.0.0' />
+    <Dependency id='SenseNet.Services' minVersion='7.1.0' />
   </Dependencies>
   <Parameters>
     <Parameter name="@userName" description="Username to access the server while installing."></Parameter>
