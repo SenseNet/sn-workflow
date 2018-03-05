@@ -4,12 +4,13 @@ using System.Linq;
 using SenseNet.ContentRepository.Storage.Events;
 using SenseNet.ContentRepository.Storage;
 using SenseNet.ContentRepository;
+using SenseNet.ContentRepository.Search;
+using SenseNet.ContentRepository.Search.Querying;
 using SenseNet.Search;
 using SenseNet.ContentRepository.Storage.Security;
 using SenseNet.Portal.Virtualization;
 using SenseNet.ContentRepository.Storage.Data;
 using SenseNet.ContentRepository.Storage.Search;
-using SenseNet.ContentRepository.Storage.Search.Internal;
 
 namespace SenseNet.Workflow
 {
@@ -61,14 +62,14 @@ namespace SenseNet.Workflow
         private void AbortRelatedWorkflows(Node currentNode, WorkflowApplicationAbortReason reason)
         {
             IEnumerable<Node> nodes = null;
-            if (RepositoryInstance.ContentQueryIsAllowed)
+            if (SearchManager.ContentQueryIsAllowed)
             {
-                nodes = SenseNet.Search.ContentQuery.Query(SafeQueries.WorkflowsByRelatedContent, null, currentNode.Id).Nodes;
+                nodes = ContentQuery.Query(SafeQueries.WorkflowsByRelatedContent, null, currentNode.Id).Nodes;
             }
             else
             {
                 var nodeType = ActiveSchema.NodeTypes["Workflow"];
-                nodes = SenseNet.ContentRepository.Storage.Search.NodeQuery.QueryNodesByReferenceAndType("RelatedContent", currentNode.Id, nodeType, false).Nodes;
+                nodes = NodeQuery.QueryNodesByReferenceAndType("RelatedContent", currentNode.Id, nodeType, false).Nodes;
             }
 
             foreach (WorkflowHandlerBase workflow in nodes)
@@ -93,7 +94,7 @@ namespace SenseNet.Workflow
             var listPath = NodeHead.Get(currentNode.ContentListId).Path;
             var templatesPath = RepositoryPath.Combine(listPath, "WorkflowTemplates");
             Node[] templates;
-            if (RepositoryInstance.ContentQueryIsAllowed)
+            if (SearchManager.ContentQueryIsAllowed)
             {
                 string query = null;
                 switch (triggerEvent)
