@@ -313,8 +313,8 @@ namespace SenseNet.Workflow
             {
                 // forced reload/rebuild all pinned structures e.g. Content + it's fields for indexing.
                 var wfInstance = Node.Load<WorkflowHandlerBase>(workflowInstance.Id);
-                if (wfInstance.DisabledObservers != null)
-                    foreach (var observer in wfInstance.DisabledObservers)
+                if (workflowInstance.DisabledObservers != null)
+                    foreach (var observer in workflowInstance.DisabledObservers)
                         wfInstance.DisableObserver(observer);
                 SnTrace.Workflow.Write("workflowInstance reloaded.");
 
