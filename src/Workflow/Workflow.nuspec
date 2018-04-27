@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
-<package >
+<package>
   <metadata>
     <id>SenseNet.Workflow</id>
-    <version>7.1.0</version>
+    <version>7.1.1</version>
     <title>sensenet ECM Workflow component, based on Workflow Foundation 4.5</title>
-    <authors>kavics,aniko,laci,borsi,lajos,tusmester</authors>
+    <authors>kavics,aniko,lajos,tusmester</authors>
     <owners>Sense/Net</owners>
     <licenseUrl>https://github.com/SenseNet/sn-workflow/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/SenseNet/sn-workflow</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/SenseNet/sn-resources/master/images/sn-icon/sensenet-icon-64.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>sensenet ECM Workflow makes it possible to integrate Windows Workflow Foundation into the sensenet ECM platform and use features of the Content Repository in workflows.</description>
+    <description>sensenet Workflow makes it possible to integrate Windows Workflow Foundation into the sensenet platform and use features of the Content Repository in workflows.</description>
     <releaseNotes>See release notes on GitHub.</releaseNotes>
     <copyright>Copyright © Sense/Net Inc.</copyright>
     <tags>sensenet ecm ecms workflow</tags>
