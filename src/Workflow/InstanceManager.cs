@@ -311,12 +311,22 @@ namespace SenseNet.Workflow
         {
             try
             {
-                var wfApp = CreateWorkflowApplication(workflowInstance, WorkflowApplicationCreationPurpose.StartNew, null);
+                // forced reload/rebuild all pinned structures e.g. Content + it's fields for indexing.
+                var wfInstance = Node.Load<WorkflowHandlerBase>(workflowInstance.Id);
+                if (workflowInstance.DisabledObservers != null)
+                    foreach (var observer in workflowInstance.DisabledObservers)
+                        wfInstance.DisableObserver(observer);
+                SnTrace.Workflow.Write("workflowInstance reloaded.");
+
+                // save workflow state
+                var wfApp = CreateWorkflowApplication(wfInstance, WorkflowApplicationCreationPurpose.StartNew, null);
                 var id = wfApp.Id;
-                workflowInstance.WorkflowStatus = WorkflowStatusEnum.Running;
-                workflowInstance.DisableObserver(typeof(WorkflowNotificationObserver));
+                wfInstance.WorkflowStatus = WorkflowStatusEnum.Running;
+                wfInstance.DisableObserver(typeof(WorkflowNotificationObserver));
                 using (new SystemAccount())
-                    workflowInstance.Save();
+                    wfInstance.Save();
+
+                // run workflow
                 wfApp.Run();
                 return id;
             }
@@ -462,7 +472,7 @@ namespace SenseNet.Workflow
                 }
 
                 if (SnTrace.Workflow.Enabled)
-                    SnTrace.Workflow.Write("WF: NotifyContentChanged: Loaded notifications for Content#{0}: count:{1}, items:[{2}]", 
+                    SnTrace.Workflow.Write("WF: NotifyContentChanged: Loaded notifications for Content#{0}: count:{1}, items:[{2}]",
                         eventArgs.NodeId,
                         notifications.Length,
                         notifications.Select(n => n.WorkflowInstanceId).ToArray());
@@ -652,7 +662,7 @@ namespace SenseNet.Workflow
                     WriteBackAbortMessage(stateContent, WorkflowApplicationAbortReason.RelatedContentDeleted);
                     return false;
                 }
-                
+
                 // If the workflow should not be aborted when the related content has changed, 
                 // than we do not care if the timestamp is different on the workflow content.
                 if (stateContent.AbortOnRelatedContentChange && stateContent.RelatedContentTimestamp != stateContent.RelatedContent.NodeTimestamp)
