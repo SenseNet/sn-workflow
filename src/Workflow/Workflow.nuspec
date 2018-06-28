@@ -2,8 +2,8 @@
 <package>
   <metadata>
     <id>SenseNet.Workflow</id>
-    <version>7.1.1</version>
-    <title>sensenet ECM Workflow component, based on Workflow Foundation 4.5</title>
+    <version>7.2.0</version>
+    <title>sensenet Workflow component, based on Workflow Foundation 4.5</title>
     <authors>kavics,aniko,lajos,tusmester</authors>
     <owners>Sense/Net</owners>
     <licenseUrl>https://github.com/SenseNet/sn-workflow/blob/master/LICENSE</licenseUrl>
@@ -15,10 +15,10 @@
     <copyright>Copyright © Sense/Net Inc.</copyright>
     <tags>sensenet ecm ecms workflow</tags>
     <dependencies>
-      <dependency id="SenseNet.Services" version="7.1.0" />
+      <dependency id="SenseNet.Services" version="7.2.0" />
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\SenseNet.Workflow.*" target="lib\net451" />
+    <file src="bin\Release\SenseNet.Workflow.*" target="lib\net461" />
   </files>
 </package>
