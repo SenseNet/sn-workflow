@@ -1,15 +1,15 @@
 ************************************************************************************
-                                sensenet ECM platform
+                                 sensenet platform
                                       Workflow
 ************************************************************************************
 
-To finalize the installation and get started with sensenet ECM Workflow, please follow these steps:
+To finalize the installation and get started with sensenet Workflow, please follow these steps:
 
 (install guide is accessible online at: http://community.sensenet.com/docs/install-workflow-from-nuget)
 
 1. Build your solution, make sure that there are no build errors.
 
-2. Install sensenet ECM Workflow using SnAdmin
+2. Install sensenet Workflow using SnAdmin
 
    - open a command line and go to the \Admin\bin folder
    - execute the install-workflow command with the SnAdmin tool

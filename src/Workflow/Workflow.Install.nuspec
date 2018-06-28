@@ -2,21 +2,21 @@
 <package >
   <metadata>
     <id>SenseNet.Workflow.Install</id>
-    <version>7.1.1</version>
-    <title>sensenet ECM Workflow installer</title>
+    <version>7.2.0</version>
+    <title>sensenet Workflow installer</title>
     <authors>kavics,aniko,lajos,tusmester</authors>
     <owners>Sense/Net</owners>
     <licenseUrl>https://github.com/SenseNet/sn-workflow/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/SenseNet/sn-workflow</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/SenseNet/sn-resources/master/images/sn-icon/sensenet-icon-64.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>sensenet ECM Workflow installer contains the install content for the library-only package SenseNet.Workflow. This package should be installed only in a single web project. All other projects should reference the SenseNet.Workflow dll-only package.</description>
+    <description>sensenet Workflow installer contains the install content for the library-only package SenseNet.Workflow. This package should be installed only in a single web project. All other projects should reference the SenseNet.Workflow dll-only package.</description>
     <releaseNotes>See release notes on GitHub.</releaseNotes>
     <copyright>Copyright © Sense/Net Inc.</copyright>
     <tags>sensenet ecm ecms workflow</tags>
     <dependencies>
-      <dependency id="SenseNet.Services.Install" version="7.1.0" />
-      <dependency id="SenseNet.Workflow" version="7.1.1" />
+      <dependency id="SenseNet.Services.Install" version="7.2.0" />
+      <dependency id="SenseNet.Workflow" version="7.2.0" />
       <dependency id="SenseNet.SnAdmin" version="1.4.4" />
     </dependencies>
   </metadata>
