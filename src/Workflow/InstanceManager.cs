@@ -14,6 +14,7 @@ using SenseNet.ContentRepository;
 using System.Activities.XamlIntegration;
 using System.Activities.Expressions;
 using SenseNet.Configuration;
+using SenseNet.ContentRepository.Search;
 
 namespace SenseNet.Workflow
 {
@@ -82,11 +83,16 @@ namespace SenseNet.Workflow
                                 msg.AppendLine("Workflow polling errors:");
                             msg.AppendFormat("{0}.: {1} was thrown during processing {2}. Message: {3}{4}", ++counter, ex.GetType().FullName, item.Path, ex.Message, Environment.NewLine);
 
-                            SnTrace.Workflow.WriteError("WF: POLLING ERROR {0}. {1} was thrown during processing {2}. {3}", counter, ex.GetType().FullName, item.Path, e);
+                            SnTrace.Workflow.WriteError("WF: POLLING ERROR {0}. {1} was thrown during processing {2}. {3}", counter, ex.GetType().FullName, item.Path, ex.Message);
                         }
                     }
+
                     if (msg.Length > 0)
+                    {
+                        SnLog.WriteError(msg);
+
                         throw new ApplicationException(msg.ToString());
+                    }
                 }
                 finally
                 {
@@ -100,17 +106,24 @@ namespace SenseNet.Workflow
         {
             try
             {
-                if (!RepositoryInstance.ContentQueryIsAllowed)
+                if (!SearchManager.ContentQueryIsAllowed)
                     return new WorkflowHandlerBase[0];
-                var result = SenseNet.Search.ContentQuery.Query(SafeQueries.GetPollingInstances, null, WorkflowStatusEnum.Running);
+                
                 var instances = new Dictionary<string, WorkflowHandlerBase>();
-                foreach (WorkflowHandlerBase item in result.Nodes)
+
+                using (new SystemAccount())
                 {
-                    var key = string.Format("{0}-{1}", item.WorkflowTypeName, item.WorkflowDefinitionVersion);
-                    if (!instances.ContainsKey(key))
-                        instances.Add(key, item);
+                    var result = Search.ContentQuery.Query(SafeQueries.GetPollingInstances, null, WorkflowStatusEnum.Running);
+                    foreach (WorkflowHandlerBase item in result.Nodes)
+                    {
+                        var key = $"{item.WorkflowTypeName}-{item.WorkflowDefinitionVersion}";
+                        if (!instances.ContainsKey(key))
+                            instances.Add(key, item);
+                    }
+
+                    SnTrace.Workflow.Write("WF: Trying execute active workflows. ResultCount:{0}, PollingItems:{1}", 
+                        result.Count, instances.Count);
                 }
-                SnTrace.Workflow.Write("WF: Trying execute active workflows. ResultCount:{0}, PollingItems:{1}", result.Count, instances.Count);
 
                 return instances.Values.ToArray();
             }
@@ -377,6 +390,8 @@ namespace SenseNet.Workflow
         {
             try
             {
+                SnTrace.Workflow.Write($"Loading instances for workflow type {workflowMasterInstance?.NodeType.Name}.");
+
                 var wfApps = LoadRunnableInstances(workflowMasterInstance);
 
                 var loadedInstanceIds = wfApps.Select(w => w.Id).ToArray();
