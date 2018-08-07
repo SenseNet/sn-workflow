@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using SenseNet.ContentRepository.Storage;
+using SenseNet.Diagnostics;
 
 namespace SenseNet.Workflow
 {
@@ -91,8 +92,14 @@ namespace SenseNet.Workflow
         }
         private IEnumerable<Node> GetReferences()
         {
-            return GetContentNode().GetReferences(_fieldname) ?? EmptyNodeArray;
-        }
+            var node = GetContentNode();
+            if (node == null)
+            {
+                SnTrace.Workflow.Write($"WfContentCollection: content not found: {_path}");
+                return EmptyNodeArray;
+            }
 
+            return node.GetReferences(_fieldname) ?? EmptyNodeArray;
+        }
     }
 }

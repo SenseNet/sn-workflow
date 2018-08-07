@@ -312,7 +312,7 @@ namespace SenseNet.Workflow
             if (string.IsNullOrEmpty(WorkflowDefinitionVersion))
             {
                 var def = Node.Load<WorkflowDefinitionHandler>(GetWorkflowDefinitionPath());
-                version = def.Version.VersionString;
+                version = def?.Version?.VersionString ?? string.Empty;
                 return def;
             }
 
@@ -333,6 +333,13 @@ namespace SenseNet.Workflow
             if (!string.IsNullOrEmpty(ns))
             {
                 var asm = Assembly.LoadWithPartialName(ns);
+                if (asm == null)
+                {
+                    SnTrace.Workflow.WriteError($"Assembly not found by namespace: {ns}");
+                    version = string.Empty;
+                    return null;
+                }
+
                 var cn = ns + "." + WorkflowTypeName;
                 var act = asm.CreateInstance(cn);
                 version = asm.GetName().Version.ToString();
@@ -344,6 +351,12 @@ namespace SenseNet.Workflow
             using (new SystemAccount())
             {
                 var workflowDefinition = LoadWorkflowDefinition(out version);
+                if (workflowDefinition == null)
+                {
+                    SnTrace.Workflow.WriteError($"CreateWorkflowInstance: Workflow definition not found: {GetWorkflowDefinitionPath()}");
+                    return null;
+                }
+
                 var settings = new ActivityXamlServicesSettings { CompileExpressions = true };
                 return ActivityXamlServices.Load(workflowDefinition.Binary.GetStream(), settings); 
             }

@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 
 #if DEBUG
-[assembly: AssemblyTitle("SenseNet.Workflow (Debug) for logging.")]
+[assembly: AssemblyTitle("SenseNet.Workflow (Debug) for logging2.")]
 #else
 [assembly: AssemblyTitle("SenseNet.Workflow (Release)")]
 #endif

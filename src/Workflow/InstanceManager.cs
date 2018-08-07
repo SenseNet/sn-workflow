@@ -83,7 +83,7 @@ namespace SenseNet.Workflow
                                 msg.AppendLine("Workflow polling errors:");
                             msg.AppendFormat("{0}.: {1} was thrown during processing {2}. Message: {3}{4}", ++counter, ex.GetType().FullName, item.Path, ex.Message, Environment.NewLine);
 
-                            SnTrace.Workflow.WriteError("WF: POLLING ERROR {0}. {1} was thrown during processing {2}. {3}", counter, ex.GetType().FullName, item.Path, ex.Message);
+                            SnTrace.Workflow.WriteError("WF: POLLING ERROR {0}. {1} was thrown during processing {2}. {3}", counter, ex.GetType().FullName, item.Path, ex);
                         }
                     }
 
@@ -166,9 +166,16 @@ namespace SenseNet.Workflow
         {
             try
             {
-                string version;
+                var workflowType = workflowMasterInstance?.NodeType.Name;
+                var version = string.Empty;
                 WorkflowApplication wfApp = null;
-                var workflow = workflowMasterInstance.CreateWorkflowInstance(out version);
+                var workflow = workflowMasterInstance?.CreateWorkflowInstance(out version);
+                if (workflow == null)
+                {
+                    SnTrace.Workflow.WriteError($"Workflow instance could not be created for {workflowType}.");
+                    return null;
+                }
+
                 CompileExpressions(workflow);
                 switch (purpose)
                 {
@@ -187,21 +194,20 @@ namespace SenseNet.Workflow
                         break;
                 }
 
-                SnTrace.Workflow.Write("WF: CreateWorkflowApplication: NodeId:{0}, instanceId:{1}, Purpose:{2}",
-                    workflowMasterInstance.Id, workflowMasterInstance.WorkflowInstanceGuid, purpose);
+                SnTrace.Workflow.Write("WF: CreateWorkflowApplication: NodeId:{0}, instanceId:{1}, Purpose:{2}, Type:{3}",
+                    workflowMasterInstance.Id, workflowMasterInstance.WorkflowInstanceGuid, purpose, workflowType);
 
-                InstanceHandle ownerHandle;
-                var store = CreateInstanceStore(workflowMasterInstance, out ownerHandle);
-                Dictionary<XName, object> wfScope = new Dictionary<XName, object> { { GetWorkflowHostTypePropertyName(), GetWorkflowHostTypeName(workflowMasterInstance) } };
+                var store = CreateInstanceStore(workflowMasterInstance, out var ownerHandle);
+                var wfScope = new Dictionary<XName, object> { { GetWorkflowHostTypePropertyName(), GetWorkflowHostTypeName(workflowMasterInstance) } };
 
                 wfApp.InstanceStore = store;
                 wfApp.AddInitialInstanceValues(wfScope);
 
-                wfApp.PersistableIdle =      a => { SnTrace.Workflow.Write("WF: PersistableIdle. WfAppId:{0}",      wfApp.Id); DestroyInstanceOwner(wfApp, ownerHandle); return PersistableIdleAction.Unload; };
-                wfApp.Unloaded =             b => { SnTrace.Workflow.Write("WF: Unloaded. WfAppId:{0}",             wfApp.Id); DestroyInstanceOwner(wfApp, ownerHandle); };
-                wfApp.Completed =            c => { SnTrace.Workflow.Write("WF: Completed. WfAppId:{0}",            wfApp.Id); OnWorkflowCompleted(c); DestroyInstanceOwner(wfApp, ownerHandle); };
-                wfApp.Aborted =              d => { SnTrace.Workflow.Write("WF: Aborted. WfAppId:{0}",              wfApp.Id); OnWorkflowAborted(d); DestroyInstanceOwner(wfApp, ownerHandle); };
-                wfApp.OnUnhandledException = e => { SnTrace.Workflow.Write("WF: OnUnhandledException. WfAppId:{0}", wfApp.Id); return HandleError(e); };
+                wfApp.PersistableIdle =      a => { SnTrace.Workflow.Write("WF: PersistableIdle {0}. WfAppId:{1}", workflowType, wfApp.Id); DestroyInstanceOwner(wfApp, ownerHandle); return PersistableIdleAction.Unload; };
+                wfApp.Unloaded =             b => { SnTrace.Workflow.Write("WF: Unloaded  {0}. WfAppId:{1}", workflowType, wfApp.Id); DestroyInstanceOwner(wfApp, ownerHandle); };
+                wfApp.Completed =            c => { SnTrace.Workflow.Write("WF: Completed  {0}. WfAppId:{1}", workflowType, wfApp.Id); OnWorkflowCompleted(c); DestroyInstanceOwner(wfApp, ownerHandle); };
+                wfApp.Aborted =              d => { SnTrace.Workflow.Write("WF: Aborted  {0}. WfAppId:{1}", workflowType, wfApp.Id); OnWorkflowAborted(d); DestroyInstanceOwner(wfApp, ownerHandle); };
+                wfApp.OnUnhandledException = e => { SnTrace.Workflow.Write("WF: OnUnhandledException  {0}. WfAppId:{1}", workflowType, wfApp.Id); return HandleError(e); };
 
                 wfApp.Extensions.Add(new ContentWorkflowExtension
                 {
@@ -392,17 +398,23 @@ namespace SenseNet.Workflow
             {
                 SnTrace.Workflow.Write($"Loading instances for workflow type {workflowMasterInstance?.NodeType.Name}.");
 
-                var wfApps = LoadRunnableInstances(workflowMasterInstance);
-
+                var wfApps = LoadRunnableInstances(workflowMasterInstance).ToArray();
                 var loadedInstanceIds = wfApps.Select(w => w.Id).ToArray();
+
                 SnTrace.Workflow.Write("Loaded instances for executing delays: ({0}): {1}", loadedInstanceIds.Length, loadedInstanceIds);
 
                 foreach (var wfApp in wfApps)
                 {
                     if (ValidWakedUpWorkflow(wfApp))
+                    {
+                        SnTrace.Workflow.Write($"Running {workflowMasterInstance?.NodeType.Name} workflow {wfApp.Id}");
                         wfApp.Run();
+                    }
                     else
+                    {
+                        SnTrace.Workflow.Write($"Cancelling {workflowMasterInstance?.NodeType.Name} workflow {wfApp.Id}");
                         wfApp.Cancel();
+                    }
                 }
             }
             catch (Exception e)
@@ -422,6 +434,12 @@ namespace SenseNet.Workflow
                     try
                     {
                         var wfApp = CreateWorkflowApplication(workflowMasterInstance, WorkflowApplicationCreationPurpose.Poll, null);
+                        if (wfApp == null)
+                        {
+                            SnTrace.Workflow.WriteError($"LoadRunnableInstances: could not create workflow application for {workflowMasterInstance?.NodeType.Name}");
+                            break;
+                        }
+
                         wfApp.LoadRunnableInstance();
                         wfApps.Add(wfApp);
                     }
