@@ -6,7 +6,7 @@ namespace SenseNet.Workflow.Tests.Implementations
 {
     internal class SnWfDebugViewTracer : ISnTracer
     {
-        public void Write(string line)
+        public virtual void Write(string line)
         {
             var p0 = line.IndexOf("\tA:", StringComparison.Ordinal);
             var p1 = line.IndexOf("\tT:", StringComparison.Ordinal);

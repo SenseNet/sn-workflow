@@ -1,0 +1,148 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="SenseNet.Workflow.Tests.TestWF"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sw="clr-namespace:SenseNet.Workflow;assembly=SenseNet.Workflow"
+ xmlns:swa="clr-namespace:SenseNet.Workflow.Activities;assembly=SenseNet.Workflow"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="StateContent" Type="InArgument(sw:WfContent)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap2010:WorkflowViewState.IdRef>SenseNet.Workflow.Tests.TestWF_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>SenseNet.Workflow</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.TestPlatform.TestFramework</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions</AssemblyReference>
+      <AssemblyReference>EntityFramework</AssemblyReference>
+      <AssemblyReference>EntityFramework.SqlServer</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.DataAnnotations</AssemblyReference>
+      <AssemblyReference>Microsoft.IdentityModel.Logging</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>Microsoft.IdentityModel.Tokens</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>Microsoft.IdentityModel.JsonWebTokens</AssemblyReference>
+      <AssemblyReference>OpenPop</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.IdentityModel.Tokens.Jwt</AssemblyReference>
+      <AssemblyReference>SenseNet.TokenAuthentication</AssemblyReference>
+      <AssemblyReference>System.Security.Principal.Windows</AssemblyReference>
+      <AssemblyReference>System.Security.AccessControl</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Data.OracleClient</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Net</AssemblyReference>
+      <AssemblyReference>System.ServiceProcess</AssemblyReference>
+      <AssemblyReference>System.Transactions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Configuration</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.EventLog</AssemblyReference>
+      <AssemblyReference>SenseNet.Tools</AssemblyReference>
+      <AssemblyReference>SenseNet.Common</AssemblyReference>
+      <AssemblyReference>SenseNet.BlobStorage</AssemblyReference>
+      <AssemblyReference>SenseNet.Preview</AssemblyReference>
+      <AssemblyReference>SenseNet.Security</AssemblyReference>
+      <AssemblyReference>SenseNet.Search</AssemblyReference>
+      <AssemblyReference>SenseNet.Security.EF6SecurityStore</AssemblyReference>
+      <AssemblyReference>SenseNet.TaskManagement.Core</AssemblyReference>
+      <AssemblyReference>ICSharpCode.SharpZipLib</AssemblyReference>
+      <AssemblyReference>Ionic.Zip</AssemblyReference>
+      <AssemblyReference>itextsharp</AssemblyReference>
+      <AssemblyReference>Microsoft.Exchange.WebServices</AssemblyReference>
+      <AssemblyReference>SenseNet.Configuration</AssemblyReference>
+      <AssemblyReference>SenseNet.ContentRepository</AssemblyReference>
+      <AssemblyReference>SenseNet.Services</AssemblyReference>
+      <AssemblyReference>SenseNet.Storage</AssemblyReference>
+      <AssemblyReference>SenseNet.Tests</AssemblyReference>
+      <AssemblyReference>SenseNet.Workflow</AssemblyReference>
+      <AssemblyReference>Lucene.Net</AssemblyReference>
+      <AssemblyReference>SenseNet.Search.Lucene29</AssemblyReference>
+      <AssemblyReference>SenseNet.Search.Lucene29.Common</AssemblyReference>
+      <AssemblyReference>SenseNet.Search.Lucene29.Local</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>SenseNet.Workflow.Tests</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="iteration" />
+    </Sequence.Variables>
+    <DoWhile sap2010:WorkflowViewState.IdRef="DoWhile_1" Condition="True">
+      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+        <Assign sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">
+              <mca:CSharpReference x:TypeArguments="x:Int32">iteration</mca:CSharpReference>
+            </OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">
+              <mca:CSharpValue x:TypeArguments="x:Int32">iteration + 1</mca:CSharpValue>
+            </InArgument>
+          </Assign.Value>
+        </Assign>
+        <swa:DebugWrite sap2010:WorkflowViewState.IdRef="DebugWrite_1">
+          <swa:DebugWrite.Message>
+            <InArgument x:TypeArguments="x:String">
+              <mca:CSharpValue x:TypeArguments="x:String">"Workflow runs #" + iteration</mca:CSharpValue>
+            </InArgument>
+          </swa:DebugWrite.Message>
+        </swa:DebugWrite>
+        <Delay sap2010:WorkflowViewState.IdRef="Delay_1">
+          <InArgument x:TypeArguments="x:TimeSpan">
+            <mca:CSharpValue x:TypeArguments="x:TimeSpan">TimeSpan.FromSeconds(10)</mca:CSharpValue>
+          </InArgument>
+        </Delay>
+      </Sequence>
+    </DoWhile>
+    <sads:DebugSymbol.Symbol>d1FEOlxkZXZcZ2l0aHViXHNuLXdvcmtmbG93XHNyY1xUZXN0c1xTZW5zZU5ldC5Xb3JrZmxvdy5UZXN0c1xXb3JrZmxvd3NcVGVzdFdGLnhhbWwMWwN8DgIBAV0zXTYCAQJfBXoPAgEDX0RfSgIBFGAHeRICAQRhCWwSAgENbQlzGgIBCXQJeBECAQVpD2lZAgERZA9kXQIBDnAPcGoCAQp2DXZlAgEG</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="242,62" />
+      <sap2010:ViewStateData Id="DebugWrite_1" sap:VirtualizedContainerService.HintSize="242,22" />
+      <sap2010:ViewStateData Id="Delay_1" sap:VirtualizedContainerService.HintSize="242,22" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="264,310">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="DoWhile_1" sap:VirtualizedContainerService.HintSize="464,474" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="486,598">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SenseNet.Workflow.Tests.TestWF_1" sap:VirtualizedContainerService.HintSize="526,678" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

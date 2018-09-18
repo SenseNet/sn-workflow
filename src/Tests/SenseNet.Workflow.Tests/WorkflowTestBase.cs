@@ -206,7 +206,7 @@ namespace SenseNet.Workflow.Tests
 
             var builder = new RepositoryBuilder()
                 .UseAccessProvider(new DesktopAccessProvider())
-                //.UseSearchEngine(new InMemorySearchEngine())
+                .UseSearchEngine(new InMemorySearchEngine())
                 .UseElevatedModificationVisibilityRuleProvider(new ElevatedModificationVisibilityRule())
                 //.StartIndexingEngine(false)
                 .StartWorkflowEngine(startEngines)

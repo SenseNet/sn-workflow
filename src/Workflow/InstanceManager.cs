@@ -102,7 +102,9 @@ namespace SenseNet.Workflow
             {
                 if (!RepositoryInstance.ContentQueryIsAllowed)
                     return new WorkflowHandlerBase[0];
-                var result = SenseNet.Search.ContentQuery.Query(SafeQueries.GetPollingInstances, null, WorkflowStatusEnum.Running);
+//UNDONE: Fix indexing bug before.
+                //var result = SenseNet.Search.ContentQuery.Query(SafeQueries.GetPollingInstances, null, WorkflowStatusEnum.Running);
+var result = SenseNet.Search.ContentQuery.Query(SafeQueries.GetPollingInstances, null, "$1");
                 var instances = new Dictionary<string, WorkflowHandlerBase>();
                 foreach (WorkflowHandlerBase item in result.Nodes)
                 {
