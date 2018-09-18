@@ -1,5 +1,8 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+
+[assembly: InternalsVisibleTo("SenseNet.Workflow.Tests")]
 
 #if DEBUG
 [assembly: AssemblyTitle("SenseNet.Workflow (Debug)")]

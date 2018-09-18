@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenseNet.Workflow", "Workflow\SenseNet.Workflow.csproj", "{DCCA8F3A-C617-4609-AE2E-39795177ED10}"
 EndProject
@@ -14,6 +14,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenseNet.Workflow.Portlets", "Workflow.Portlets\SenseNet.Workflow.Portlets.csproj", "{E9C1CC12-DC16-46A9-9066-91783426F09C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{118268B7-06D0-45B0-B768-BF4C3B040062}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenseNet.Workflow.Tests", "Tests\SenseNet.Workflow.Tests\SenseNet.Workflow.Tests.csproj", "{3DF41D24-2A65-4DEB-A50A-F4A5C88CDA0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,8 +37,18 @@ Global
 		{E9C1CC12-DC16-46A9-9066-91783426F09C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9C1CC12-DC16-46A9-9066-91783426F09C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9C1CC12-DC16-46A9-9066-91783426F09C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DF41D24-2A65-4DEB-A50A-F4A5C88CDA0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DF41D24-2A65-4DEB-A50A-F4A5C88CDA0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DF41D24-2A65-4DEB-A50A-F4A5C88CDA0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DF41D24-2A65-4DEB-A50A-F4A5C88CDA0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3DF41D24-2A65-4DEB-A50A-F4A5C88CDA0D} = {118268B7-06D0-45B0-B768-BF4C3B040062}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {688CAACF-E437-454E-A9F4-9DFEB9E36FFC}
 	EndGlobalSection
 EndGlobal
