@@ -11,9 +11,9 @@ namespace SenseNet.Workflow.Tests.Implementations
     internal class ObserverTracer : ISnTracer
     {
         private string[] _triggers;
-        private Action _callback;
+        private Action<string> _callback;
 
-        public ObserverTracer(string[] triggers, Action callback)
+        public ObserverTracer(string[] triggers, Action<string> callback)
         {
             _triggers = triggers;
             _callback = callback;
@@ -22,7 +22,7 @@ namespace SenseNet.Workflow.Tests.Implementations
         public void Write(string line)
         {
             if (Match(line))
-                _callback();
+                _callback(line);
         }
 
         public void Flush()

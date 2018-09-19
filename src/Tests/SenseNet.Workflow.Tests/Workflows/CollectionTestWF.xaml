@@ -1,0 +1,287 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="SenseNet.Workflow.Tests.Workflows.CollectionTestWF"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:scs="clr-namespace:SenseNet.ContentRepository.Storage;assembly=SenseNet.Storage"
+ xmlns:sw="clr-namespace:SenseNet.Workflow;assembly=SenseNet.Workflow"
+ xmlns:swa="clr-namespace:SenseNet.Workflow.Activities;assembly=SenseNet.Workflow"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="StateContent" Type="InArgument(sw:WfContent)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap2010:WorkflowViewState.IdRef>SenseNet.Workflow.Tests.Workflows.CollectionTestWF_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>SenseNet.Workflow</x:String>
+      <x:String>SenseNet.ContentRepository.Storage</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>EntityFramework</AssemblyReference>
+      <AssemblyReference>EntityFramework.SqlServer</AssemblyReference>
+      <AssemblyReference>ICSharpCode.SharpZipLib</AssemblyReference>
+      <AssemblyReference>Ionic.Zip</AssemblyReference>
+      <AssemblyReference>itextsharp</AssemblyReference>
+      <AssemblyReference>Lucene.Net</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>Microsoft.Exchange.WebServices</AssemblyReference>
+      <AssemblyReference>Microsoft.IdentityModel.JsonWebTokens</AssemblyReference>
+      <AssemblyReference>Microsoft.IdentityModel.Logging</AssemblyReference>
+      <AssemblyReference>Microsoft.IdentityModel.Tokens</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.TestPlatform.TestFramework</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>OpenPop</AssemblyReference>
+      <AssemblyReference>SenseNet.BlobStorage</AssemblyReference>
+      <AssemblyReference>SenseNet.Common</AssemblyReference>
+      <AssemblyReference>SenseNet.Configuration</AssemblyReference>
+      <AssemblyReference>SenseNet.ContentRepository</AssemblyReference>
+      <AssemblyReference>SenseNet.Preview</AssemblyReference>
+      <AssemblyReference>SenseNet.Search</AssemblyReference>
+      <AssemblyReference>SenseNet.Search.Lucene29</AssemblyReference>
+      <AssemblyReference>SenseNet.Search.Lucene29.Common</AssemblyReference>
+      <AssemblyReference>SenseNet.Search.Lucene29.Local</AssemblyReference>
+      <AssemblyReference>SenseNet.Security</AssemblyReference>
+      <AssemblyReference>SenseNet.Security.EF6SecurityStore</AssemblyReference>
+      <AssemblyReference>SenseNet.Services</AssemblyReference>
+      <AssemblyReference>SenseNet.Storage</AssemblyReference>
+      <AssemblyReference>SenseNet.TaskManagement.Core</AssemblyReference>
+      <AssemblyReference>SenseNet.Tests</AssemblyReference>
+      <AssemblyReference>SenseNet.TokenAuthentication</AssemblyReference>
+      <AssemblyReference>SenseNet.Tools</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.DataAnnotations</AssemblyReference>
+      <AssemblyReference>System.Configuration</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.OracleClient</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.EventLog</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.IdentityModel.Tokens.Jwt</AssemblyReference>
+      <AssemblyReference>System.Net</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Security.AccessControl</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Security.Principal.Windows</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceProcess</AssemblyReference>
+      <AssemblyReference>System.Transactions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>SenseNet.Workflow</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>SenseNet.Workflow.Tests</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Sequence Main" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:List(x:String)" Name="TaskPaths">
+        <Variable.Default>
+          <mca:CSharpValue x:TypeArguments="scg:List(x:String)">new List&lt;string&gt;()</mca:CSharpValue>
+        </Variable.Default>
+      </Variable>
+    </Sequence.Variables>
+    <ForEach x:TypeArguments="scs:Node" DisplayName="ForEach&lt;Node&gt; Create tasks for users" sap2010:WorkflowViewState.IdRef="ForEach`1_2">
+      <ForEach.Values>
+        <InArgument x:TypeArguments="scg:IEnumerable(scs:Node)">
+          <mca:CSharpValue x:TypeArguments="scg:IEnumerable(scs:Node)">(IEnumerable&lt;SenseNet.ContentRepository.Storage.Node&gt;)StateContent["RelatedUsers"]</mca:CSharpValue>
+        </InArgument>
+      </ForEach.Values>
+      <ActivityAction x:TypeArguments="scs:Node">
+        <ActivityAction.Argument>
+          <DelegateInArgument x:TypeArguments="scs:Node" Name="item" />
+        </ActivityAction.Argument>
+        <Sequence DisplayName="Sequence: Create task for user" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="userName" />
+            <Variable x:TypeArguments="sw:WfContent" Name="newTask" />
+          </Sequence.Variables>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">
+                <mca:CSharpReference x:TypeArguments="x:String">userName</mca:CSharpReference>
+              </OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">
+                <mca:CSharpValue x:TypeArguments="x:String">ContentRepository.Storage.RepositoryPath.GetFileName(item.Path)</mca:CSharpValue>
+              </InArgument>
+            </Assign.Value>
+          </Assign>
+          <swa:DebugWrite sap2010:WorkflowViewState.IdRef="DebugWrite_2">
+            <swa:DebugWrite.Message>
+              <InArgument x:TypeArguments="x:String">
+                <mca:CSharpValue x:TypeArguments="x:String">"Creating a task for " + userName</mca:CSharpValue>
+              </InArgument>
+            </swa:DebugWrite.Message>
+          </swa:DebugWrite>
+          <swa:CreateContent ContentTypeName="Task" DisplayName="CreateContent: Task for user" sap2010:WorkflowViewState.IdRef="CreateContent_1" ParentPath="/Root/Sites/Default_Site/WfCollectionTest/Tasks">
+            <swa:CreateContent.ContentDisplayName>
+              <InArgument x:TypeArguments="x:String">
+                <mca:CSharpValue x:TypeArguments="x:String">"Task for " + userName;</mca:CSharpValue>
+              </InArgument>
+            </swa:CreateContent.ContentDisplayName>
+            <swa:CreateContent.FieldValues>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">
+                <mca:CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" xml:space="preserve">new Dictionary&lt;string, object&gt;
+            {
+                {"AssignedTo", item },
+                {"Status", "waiting" }
+            }</mca:CSharpValue>
+              </InArgument>
+            </swa:CreateContent.FieldValues>
+            <swa:CreateContent.Name>
+              <InArgument x:TypeArguments="x:String">
+                <mca:CSharpValue x:TypeArguments="x:String">"Task4" + userName;</mca:CSharpValue>
+              </InArgument>
+            </swa:CreateContent.Name>
+            <swa:CreateContent.Result>
+              <OutArgument x:TypeArguments="sw:WfContent">
+                <mca:CSharpReference x:TypeArguments="sw:WfContent">newTask</mca:CSharpReference>
+              </OutArgument>
+            </swa:CreateContent.Result>
+          </swa:CreateContent>
+          <AddToCollection x:TypeArguments="x:String" DisplayName="AddToCollection&lt;String&gt;" sap2010:WorkflowViewState.IdRef="AddToCollection`1_1">
+            <AddToCollection.Item>
+              <InArgument x:TypeArguments="x:String">
+                <mca:CSharpValue x:TypeArguments="x:String">newTask.Path</mca:CSharpValue>
+              </InArgument>
+            </AddToCollection.Item>
+            <InArgument x:TypeArguments="scg:ICollection(x:String)">
+              <mca:CSharpValue x:TypeArguments="scg:ICollection(x:String)">TaskPaths</mca:CSharpValue>
+            </InArgument>
+          </AddToCollection>
+          <swa:DebugWrite sap2010:WorkflowViewState.IdRef="DebugWrite_1">
+            <swa:DebugWrite.Message>
+              <InArgument x:TypeArguments="x:String">
+                <mca:CSharpValue x:TypeArguments="x:String">"Task created for " + userName</mca:CSharpValue>
+              </InArgument>
+            </swa:DebugWrite.Message>
+          </swa:DebugWrite>
+        </Sequence>
+      </ActivityAction>
+    </ForEach>
+    <While sap2010:WorkflowViewState.IdRef="While_1" Condition="True">
+      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <ForEach x:TypeArguments="x:String" DisplayName="ForEach&lt;String&gt;" sap2010:WorkflowViewState.IdRef="ForEach`1_3">
+          <ForEach.Values>
+            <InArgument x:TypeArguments="scg:IEnumerable(x:String)">
+              <mca:CSharpValue x:TypeArguments="scg:IEnumerable(x:String)">TaskPaths</mca:CSharpValue>
+            </InArgument>
+          </ForEach.Values>
+          <ActivityAction x:TypeArguments="x:String">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:String" Name="taskPath" />
+            </ActivityAction.Argument>
+            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="sw:WfContent" Name="task" />
+              </Sequence.Variables>
+              <swa:LoadContent sap2010:WorkflowViewState.IdRef="LoadContent_1">
+                <swa:LoadContent.Path>
+                  <InArgument x:TypeArguments="x:String">
+                    <mca:CSharpValue x:TypeArguments="x:String">taskPath</mca:CSharpValue>
+                  </InArgument>
+                </swa:LoadContent.Path>
+                <swa:LoadContent.Result>
+                  <OutArgument x:TypeArguments="sw:WfContent">
+                    <mca:CSharpReference x:TypeArguments="sw:WfContent">task</mca:CSharpReference>
+                  </OutArgument>
+                </swa:LoadContent.Result>
+              </swa:LoadContent>
+              <swa:DebugWrite DisplayName="DebugWrite Status + Path" sap2010:WorkflowViewState.IdRef="DebugWrite_3">
+                <swa:DebugWrite.Message>
+                  <InArgument x:TypeArguments="x:String">
+                    <mca:CSharpValue x:TypeArguments="x:String">"Task status: " + task["Status"] + ": " + task.Path</mca:CSharpValue>
+                  </InArgument>
+                </swa:DebugWrite.Message>
+              </swa:DebugWrite>
+            </Sequence>
+          </ActivityAction>
+        </ForEach>
+        <Delay DisplayName="Delay 15 sec" sap2010:WorkflowViewState.IdRef="Delay_1">
+          <InArgument x:TypeArguments="x:TimeSpan">
+            <mca:CSharpValue x:TypeArguments="x:TimeSpan">TimeSpan.FromSeconds(15)</mca:CSharpValue>
+          </InArgument>
+        </Delay>
+      </Sequence>
+    </While>
+    <sads:DebugSymbol.Symbol>d1tEOlxkZXZcZ2l0aHViXHNuLXdvcmtmbG93XHNyY1xUZXN0c1xTZW5zZU5ldC5Xb3JrZmxvdy5UZXN0c1xXb3JrZmxvd3NcQ29sbGVjdGlvblRlc3RXRi54YW1sI10D4wEOAgEBYQthawIBAmUFtAEPAgEitQEF4QENAgEFaAtosgECAWdvCbIBFAIBI7YBB+ABEgIBB7UBQLUBRgIBBnQLfxQCAVqAAQuGARwCAVOHAQugAR8CATihAQuqAR0CASurAQuxARwCASS3AQnaARMCAQzbAQnfARECAQh8EXyOAQIBYXcRd18CAVuDARGDAXACAVSHAZ0BhwHOAQIBUooBEYoBZgIBTJ0BEZ0BYgIBRo8BEZMBIAIBQIcBLocBNAIBP5gBEZgBYgIBOagBD6gBZwIBMqQBEaQBWwIBLK4BEa4BbQIBJboBD7oBZwIBH8EBDdgBGAIBDd0BDd0BZQIBCcUBD9ABIQIBFNEBD9cBIAIBDsgBFcgBWwIBGs0BFc0BYwIBFdQBFdQBhgECAQ8=</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="357,62" />
+      <sap2010:ViewStateData Id="DebugWrite_2" sap:VirtualizedContainerService.HintSize="357,22" />
+      <sap2010:ViewStateData Id="CreateContent_1" sap:VirtualizedContainerService.HintSize="357,191">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="AddToCollection`1_1" sap:VirtualizedContainerService.HintSize="357,22" />
+      <sap2010:ViewStateData Id="DebugWrite_1" sap:VirtualizedContainerService.HintSize="357,22" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="379,603">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_2" sap:VirtualizedContainerService.HintSize="464,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LoadContent_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="DebugWrite_3" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="222,208">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_3" sap:VirtualizedContainerService.HintSize="287,358" />
+      <sap2010:ViewStateData Id="Delay_1" sap:VirtualizedContainerService.HintSize="287,22" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="309,544">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="While_1" sap:VirtualizedContainerService.HintSize="464,704" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="486,919">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SenseNet.Workflow.Tests.Workflows.CollectionTestWF_1" sap:VirtualizedContainerService.HintSize="526,999" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

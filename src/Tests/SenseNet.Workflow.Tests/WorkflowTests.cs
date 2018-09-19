@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using IO = System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -19,7 +21,7 @@ namespace SenseNet.Workflow.Tests
         public void WF_TestWF()
         {
             #region <ContentType name='testworkflow' ...
-            string ctd = @"<?xml version='1.0' encoding='utf-8'?>
+            const string ctd = @"<?xml version='1.0' encoding='utf-8'?>
 <ContentType name='testworkflow' parentType='Workflow' handler='SenseNet.Workflow.WorkflowHandlerBase' xmlns='http://schemas.sensenet.com/SenseNet/ContentRepository/ContentTypeDefinition'>
   <DisplayName>testworkflow</DisplayName>
   <Description>testworkflow</Description>
@@ -32,22 +34,26 @@ namespace SenseNet.Workflow.Tests
 
             var xamlName = "TestWF.xaml";
 
-            var called = 0;
-            var observer = new ObserverTracer(new[] { "Workflow runs" }, () => { called++; });
+            var lines = new List<string>();
+            var observer = new ObserverTracer(
+                new[] { "Workflow runs" },
+                line => { lines.Add(line.Substring(line.LastIndexOf('\t') + 1)); });
             SnTrace.SnTracers.Add(observer);
 
             try
             {
                 using (new SystemAccount())
                 {
-                    var wfDef = EnsureWorkflow("testworkflow.xaml", ctd, xamlName);
-                    var wf = StartWorkflow(wfDef);
-                    WaitForUpperLimit(ref called, 3, DateTime.Now.AddMinutes(1));
-                    
-                    wf = Node.Load<WorkflowHandlerBase>(wf.Id);
-                    InstanceManager.Abort(wf, WorkflowApplicationAbortReason.ManuallyAborted);
+                    var wfDef = InstallWorkflow("testworkflow.xaml", ctd, xamlName);
 
-                    Assert.IsTrue(called >= 3, $"Call count does not reach 3 ({called}).");
+                    var wf = StartWorkflow(wfDef);
+                    WaitFor(wf, DateTime.Now.AddMinutes(1), () => lines.Count >= 3);
+
+                    wf = Node.Load<WorkflowHandlerBase>(wf.Id);
+                    if (wf?.WorkflowStatus == WorkflowStatusEnum.Running)
+                        InstanceManager.Abort(wf, WorkflowApplicationAbortReason.ManuallyAborted);
+
+                    Assert.IsTrue(lines.Count >= 3, $"Call count does not reach 3 ({lines.Count}).");
                 }
             }
             finally
@@ -57,11 +63,110 @@ namespace SenseNet.Workflow.Tests
 
         }
 
-        private void WaitForUpperLimit(ref int value, int limit, DateTime timeLimit)
+        [TestMethod]
+        public void WF_CollectionTestWF()
+        {
+            #region <ContentType name='collectiontestworkflow' ...
+            const string ctd = @"<?xml version='1.0' encoding='utf-8'?>
+<ContentType name='collectiontestworkflow' parentType='Workflow' handler='SenseNet.Workflow.WorkflowHandlerBase' xmlns='http://schemas.sensenet.com/SenseNet/ContentRepository/ContentTypeDefinition'>
+  <DisplayName>testworkflow</DisplayName>
+  <Description>testworkflow</Description>
+  <Icon>workflow</Icon>
+  <AllowIncrementalNaming>true</AllowIncrementalNaming>
+  <Fields>
+    <Field name='RelatedUsers' type='Reference'>
+      <Configuration>
+        <AllowMultiple>true</AllowMultiple>
+        <AllowedTypes>
+          <Type>User</Type>
+          <Type>Group</Type>
+        </AllowedTypes>
+      </Configuration>
+    </Field>  </Fields>
+</ContentType>
+";
+            #endregion
+
+            var xamlName = "CollectionTestWF.xaml";
+
+            var lines = new List<string>();
+            var observer = new ObserverTracer(
+                new[] {"Creating a task for", "Task created for", "Task status:" },
+                line => { lines.Add(line.Substring(line.LastIndexOf('\t') + 1)); });
+            SnTrace.SnTracers.Add(observer);
+
+            try
+            {
+                using (new SystemAccount())
+                {
+                    // Create initial repository structure with the tested workflow prototype.
+                    var wfDef = InstallWorkflow("collectiontestworkflow.xaml", ctd, xamlName);
+
+                    // Create a task container.
+                    var site = Node.LoadNode("/Root/Sites/Default_Site");
+                    var testRoot = new SystemFolder(site) {Name = "WfCollectionTest"};
+                    testRoot.Save();
+                    var tasks = Content.CreateNew("TaskList", testRoot, "Tasks");
+                    tasks.Save();
+
+                    // Create a domain wit 3 users.
+                    var domain = new Domain(Repository.ImsFolder) {Name = "Company1"};
+                    domain.Save();
+                    var users = new List<Node>();
+                    for (int i = 1; i < 4; i++)
+                    {
+                        var user = new User(domain) { Name = $"User{i}" };
+                        user.Save();
+                        users.Add(user);
+                    }
+
+                    // Start the workflow.
+                    var wf = StartWorkflow(wfDef, new Dictionary<string, object> { { "RelatedUsers", users } });
+
+                    // Wait for first complete monitoring cycle (persist / wake-up). Timeout: half minute.
+                    WaitFor(wf, DateTime.Now.AddSeconds(30), () => lines.Count >= 12);
+
+                    // Modify the Status of tasks.
+                    var task = Content.Load("/Root/Sites/Default_Site/WfCollectionTest/Tasks/Task4User1");
+                    task["Status"] = "waiting";
+                    task.Save();
+                    task = Content.Load("/Root/Sites/Default_Site/WfCollectionTest/Tasks/Task4User2");
+                    task["Status"] = "deferred";
+                    task.Save();
+                    task = Content.Load("/Root/Sites/Default_Site/WfCollectionTest/Tasks/Task4User3");
+                    task["Status"] = "completed";
+                    task.Save();
+
+                    // Wait for workflow detects the change but max a minute.
+                    WaitFor(wf, DateTime.Now.AddMinutes(1), () => lines.Last().Contains("Task status: completed"));
+
+                    // Abort workflow if runs.
+                    wf = Node.Load<WorkflowHandlerBase>(wf.Id);
+                    if(wf?.WorkflowStatus == WorkflowStatusEnum.Running)
+                        InstanceManager.Abort(wf, WorkflowApplicationAbortReason.ManuallyAborted);
+
+                    Assert.IsTrue(lines.Last().Contains("Task status: completed"));
+                }
+            }
+            finally
+            {
+                SnTrace.SnTracers.Remove(observer);
+            }
+
+        }
+
+        /* =============================================================================== Common tools */
+
+        private void WaitFor(WorkflowHandlerBase workflow, DateTime timeLimit, Func<bool> condition)
         {
             SnTrace.Test.Write("WAIT START");
-            while (DateTime.Now < timeLimit && value < limit)
+            while (DateTime.Now < timeLimit && !condition())
+            {
                 Thread.Sleep(1000);
+                workflow = Node.Load<WorkflowHandlerBase>(workflow.Id);
+                if (workflow.WorkflowStatus != WorkflowStatusEnum.Running)
+                    break;
+            }
             SnTrace.Test.Write("WAIT END");
         }
         private void EnsureDefaultSiteStructure()
@@ -87,7 +192,7 @@ namespace SenseNet.Workflow.Tests
                 workflows.Save();
             }
         }
-        private WorkflowDefinitionHandler EnsureWorkflow(string name, string ctd, string xamlName)
+        private WorkflowDefinitionHandler InstallWorkflow(string name, string ctd, string xamlName)
         {
             var xamlPath = IO.Path.GetFullPath(IO.Path.Combine(
                 AppDomain.CurrentDomain.BaseDirectory, $@"..\..\Workflows\{xamlName}"));
@@ -107,22 +212,30 @@ namespace SenseNet.Workflow.Tests
 
                 var parent = Node.LoadNode("/Root/System/Workflows");
                 wfd = new WorkflowDefinitionHandler(parent, "WorkflowDefinition") {Name = name};
+                wfd.DeleteInstanceAfterFinished = WorkflowDeletionStrategy.AlwaysKeep;
                 wfd.Binary.SetStream(RepositoryTools.GetStreamFromString(xaml));
                 wfd.Save();
             }
             return wfd;
         }
-        private WorkflowHandlerBase StartWorkflow(WorkflowDefinitionHandler wfDef)
+
+        private WorkflowHandlerBase StartWorkflow(WorkflowDefinitionHandler wfDef, Dictionary<string, object> fields = null)
         {
             var parent = Node.LoadNode("/Root/Sites/Default_Site/Workflows");
             var name = wfDef.Name.Replace(".xaml", "");
+
             var content = Content.CreateNew(name, parent, name);
+            if (fields != null)
+                foreach (var item in fields)
+                    content[item.Key] = item.Value;
+
             var wfHandler = (WorkflowHandlerBase)content.ContentHandler;
             wfHandler.AllowManualStart = true;
             content.Save();
+
             InstanceManager.Start(wfHandler);
+
             return wfHandler;
         }
-
     }
 }
