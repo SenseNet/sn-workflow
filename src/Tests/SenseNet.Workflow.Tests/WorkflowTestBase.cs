@@ -29,10 +29,6 @@ namespace SenseNet.Workflow.Tests
         private static readonly string ConnectionStringBase =
             @"Data Source=.\SQL2016;Integrated Security=SSPI;Persist Security Info=False";
 
-        private static readonly string ConnectionStringForWorkflowTests =
-            $"Initial Catalog={DatabaseName};{ConnectionStringBase}";
-
-
         #region [AssemblyInitialize]
 
         private static RepositoryInstance _repositoryInstance;
@@ -47,9 +43,10 @@ namespace SenseNet.Workflow.Tests
             SnTrace.Workflow.Enabled = true;
             SnTrace.Test.Write("------------------------------------------------------");
 
-            ConnectionStrings.ConnectionString = ConnectionStringForWorkflowTests;
+            var connectionString = GetConnectionString(DatabaseName);
+            ConnectionStrings.ConnectionString = connectionString;
             var connectionStringsAcc = new PrivateType(typeof(ConnectionStrings));
-            connectionStringsAcc.SetStaticProperty("SecurityDatabaseConnectionString", ConnectionStringForWorkflowTests);
+            connectionStringsAcc.SetStaticProperty("SecurityDatabaseConnectionString", connectionString);
 
             PrepareDatabase();
 
@@ -186,7 +183,6 @@ namespace SenseNet.Workflow.Tests
 
                 var resManAcc = new PrivateType(typeof(SenseNetResourceManager));
                 resManAcc.InvokeStatic("Reset");
-                var x = SenseNetResourceManager.Current.GetString("Ctd", "Enum-Workflow-WorkflowStatus-Running");
             }
 
         }
@@ -264,7 +260,6 @@ namespace SenseNet.Workflow.Tests
         }
 
         #endregion
-
 
         #region [TestInitialize]
 
