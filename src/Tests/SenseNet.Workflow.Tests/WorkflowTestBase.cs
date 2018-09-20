@@ -7,6 +7,7 @@ using IO = System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SenseNet.Configuration;
 using SenseNet.ContentRepository;
+using SenseNet.ContentRepository.i18n;
 using SenseNet.ContentRepository.Schema;
 using SenseNet.ContentRepository.Search;
 using SenseNet.ContentRepository.Security;
@@ -168,6 +169,26 @@ namespace SenseNet.Workflow.Tests
                 workflowsFolder.Save();
             }
 
+            if (Node.LoadNode("/Root/Localization") == null)
+            {
+                var localizationFolder = new SystemFolder(Repository.Root, "Resources") { Name = "Localization" };
+                localizationFolder.Save();
+                var localizationRoot = IO.Path.GetFullPath(IO.Path.Combine(
+                    AppDomain.CurrentDomain.BaseDirectory,
+                    @"..\..\..\..\nuget\snadmin\install-workflow\import\Localization"));
+                foreach (var path in IO.Directory.GetFiles(localizationRoot, "*.xml"))
+                {
+                    var name = IO.Path.GetFileName(path);
+                    var resourceNode = new Resource(localizationFolder) {Name = name};
+                    resourceNode.Binary.SetStream(new IO.FileStream(path, IO.FileMode.Open));
+                    resourceNode.Save();
+                }
+
+                var resManAcc = new PrivateType(typeof(SenseNetResourceManager));
+                resManAcc.InvokeStatic("Reset");
+                var x = SenseNetResourceManager.Current.GetString("Ctd", "Enum-Workflow-WorkflowStatus-Running");
+            }
+
         }
         private static string[] LoadCtds()
         {
@@ -201,7 +222,7 @@ namespace SenseNet.Workflow.Tests
         {
             var blobMetaDataProvider = (IBlobStorageMetaDataProvider)Activator.CreateInstance(typeof(MsSqlBlobMetaDataProvider));
 
-            //UNDONE: TEST: settingsObserverType is not null
+            //TODO: TEST: settingsObserverType is not null
             //var settingsObserverType = Type.GetType("SenseNet.ContentRepository.SettingsCache");
 
             var builder = new RepositoryBuilder()
