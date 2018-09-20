@@ -1,16 +1,14 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: InternalsVisibleTo("SenseNet.Workflow.Tests")]
 
 #if DEBUG
-[assembly: AssemblyTitle("SenseNet.Workflow (Debug)")]
+[assembly: AssemblyTitle("SenseNet.Workflow.Tests (Debug)")]
 #else
-[assembly: AssemblyTitle("SenseNet.Workflow (Release)")]
+[assembly: AssemblyTitle("SenseNet.Workflow.Tests (Release)")]
 #endif
 
-[assembly: AssemblyDescription("Workflow component for the sensenet platform.")]
+[assembly: AssemblyDescription("Unit tests for the sensenet Workflow component.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Sense/Net Inc.")]
 [assembly: AssemblyCopyright("Copyright © Sense/Net Inc.")]
@@ -22,4 +20,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyInformationalVersion("7.2.0")]
 
 [assembly: ComVisible(false)]
-[assembly: Guid("6b47b471-efdf-4f7b-82b7-bcea425d2a78")]
+[assembly: Guid("3df41d24-2a65-4deb-a50a-f4a5c88cda0d")]
