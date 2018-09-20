@@ -33,7 +33,7 @@ namespace SenseNet.Workflow.Tests.Implementations
         private bool Match(string line)
         {
             var message = line.Split('\t').Last();
-            return _triggers.Any(s => line.Contains(s));
+            return _triggers.Any(s => message.Contains(s));
         }
     }
 }
