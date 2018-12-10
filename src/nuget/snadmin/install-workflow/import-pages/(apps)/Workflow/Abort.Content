@@ -15,5 +15,8 @@
   </Fields>
   <Permissions>
     <Clear />
+    <Identity path="/Root/IMS/BuiltIn/Portal/Everyone">
+      <RunApplication>Allowed</RunApplication>
+    </Identity>
   </Permissions>
 </ContentMetaData>
