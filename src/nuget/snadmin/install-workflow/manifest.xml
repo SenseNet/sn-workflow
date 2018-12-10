@@ -1,10 +1,10 @@
 <Package type='Install'>
   <Id>SenseNet.Workflow</Id>
   <Description>sensenet Workflow</Description>
-  <ReleaseDate>2018-06-27</ReleaseDate>
-  <Version>7.2.0</Version>
+  <ReleaseDate>2018-12-10</ReleaseDate>
+  <Version>7.2.0.1</Version>
   <Dependencies>
-    <Dependency id='SenseNet.Services' minVersion='7.2.0' />
+    <Dependency id='SenseNet.Services' minVersion='7.5.0.1' />
   </Dependencies>
   <Parameters>
     <Parameter name="@userName" description="Username to access the server while installing."></Parameter>
