@@ -4,7 +4,7 @@
   <ReleaseDate>2019-02-06</ReleaseDate>
   <Version>7.2.1.1</Version>
   <Dependencies>
-    <Dependency id='SenseNet.Services' minVersion='7.5.1.5' />
+    <Dependency id='SenseNet.Services' minVersion='7.5.1.4' />
   </Dependencies>
   <Parameters>
     <Parameter name="@userName" description="Username to access the server while installing."></Parameter>
