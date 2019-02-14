@@ -114,14 +114,13 @@ namespace SenseNet.Workflow.Activities
             base.Cancel(context);
         }
 
-        internal static File CreateFileContent(string contentTypeName, Node parent, string name)
+        public static File CreateFileContent(string contentTypeName, Node parent, string name)
         {
             if (parent == null)
-                throw new ArgumentNullException("parent");
+                throw new ArgumentNullException(nameof(parent));
 
             var fileContent = Content.CreateNew(contentTypeName, parent, name);
-            var file = fileContent.ContentHandler as File;
-            if (file == null)
+            if (!(fileContent.ContentHandler is File file))
             {
                 SnLog.WriteWarning(SR.GetString(SR.Mail.Error_UnknownAttachmentType_3, contentTypeName, name, parent.Path), EventId.NotDefined);
                 return null;

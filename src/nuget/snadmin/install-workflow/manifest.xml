@@ -1,15 +1,14 @@
 <Package type='Install'>
   <Id>SenseNet.Workflow</Id>
   <Description>sensenet Workflow</Description>
-  <ReleaseDate>2019-01-21</ReleaseDate>
-  <Version>7.2.1</Version>
+  <ReleaseDate>2019-02-06</ReleaseDate>
+  <Version>7.2.1.1</Version>
   <Dependencies>
-    <Dependency id='SenseNet.Services' minVersion='7.5.1' />
+    <Dependency id='SenseNet.Services' minVersion='7.5.1.4' />
   </Dependencies>
   <Parameters>
     <Parameter name="@userName" description="Username to access the server while installing."></Parameter>
     <Parameter name="@password" description="Password to access the server while installing."></Parameter>
-    <Parameter name="@overwriteemailworkflow" description="Overwrite existing Incoming email workflow values.">true</Parameter>
   </Parameters>
   <Steps>
     <Phase>
@@ -18,31 +17,6 @@
 
       <StartRepository startWorkflowEngine="false" />
       <Import target="/Root" LogLevel="Verbose" source="import" />
-
-      <IfComponentExists>
-        <Components>
-          <Component id="SenseNet.Workspaces" minVersion="7.0.0" />
-        </Components>
-        <Then>
-          <Trace>Importing workspace-related workflows...</Trace>
-          <Import target="/Root" LogLevel="Verbose" source="import-workspaces" />
-
-          <!-- set mailprocessor workflow on content lists -->
-          <ForEach item="@content" ContentQuery="+InTree:(/Root/ContentTemplates /Root/Sites) +TypeIs:ContentList .AUTOFILTERS:OFF">
-            <Block>
-              <SetField name="IncomingEmailWorkflow" content="@content.Path" overwrite="@overwriteemailworkflow">
-                <Value>
-                  <Path>/Root/System/Schema/ContentTypes/GenericContent/Workflow/MailProcessorWorkflow</Path>
-                </Value>
-              </SetField>
-            </Block>
-          </ForEach>
-
-        </Then>
-        <Else>
-          <Trace>Workspaces component not found, workspace-related workflows are not imported.</Trace>
-        </Else>
-      </IfComponentExists>
       
       <IfComponentExists>
         <Components>
