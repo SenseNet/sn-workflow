@@ -8,17 +8,17 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("SenseNet.Workflow.Portlets (Release)")]
 #endif
 
-[assembly: AssemblyDescription("Workflow portlets for the sensenet ECM platform.")]
+[assembly: AssemblyDescription("Workflow portlets for the sensenet platform.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Sense/Net Inc.")]
 [assembly: AssemblyCopyright("Copyright © Sense/Net Inc.")]
-[assembly: AssemblyProduct("sensenet ECM")]
+[assembly: AssemblyProduct("sensenet")]
 [assembly: AssemblyTrademark("Sense/Net Inc.")]
 [assembly: AssemblyCulture("")]
 
-[assembly: AssemblyVersion("7.2.1.1")]
-[assembly: AssemblyFileVersion("7.2.1.1")]
-[assembly: AssemblyInformationalVersion("7.2.1.1")]
+[assembly: AssemblyVersion("7.2.2")]
+[assembly: AssemblyFileVersion("7.2.2")]
+[assembly: AssemblyInformationalVersion("7.2.2")]
 
 [assembly: ComVisible(false)]
 [assembly: Guid("e9c1cc12-dc16-46a9-9066-91783426f09c")]

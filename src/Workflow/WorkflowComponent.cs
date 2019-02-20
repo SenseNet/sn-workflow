@@ -6,6 +6,6 @@ namespace SenseNet.Workflow
     public class WorkflowComponent : SnComponent
     {
         public override string ComponentId => "SenseNet.Workflow";
-        public override Version SupportedVersion { get; } = new Version(7, 2, 1, 1);
+        public override Version SupportedVersion { get; } = new Version(7, 1, 0);
     }
 }
