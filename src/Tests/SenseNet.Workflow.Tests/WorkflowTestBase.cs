@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading;
 using IO = System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Nito.AsyncEx;
 using SenseNet.Configuration;
 using SenseNet.ContentRepository;
 using SenseNet.ContentRepository.i18n;
@@ -13,12 +15,13 @@ using SenseNet.ContentRepository.Search;
 using SenseNet.ContentRepository.Security;
 using SenseNet.ContentRepository.Storage;
 using SenseNet.ContentRepository.Storage.Data;
-using SenseNet.ContentRepository.Storage.Data.SqlClient;
+using SenseNet.ContentRepository.Storage.Data.MsSqlClient;
 using SenseNet.ContentRepository.Storage.Security;
 using SenseNet.Diagnostics;
 using SenseNet.Tests;
 using SenseNet.Tests.Implementations;
 using SenseNet.Workflow.Tests.Implementations;
+using Task = System.Threading.Tasks.Task;
 
 namespace SenseNet.Workflow.Tests
 {
@@ -150,7 +153,7 @@ namespace SenseNet.Workflow.Tests
         {
             SecurityHandler.SecurityInstaller.InstallDefaultSecurityStructure();
             ContentTypeInstaller.InstallContentType(LoadCtds());
-            SaveInitialIndexDocuments_copy();
+            SaveInitialIndexDocumentsAsync_copy(CancellationToken.None).GetAwaiter().GetResult();
             RebuildIndex_copy();
         }
 
@@ -223,7 +226,7 @@ namespace SenseNet.Workflow.Tests
 
             var builder = new RepositoryBuilder()
                 .UseAccessProvider(new DesktopAccessProvider())
-                .UseSearchEngine(new InMemorySearchEngine())
+                .UseSearchEngine(new InMemorySearchEngine(GetInitialIndex()))
                 .UseElevatedModificationVisibilityRuleProvider(new ElevatedModificationVisibilityRule())
                 //.StartIndexingEngine(false)
                 .StartWorkflowEngine(startEngines)
@@ -236,19 +239,22 @@ namespace SenseNet.Workflow.Tests
 
             return builder as RepositoryBuilder;
         }
-        protected static void SaveInitialIndexDocuments_copy()
+        protected static async Task SaveInitialIndexDocumentsAsync_copy(CancellationToken cancellationToken)
         {
-            var idSet = DataProvider.LoadIdsOfNodesThatDoNotHaveIndexDocument(0, 11000);
+            var idSet = await DataStore.LoadNotIndexedNodeIdsAsync(0, 11000, cancellationToken).ConfigureAwait(false);
             var nodes = Node.LoadNodes(idSet);
 
             if (nodes.Count == 0)
                 return;
 
-            foreach (var node in nodes)
+            var tasks = nodes.Select(async node =>
             {
-                // ReSharper disable once UnusedVariable
-                DataBackingStore.SaveIndexDocument(node, false, false, out var hasBinary);
-            }
+                cancellationToken.ThrowIfCancellationRequested();
+
+                await DataStore.SaveIndexDocumentAsync(node, false, false, cancellationToken).ConfigureAwait(false);
+            });
+
+            await tasks.WhenAll();
         }
 
         protected static void RebuildIndex_copy()
@@ -256,7 +262,7 @@ namespace SenseNet.Workflow.Tests
             var paths = new List<string>();
             var populator = SearchManager.GetIndexPopulator();
             populator.NodeIndexed += (o, e) => { paths.Add(e.Path); };
-            populator.ClearAndPopulateAll();
+            populator.ClearAndPopulateAllAsync(CancellationToken.None).GetAwaiter().GetResult();
         }
 
         #endregion
