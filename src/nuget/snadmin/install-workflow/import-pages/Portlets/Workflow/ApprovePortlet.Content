@@ -4,7 +4,7 @@
   <ContentName>ApprovePortlet</ContentName>
   <Fields>
     <Description><![CDATA[$ApprovePortlet:PortletDescription]]></Description>
-    <TypeName><![CDATA[SenseNet.Workflow.UI.ApprovePortlet, SenseNet.CorePortlets]]></TypeName>
+    <TypeName><![CDATA[SenseNet.Workflow.UI.ApprovePortlet, SenseNet.Workflow.Portlets]]></TypeName>
     <ImageData attachment="ApprovePortlet.ImageData" />
     <DisplayName><![CDATA[$ApprovePortlet:PortletDisplayName]]></DisplayName>
   </Fields>

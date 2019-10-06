@@ -4,7 +4,7 @@
   <ContentName>StartWorkflowPortlet</ContentName>
   <Fields>
     <Description><![CDATA[$StartWorkflowPortlet:PortletDescription]]></Description>
-    <TypeName><![CDATA[SenseNet.Portal.Portlets.StartWorkflowPortlet, SenseNet.CorePortlets]]></TypeName>
+    <TypeName><![CDATA[SenseNet.Portal.Portlets.StartWorkflowPortlet, SenseNet.Workflow.Portlets]]></TypeName>
     <ImageData attachment="StartWorkflowPortlet.ImageData" />
     <DisplayName><![CDATA[$StartWorkflowPortlet:PortletDisplayName]]></DisplayName>
   </Fields>
