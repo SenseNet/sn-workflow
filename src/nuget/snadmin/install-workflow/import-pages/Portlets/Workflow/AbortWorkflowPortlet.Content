@@ -4,7 +4,7 @@
   <ContentName>AbortWorkflowPortlet</ContentName>
   <Fields>
     <Description><![CDATA[$AbortWorkflowPortlet:PortletDescription]]></Description>
-    <TypeName><![CDATA[SenseNet.Portal.Portlets.AbortWorkflowPortlet, SenseNet.CorePortlets]]></TypeName>
+    <TypeName><![CDATA[SenseNet.Portal.Portlets.AbortWorkflowPortlet, SenseNet.Workflow.Portlets]]></TypeName>
     <ImageData attachment="AbortWorkflowPortlet.ImageData" />
     <DisplayName><![CDATA[$AbortWorkflowPortlet:PortletDisplayName]]></DisplayName>
   </Fields>

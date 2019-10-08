@@ -4,7 +4,7 @@
   <ContentName>ConfirmPortlet</ContentName>
   <Fields>
     <Description><![CDATA[$ConfirmPortlet:PortletDescription]]></Description>
-    <TypeName><![CDATA[SenseNet.Workflow.UI.ConfirmPortlet, SenseNet.CorePortlets]]></TypeName>
+    <TypeName><![CDATA[SenseNet.Workflow.UI.ConfirmPortlet, SenseNet.Workflow.Portlets]]></TypeName>
     <ImageData attachment="ConfirmPortlet.ImageData" />
     <DisplayName><![CDATA[$ConfirmPortlet:PortletDisplayName]]></DisplayName>
   </Fields>
