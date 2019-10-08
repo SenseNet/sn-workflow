@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>SenseNet.Workflow.Portlets</id>
-    <version>7.2.2</version>
+    <version>7.3.0</version>
     <title>sensenet Workflow Portlets</title>
     <authors>kavics,aniko,lajos,tusmester</authors>
     <owners>Sense/Net</owners>
@@ -15,7 +15,7 @@
     <copyright>Copyright © Sense/Net Inc.</copyright>
     <tags>sensenet ecm ecms workflow</tags>
     <dependencies>
-      <dependency id="SenseNet.Workflow" version="7.2.2" />
+      <dependency id="SenseNet.Workflow" version="7.3.0" />
     </dependencies>
   </metadata>
   <files>
