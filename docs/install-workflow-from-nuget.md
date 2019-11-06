@@ -1,6 +1,6 @@
 # Install sensenet Workflow from NuGet
 
-This article is **for developers** about installing the **Workflow** component for [sensenet ECM](https://github.com/SenseNet) from NuGet. Before you can do that, please install at least the core layer, [sensenet Services](https://github.com/SenseNet/sensenet/tree/master/docs/install-sn-from-nuget.md), which is a prerequisite of this component.
+This article is **for developers** about installing the **Workflow** component for [sensenet](https://github.com/SenseNet) from NuGet. Before you can do that, please install at least the core layer, [sensenet Services](https://github.com/SenseNet/sensenet/tree/master/docs/install-sn-from-nuget.md), which is a prerequisite of this component.
 
 >About choosing the components you need, take look at [this article](https://github.com/SenseNet/sensenet/tree/master/docs/sensenet-components.md) that describes the main components and their relationships briefly.
 
@@ -63,7 +63,7 @@ To complete the install process, please execute the *install-workflow* SnAdmin c
 ##### Optional parameters:
 - *overwriteemailworkflow*: if you execute the package with a 'false' value for this parameter, it will set the default mail processor workflow on content lists only if the 'Incoming email workflow' field is empty and will not overwrite existing references. Default is *true*.
 
-If there were no errors, you are good to go! Hit F5 in Visual Studio and start experimenting with sensenet ECM Workflow!
+If there were no errors, you are good to go! Hit F5 in Visual Studio and start experimenting with sensenet Workflow!
 
 ## Troubleshooting
 If you encounter one of these errors after installing the workflow component, please take a look at the possible solutions below.
