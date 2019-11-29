@@ -2,7 +2,7 @@
 
 ![Sending emails to content lists](https://raw.githubusercontent.com/SenseNet/sn-workflow/master/docs/images/workflow-inbox-list.png "Sending emails to content lists")
 
-In sensenet ECM lists and libraries can be configured to receive emails from *Microsoft Exchange Server* or any other email server that enables connecting through *POP3* protocol. An email address can be bound to lists and libraries, thus emails can be sent directly to them (e.g. to document libraries and memo lists), with the attachments being saved as files. Optionally the emails themselves can be saved too. 
+In sensenet lists and libraries can be configured to receive emails from *Microsoft Exchange Server* or any other email server that enables connecting through *POP3* protocol. An email address can be bound to lists and libraries, thus emails can be sent directly to them (e.g. to document libraries and memo lists), with the attachments being saved as files. Optionally the emails themselves can be saved too. 
 
 In this article you can learn how to configure content lists and libraries to be able to receive attachments sent by email. 
 
@@ -15,8 +15,8 @@ In this article you can learn how to configure content lists and libraries to be
 - there is a simple API for developers for retrieving mails, Exchange push/pull-notifications and subscription handling
 
 ## Connecting to an Exchange server
-sensenet ECM can be connected to a Microsoft Exchange server in two modes:
-- **push notifications**: an Exchange server can send notifications about incoming emails to a web service defined in sensenet ECM. A custom workflow can be defined to process the incoming emails. 
+sensenet can be connected to a Microsoft Exchange server in two modes:
+- **push notifications**: an Exchange server can send notifications about incoming emails to a web service defined in sensenet. A custom workflow can be defined to process the incoming emails. 
 - **polling unread mails**: a custom workflow can be defined to retrieve unread emails from an Exchange mailbox with a given time interval.
 
 The difference between the two methods is summarized in the following table:
@@ -27,7 +27,7 @@ The difference between the two methods is summarized in the following table:
 | Push notifications  | - Nearly instantaneous notifications <br/> - No wasted traffic  | - Listener must be accessible by the Exchange server <br/> - More complex configuration  |
 | Email polling  | - Client does not need to be accessible (can be behind a proxy or firewall) <br/> - Easy to configure | - Receive notifications only as frequently as the client polls <br/> - Wasted traffic |
 
-sensenet ECM supports both notification types when an email address is bound to a Content List. The **default method is pull notifications**, but this can easily be changed by changing the workflow that processes incoming emails.
+sensenet supports both notification types when an email address is bound to a Content List. The **default method is pull notifications**, but this can easily be changed by changing the workflow that processes incoming emails.
 
 ## Configuring pull notifications
 The mailbox can be defined by giving the email address in the *Incoming Email Settings* of a Content List. A workflow is started after the mailbox address is given that runs periodically and retrieves unread mails from the Exchange Server. This workflow then processes the incoming emails and creates new Content in the Content List according to the Incoming Email Settings.
@@ -37,7 +37,7 @@ The mailbox can be defined by giving the email address in the *Incoming Email Se
 > Make sure the user running the **app pool** of the application has the necessary **permissions** to access the Exchange mailbox.
 
 ## Configuring push notifications
-To enable push notifications the system needs to subscribe to a mailbox. This mailbox can be defined by giving the email address in the *Incoming Email Settings* of a Content List. Then, whenever a new email is sent to the defined mailbox in Exchange, the Exchange server sends a *notification* to the web service - whose url address was given with the subscription automatically - with info about the new email. The web service runs in the portal context of sensenet ECM and creates a content under the list in the *IncomingEmails* SystemFolder persisting the ID of the incoming email. The workflow that runs in the background processes the incoming email and creates new Content in the Content List according to the *Incoming Email Settings*.
+To enable push notifications the system needs to subscribe to a mailbox. This mailbox can be defined by giving the email address in the *Incoming Email Settings* of a Content List. Then, whenever a new email is sent to the defined mailbox in Exchange, the Exchange server sends a *notification* to the web service - whose url address was given with the subscription automatically - with info about the new email. The web service runs in the portal context of sensenet and creates a content under the list in the *IncomingEmails* SystemFolder persisting the ID of the incoming email. The workflow that runs in the background processes the incoming email and creates new Content in the Content List according to the *Incoming Email Settings*.
 
 > To configure the portal to use push notifications, you will have to set the *MailProcessingMode* to *ExchangePush*, *PushNotificationServicePath* and optionally the *ExchangeAddress* elements in the settings content, and also set the *PushNotification* parameter of the *Mail Processor Workflow*'s *ExchangePoller* activity to *True*. Then you can go on an set the email addresses of your lists.
 
@@ -68,8 +68,8 @@ The following settings are available:
    - *ExchangePull*: the system polls the Exchange server for new mails periodically. You can modify the time period in the customizable workflow as it is described later in this article.
    - *ExchangePush*: a logic will be executed on every system startup that re-subscribes to all mailboxes for every Content List that is configured to receive mails. This can be useful when the portal has been unavailable for the Exchange server and therefore the server deleted the subscription. Also a subscription to the mailbox events in Exchange Server will occur after setting the email address for a List. 
    - *POP3*: the system connects to the mail server using the POP3 protocol. This is a simple method for getting emails that needs a mailbox on the *Incoming Email Settings* page and the password in the settings file. All mails that were sent to that mailbox will be processed and deleted.
-- **StatusPollingIntervalInMinutes**: used with push notifications. For active subscriptions the Exchange server sends a status message to the webservice, to check if the receiver is still available. These messages are ignored - but otherwise served to indicate available service - by sensenet ECM. Set it to a higher value if you want to receive these status checks less frequently. The polling interval will be in effect for new subscriptions.
-- **PushNotificationServicePath**: used with push notifications. The path of the web service handling push notifications. A built-in service application is placed at */Root/(apps)/ContentList/ExchangeService.asmx*, this will be addressed by the exchange server. The path here therefore should include the host of sensenet ECM, and the rest will be handled by the portal (the '{0}' pattern will be replaced with the path of the appropriate Content List, and the *?action=ExchangeService.asmx* will instruct the portal to run the webservice defined for Content Lists among the global applications).
+- **StatusPollingIntervalInMinutes**: used with push notifications. For active subscriptions the Exchange server sends a status message to the webservice, to check if the receiver is still available. These messages are ignored - but otherwise served to indicate available service - by sensenet. Set it to a higher value if you want to receive these status checks less frequently. The polling interval will be in effect for new subscriptions.
+- **PushNotificationServicePath**: used with push notifications. The path of the web service handling push notifications. A built-in service application is placed at */Root/(apps)/ContentList/ExchangeService.asmx*, this will be addressed by the exchange server. The path here therefore should include the host of sensenet, and the rest will be handled by the portal (the '{0}' pattern will be replaced with the path of the appropriate Content List, and the *?action=ExchangeService.asmx* will instruct the portal to run the webservice defined for Content Lists among the global applications).
 - **ExchangeAddress**: the address of the exchange EWS web services. It is usually in the given format, only the host of the smtp server needs to be adjusted. If this key is commented out the autodiscover services of exchange will be used to resolve the address of the appropriate Exchange server.
 - **POP3Server**: POP address of the email server, e.g. pop.gmail.com.
 - **POP3 password**: if POP3 mode is configured, you have to provide the password for all the mailboxes here to let the system check for emails periodically.
@@ -94,12 +94,12 @@ On this interface the following settings are available:
 - **Accept emails only from users in local groups**: if you check this, only users that are members of local groups will be able to send emails to the list. The Sender (or From) email address will be checked for this.
 - **Incoming email workflow**: by default the system launches the *MailProcessor workflow* that will create the necessary content for the incoming email and the attachments according to the above given configuration. This is the only built-in workflow for this job, however a custom workflow can be created for this, inheriting from the *MailProcessorWorkflow*, and then can be selected here. Also, the MailProcessorWorkflow can be configured for both push / pull notifications - by default it uses pull notifications.
 
-> Make sure that the referred mailbox exists in Exchange Server and the user running the app pool of the sensenet ECM application has the necessary permissions to access it. In case of push notifications if the subscription cannot be created an error message will appear at the top of the view.
+> Make sure that the referred mailbox exists in Exchange Server and the user running the app pool of the sensenet application has the necessary permissions to access it. In case of push notifications if the subscription cannot be created an error message will appear at the top of the view.
 
 > Make sure that the selected Content Types can be created in the Content List, so Folders, Files or Email Content Types are listed in the Content List's *Allowed Content Types* field!
 
 ## Mail Processor Workflow
-sensenet ECM comes with a built-in *Mail processor workflow* that is executed when setting a mailbox for a list and runs continously in the background. This can be exchanged to a user-defined custom workflow at any time, in the Incoming Email Settings for a Content List. 
+sensenet comes with a built-in *Mail processor workflow* that is executed when setting a mailbox for a list and runs continously in the background. This can be exchanged to a user-defined custom workflow at any time, in the Incoming Email Settings for a Content List. 
 
 <a name="connectpop3"></a>
 ## Connecting through POP3
@@ -108,7 +108,7 @@ POP3 protocol is a widely used protocol for accessing mailboxes. It is easy to c
 > As the protocol does not know the concept of *read* emails, **processed emails are deleted immediately from the server**. If you want to keep a copy of the mail in the content repository, you can choose the *Save original email* option on the settings page.
 
 ## Managing push subscriptions
-When subscribing to notifications for a mailbox the Microsoft Exchange Server will start sending status messages periodically with the configured time interval. It is possible to unsubscribe from a mailbox event (delete the subscription) by answering to a status message with the appropriate message. A subscription is automatically deleted if the Exchange server cannot access the webservice running on sensenet ECM for a definite time interval. Therefore it is quite cumbersome to determine if a subscription is still active or not. sensenet ECM provides you the following means to manage subscriptions:
+When subscribing to notifications for a mailbox the Microsoft Exchange Server will start sending status messages periodically with the configured time interval. It is possible to unsubscribe from a mailbox event (delete the subscription) by answering to a status message with the appropriate message. A subscription is automatically deleted if the Exchange server cannot access the webservice running on sensenet for a definite time interval. Therefore it is quite cumbersome to determine if a subscription is still active or not. sensenet provides you the following means to manage subscriptions:
 
 - **Deleting subscriptions**: to delete an existing subscription, simply erase the contents of the List Email Field in the Incoming Email Settings and save the settings. This way the next status message (or new mail notification) sent by the Exchange server will not be processed and a return message will be sent to the Exchange server to delete the subscription.
 
@@ -117,7 +117,7 @@ When subscribing to notifications for a mailbox the Microsoft Exchange Server wi
    - **manually:** go to the Incoming Email Settings of the Content List, and erase the contents of the List Email email Field. Save the settings and then once again open the settings and fill in the List Email. Upon saving the settings once again a new subscription will take place to the events of the given Exchange mailbox.
 
 #### Notification on unprocessed mails
-Receiving unread emails that arrived in the mailbox while the portal or the connection between the portal and the Exchange server was down is done by using watermark indications. Every time a new email is processed in the watermark provided by the Exchange server is saved on the IncomingEmails SystemFolder under the list. This watermark identifies the last processed email. When renewing subscriptions the watermark of the lastly created workflow is sent to the Exchange server, and according to this information the Exchange server will immediately send notifications of emails that arrived after the email that corresponds to the specified watermark - in other words sensenet ECM is notified of all the yet unprocessed emails.
+Receiving unread emails that arrived in the mailbox while the portal or the connection between the portal and the Exchange server was down is done by using watermark indications. Every time a new email is processed in the watermark provided by the Exchange server is saved on the IncomingEmails SystemFolder under the list. This watermark identifies the last processed email. When renewing subscriptions the watermark of the lastly created workflow is sent to the Exchange server, and according to this information the Exchange server will immediately send notifications of emails that arrived after the email that corresponds to the specified watermark - in other words sensenet is notified of all the yet unprocessed emails.
 
 > Please note, that the last watermark is persisted on the IncomingEmails SystemFolder (in its *Description* field) under the list, therefore if you delete this folder you will not get notifications of unprocessed mails upon the very next subscription.
 

@@ -1,5 +1,5 @@
-# Workflows in sensenet ECM
-**Workflow** is a widely used concept that has many different definitions. See the [Wikipedia Workflow article](https://en.wikipedia.org/wiki/Workflow) for a detailed overview. In **sensenet ECM** we consider it as a way for modeling business processes built around content. We integrated [Windows Workflow Foundation 4](http://msdn.microsoft.com/en-us/netframework/aa663328) into sensenet ECM to have a well-known and standard framework for defining and developing workflows.
+# Workflows in sensenet
+**Workflow** is a widely used concept that has many different definitions. See the [Wikipedia Workflow article](https://en.wikipedia.org/wiki/Workflow) for a detailed overview. In **sensenet** we consider it as a way for modeling business processes built around content. We integrated [Windows Workflow Foundation 4](http://msdn.microsoft.com/en-us/netframework/aa663328) into sensenet to have a well-known and standard framework for defining and developing workflows.
 
 Workflows are a great tool for building business processes involving content creation and response to **human interactions** (approving a document, completing a task or clicking on a link in a mail).
 
@@ -9,7 +9,7 @@ The [approval](http://wiki.sensenet.com/Approval_workflow_sample) workflow is so
 
 ![Workflow example](https://raw.githubusercontent.com/SenseNet/sn-workflow/master/docs/images/workflow-designer.png "Workflow example")
 
-On this page we will provide you an overview of the way workflows work in sensenet ECM and the steps you need to follow to use your own workflows on the portal.
+On this page we will provide you an overview of the way workflows work in sensenet and the steps you need to follow to use your own workflows on the portal.
 
 - [Workflow types](#workflowtypes)
 - [Workflow definition](#workflowdefinition)
@@ -61,15 +61,15 @@ These content items will also hold all the workflow-specific metadata (e.g. who 
 
 <a name="workflowandui"></a>
 ## Workflows and UI
-Yes, it is possible to have workflows even if you installed only the **Services** core layer of sensenet ECM and there are no pages and views in your repository. There is a **server-side API for starting and aborting workflows**, and you can also build custom UI for certain phases of the workflow (e.g. for collecting data from users).
+Yes, it is possible to have workflows even if you installed only the **Services** core layer of sensenet and there are no pages and views in your repository. There is a **server-side API for starting and aborting workflows**, and you can also build custom UI for certain phases of the workflow (e.g. for collecting data from users).
 
-The workflow integration in sensenet ECM is built around **content state and metadata**. Workflow activities usually create *tasks* and *wait for those content items to change* (e.g. an administrator presses a button to approve a document) - these steps can be easily performed even if you have only Services (either on the server side or through the REST API), so installing the built-in **WebPages** UI layer of sensenet ECM is not mandatory.
+The workflow integration in sensenet is built around **content state and metadata**. Workflow activities usually create *tasks* and *wait for those content items to change* (e.g. an administrator presses a button to approve a document) - these steps can be easily performed even if you have only Services (either on the server side or through the REST API), so installing the built-in **WebPages** UI layer of sensenet is not mandatory.
 
 <a name="workflowviews"></a>
 ## Content views
 If you did install **WebPages**, you will have built-in views for our workflows and of course you may create ones for your custom workflows.
 
-The workflow framework uses the content view architecture of sensenet ECM to define the *input that workflows need before or during start up*. Depending on your workflow type you will need to create one or more content views to let users initialize or start workflows.
+The workflow framework uses the content view architecture of sensenet to define the *input that workflows need before or during start up*. Depending on your workflow type you will need to create one or more content views to let users initialize or start workflows.
 
 ### Initial view
 Initial view is needed only for workflows that are assignable for content lists. This view contains the fields that the administrator will see **when she assigns the workflow to a Content List**.
@@ -86,7 +86,7 @@ For details please visit the following article.
 
 ![Start a workflow in a list](https://raw.githubusercontent.com/SenseNet/sn-workflow/master/docs/images/workflow-list-start.png "Start a workflow in a list")
 
-In sensenet ECM there are several pages for managing workflows. Please check the following articles for more information on how to assign workflows to Content Lists and how to review them during their life cycle.
+In sensenet there are several pages for managing workflows. Please check the following articles for more information on how to assign workflows to Content Lists and how to review them during their life cycle.
 
 - [How to assign a workflow to a Content List](http://wiki.sensenet.com/How_to_assign_a_workflow_to_a_Content_List)
 - [How to start a content workflow](http://wiki.sensenet.com/How_to_start_a_content_workflow)
