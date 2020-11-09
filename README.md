@@ -26,9 +26,3 @@ The built-in workflows (_approval, registration, forgotten password_) will work 
 > To find out which packages you need to install, take a look at the available [sensenet components](https://github.com/SenseNet/sensenet.github.io/blob/master/_docs/sensenet-components.md).
 
 > To learn more about workflows in sensenet, visit the [main Workflow article](/docs/workflow.md).
-
-# sensenet as a service (SNaaS) - use sensenet from the cloud
-
-For a monthly subscription fee, we store all your content and data, relieving you of all maintenance-related tasks and installation, ensuring easy onboarding, easy updates, and patches.
-
-https://www.sensenet.com/pricing
